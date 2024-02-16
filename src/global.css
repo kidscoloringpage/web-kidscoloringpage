@@ -1,0 +1,21 @@
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.button {
+  @apply bg-white text-black font-bold font-sansita py-2.5 px-7 border rounded-full;
+  border-color: #000000;
+  box-shadow: 2px 4px 0 0 #EF60B7, 2px 4px 0 1px #000000;
+}
+
+.button-2 {
+    @apply bg-white text-black font-bold font-sansita py-2.5 px-7 border rounded-full;
+    border-color: #000000;
+    box-shadow: 2px 4px 0 0 #E9C6BA, 2px 4px 0 1px #000000;
+}
+
+.button:hover {
+  @apply bg-pink-50;
+  /* Additional hover styles if needed */
+}
