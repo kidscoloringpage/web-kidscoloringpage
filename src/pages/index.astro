@@ -2,6 +2,7 @@
 import Layout from '../layouts/Layout.astro';
 import Rating from "../components/Rating.astro";
 import {MobileNavButton} from "../components/MobileNavButton";
+import {Faqs} from "../components/Faqs";
 ---
 
 <Layout title="Homepage">
@@ -370,51 +371,5 @@ import {MobileNavButton} from "../components/MobileNavButton";
             </div>
         </div>
     </div>
-    <div class="bg-[#FFF2DF]">
-        <div class="container py-12 md:py-20 px-4 md:px-0 px-responsive">
-            <p class="font-bold font-sansita text-4xl mb-12">Frequently asked questions</p>
-            <div class="flex flex-col">
-                <div class="flex flex-col">
-                    <div class="mb-6 flex flex-col gap-y-3">
-                        <div class="flex flex-row cursor-pointer items-baseline gap-x-6">
-                            <p class="font-light text-xl flex-1">What is KidsColorPage.com?</p>
-                            <img src="/icon-angle-right.png" alt="icon-angel-right" class="w-[10px] h-auto rotate-90" />
-                        </div>
-                        <p class="font-light hidden">KidsColoringPage.com is an AI-powered coloring page generator! Perfect for parents, teachers, adults, and Sunday School instructors alike, KidsColoringPage.com transforms your imagination into coloring adventures. Whether you're aiming to entertain your kids, engage your students, or find a moment of peace and creativity for yourself, this tool is designed to cater to all your coloring needs. It's as simple as envisioning what you want on a page – from educational themes to personal relaxation or church activities – KidsColoringPage.com brings it to life. If coloring pages are a staple in your routine, look no further than KidsColoringPage.com to create them effortlessly!</p>
-                    </div>
-                    <div class="border border-dashed border-[#CCCAC7] mb-6 opacity-60" />
-                </div>
-                <div class="flex flex-col">
-                    <div class="mb-6 flex flex-col gap-y-3">
-                        <div class="flex flex-row cursor-pointer items-baseline gap-x-6">
-                            <p class="font-bold text-xl flex-1">Can I use the images I create to make my own coloring books to sell?</p>
-                            <img src="/icon-angle-right.png" alt="icon-angel-right" class="w-[10px] h-auto -rotate-90" />
-                        </div>
-                        <p class="font-light">Yes! You can use the images you create for any purpose, including commercial use.</p>
-                    </div>
-                    <div class="border border-dashed border-[#CCCAC7] mb-6 opacity-60" />
-                </div>
-                <div class="flex flex-col">
-                    <div class="mb-6 flex flex-col gap-y-3">
-                        <div class="flex flex-row cursor-pointer items-baseline gap-x-6">
-                            <p class="font-light text-xl flex-1">Can I request for a refund if my kid(s) didn't like it?</p>
-                            <img src="/icon-angle-right.png" alt="icon-angel-right" class="w-[10px] h-auto rotate-90" />
-                        </div>
-                        <p class="font-light hidden">Yes! We offer a 14-day refund policy. If your kid(s) aren't happy with our coloring pages, please contact us within 14 days of purchase for a full refund.</p>
-                    </div>
-                    <div class="border border-dashed border-[#CCCAC7] mb-6 opacity-60" />
-                </div>
-                <div class="flex flex-col">
-                    <div class="mb-6 flex flex-col gap-y-3">
-                        <div class="flex flex-row cursor-pointer items-baseline gap-x-6">
-                            <p class="font-light text-xl flex-1">How long does it take to refund the amount?</p>
-                            <img src="/icon-angle-right.png" alt="icon-angel-right" class="w-[10px] h-auto rotate-90" />
-                        </div>
-                        <p class="font-light hidden">We process refund requests swiftly! Once you've submitted your request, we aim to process your refund within 24 hours.</p>
-                    </div>
-                    <div class="border border-dashed border-[#CCCAC7] mb-6 opacity-60" />
-                </div>
-            </div>
-        </div>
-    </div>
+    <Faqs client:load />
 </Layout>
