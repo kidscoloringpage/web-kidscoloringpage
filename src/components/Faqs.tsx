@@ -81,8 +81,8 @@ export function Faqs() {
                                 <img src="/icon-angle-right.png" alt="icon-angel-right"
                                      className="w-[10px] h-auto rotate-90"/>
                             </div>
-                            <p className="font-light hidden faq-answer">Yes! We offer a 14-day refund policy. If your kid(s) aren't
-                                happy with our coloring pages, please contact us within 14 days of purchase for a full
+                            <p className="font-light hidden faq-answer">Yes! We offer a 2-day refund policy. If your kid(s) aren't
+                                happy with our coloring pages, please contact us within 2 days of purchase for a full
                                 refund.</p>
                         </div>
                         <div className="border border-dashed border-[#CCCAC7] mb-6 opacity-60"/>
