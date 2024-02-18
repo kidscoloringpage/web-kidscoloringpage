@@ -2,7 +2,6 @@
 import '../global.css';
 import Footer from "../components/Global/Footer.astro";
 import Authenticator from '../components/AuthFlow/Authenticator.astro';
-import TopNavigation from "../components/Global/TopNavigation.astro";
 import Header from "../components/Global/Header.astro";
 
 export interface Props {
@@ -15,7 +14,6 @@ export interface Props {
 
 const {
 	title = 'KidsColoringPage',
-	initialLoadingMessage,
 	canonicalUrl: givenCanonical = '',
 	permalink,
 	description
