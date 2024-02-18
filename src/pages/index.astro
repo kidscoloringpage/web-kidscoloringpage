@@ -1,44 +1,28 @@
 ---
-import Layout from '../layouts/Layout.astro';
 import Rating from "../components/Rating.astro";
 import {MobileNavButton} from "../components/MobileNavButton";
 import {Faqs} from "../components/Faqs";
+import GuestLayout from "../layouts/GuestLayout.astro";
+import Header from "../components/Global/Header.astro";
 ---
 
-<Layout title="Homepage">
-    <div class="bg-[#FFF2DF] relative">
-        <!--<img src="/pattern-1.png" alt="pattern-1" class="max-w-[30%] h-auto absolute top-0 left-0" />-->
-        <!--<img src="/pattern-2.png" alt="pattern-1" class="max-w-[21%] h-auto absolute top-0 right-0" />-->
-        <div class="container flex flex-col md:flex-row items-center pt-10 justify-between !mb-10 md:!mb-16 z-20 relative px-responsive px-4 md:px-0">
-            <div class="flex flex-row justify-between w-full flex-1">
-                <a href="/" class="font-wonderbar text-3xl">kids coloring page</a>
-                <MobileNavButton client:load />
-            </div>
-            <div class="hidden md:block w-full md:w-auto mt-3 md:mt-0" id="menu">
-                <div class="flex flex-col md:flex-row items-center gap-x-8 gap-y-4 md:gap-y-0 flex-1 text-white md:text-black bg-black md:bg-transparent py-5 md:py-0 rounded-xl">
-                    <a href="">Free coloring pages</a>
-                    <a href="#wall-of-love">Wall of love</a>
-                    <a href="#pricing">Pricing</a>
-                    <a href="" class="button hidden md:block text-center min-w-[126px]">Start Free</a>
-                </div>
-            </div>
+<GuestLayout>
+    <div slot="after-menu"
+         class="container flex flex-col md:flex-row justify-center md:justify-between items-center md:items-end relative z-20 md:!mt-6 px-4 md:px-0 px-responsive">
+        <div class="flex flex-col gap-y-5 mb-12 md:mb-16">
+            <p class="font-sansita text-3xl sm:text-4xl md:text-6xl flex flex-row items-center gap-x-3">Introducing AI <img src="/icon-magic-wand.png" alt="icon-magic-wand" class="w-[52px] h-auto" /></p>
+            <p class="font-wonderbar text-3xl sm:text-4xl md:text-6xl lg:text-6xl xl:text-6xl">
+                <span class="text-[#6A7DF6]">Kids</span>
+                <span class="text-[#347C44]">Coloring</span>
+                <span class="text-[#EF60B7]">Page</span>
+            </p>
+            <p class="font-light text-xl md:text-2xl md:w-3/5">Unlock Your Child's Imagination: KidsColoringPage Allows Parents to Inspire and Let Their Kids Color Anything They Imagine.</p>
+            <a href="" class="button flex flex-row w-fit items-center gap-x-4">
+                Start using for free
+                <img src="/icon-angle-right.png" alt="icon-angle-right" class="w-[10px] h-auto mt-[4px]" />
+            </a>
         </div>
-        <div class="container flex flex-col md:flex-row justify-center md:justify-between items-center md:items-end relative z-20 px-4 md:px-0 px-responsive">
-            <div class="flex flex-col gap-y-5 mb-12 md:mb-16">
-                <p class="font-sansita text-3xl sm:text-4xl md:text-6xl flex flex-row items-center gap-x-3">Introducing AI <img src="/icon-magic-wand.png" alt="icon-magic-wand" class="w-[52px] h-auto" /></p>
-                <p class="font-wonderbar text-3xl sm:text-4xl md:text-6xl lg:text-6xl xl:text-6xl">
-                    <span class="text-[#6A7DF6]">Kids</span>
-                    <span class="text-[#347C44]">Coloring</span>
-                    <span class="text-[#EF60B7]">Page</span>
-                </p>
-                <p class="font-light text-xl md:text-2xl md:w-3/5">Unlock Your Child's Imagination: KidsColoringPage Allows Parents to Inspire and Let Their Kids Color Anything They Imagine.</p>
-                <a href="" class="button flex flex-row w-fit items-center gap-x-4">
-                    Start using for free
-                    <img src="/icon-angle-right.png" alt="icon-angle-right" class="w-[10px] h-auto mt-[4px]" />
-                </a>
-            </div>
-            <img src="/girl-painting.png" alt="girl-painting" class="w-full md:w-2/4 mx-auto md:absolute md:right-0 md:-z-10" />
-        </div>
+        <img src="/girl-painting.png" alt="girl-painting" class="w-full md:w-2/4 mx-auto md:absolute md:right-0 md:-z-10" />
     </div>
     <div class="container flex flex-col gap-y-6 py-12 md:py-20 px-4 md:px-0 px-responsive">
         <p class="font-sansita font-bold text-4xl items-center leading-10 md:leading-0">
@@ -372,4 +356,4 @@ import {Faqs} from "../components/Faqs";
         </div>
     </div>
     <Faqs client:load />
-</Layout>
+</GuestLayout>

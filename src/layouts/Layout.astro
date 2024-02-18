@@ -1,31 +1,62 @@
 ---
-interface Props {
-	title: string;
+import '../global.css';
+import Footer from "../components/Global/Footer.astro";
+import Authenticator from '../components/AuthFlow/Authenticator.astro';
+import TopNavigation from "../components/Global/TopNavigation.astro";
+import Header from "../components/Global/Header.astro";
+
+export interface Props {
+	title?: string;
+	description?: string;
+	noIndex?: boolean;
+	canonicalUrl?: string;
+	permalink?: string;
 }
 
-const { title } = Astro.props;
+const {
+	title = 'KidsColoringPage',
+	initialLoadingMessage,
+	canonicalUrl: givenCanonical = '',
+	permalink,
+	description
+} = Astro.props;
 
-import '../global.css';
+// Remove trailing slashes to consider the page as canonical
+const currentPageAbsoluteUrl = `https://kidscoloringpage.com${permalink || ''}`;
+const canonicalUrl = givenCanonical || currentPageAbsoluteUrl;
 ---
 
 <!doctype html>
 <html lang="en">
 	<head>
-		<meta charset="UTF-8" />
-		<meta name="description" content="Astro description" />
-		<meta name="viewport" content="width=device-width" />
+		<meta charset='UTF-8' />
+		<meta name='description' content={description || 'A place where you can find the best APIs for your project. We have a wide range of APIs from different categories.'} />
+		<meta name='viewport' content='width=device-width' />
+		<meta name='generator' content={Astro.generator} />
+		<link rel='canonical' href={canonicalUrl} />
 		<link rel="icon" type="image/svg+xml" href="/favicon.ico" />
-
+		<link rel="sitemap" href="/sitemap-index.xml" />
 		<!-- Google font -->
 		<link rel="preconnect" href="https://fonts.googleapis.com">
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 		<link href="https://fonts.googleapis.com/css2?family=Sansita:ital,wght@0,400;0,700;0,800;0,900;1,400;1,700;1,800;1,900&display=swap" rel="stylesheet">
 		<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap" rel="stylesheet">
-
-		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
 	</head>
 	<body>
+		<Header>
+			<Fragment slot="after-menu">
+				<slot name="after-menu" />
+			</Fragment>
+		</Header>
+
 		<slot />
+
+		<slot name='footer'>
+			<Footer />
+		</slot>
+		<slot name='after-footer' />
+
+		<Authenticator />
 	</body>
 </html>

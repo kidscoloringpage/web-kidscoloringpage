@@ -1,0 +1,12 @@
+---
+import type { Props as LayoutProps } from './Layout.astro';
+import Layout from './Layout.astro';
+
+export interface Props extends LayoutProps {}
+
+const props = Astro.props;
+---
+
+<Layout {...props} noIndex={true}>
+    <slot />
+</Layout>

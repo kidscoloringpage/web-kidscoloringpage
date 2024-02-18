@@ -1,0 +1,14 @@
+---
+import type { Props as LayoutProps } from './Layout.astro';
+import Layout from './Layout.astro';
+
+export interface Props extends LayoutProps {}
+
+const { ...props } = Astro.props;
+---
+
+<Layout {...props} noIndex={false}>
+    <slot />
+    <slot name="after-menu" slot="after-menu" />
+    <div slot='page-footer'></div>
+</Layout>
