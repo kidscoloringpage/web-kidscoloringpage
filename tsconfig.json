@@ -23,6 +23,7 @@
     "ignoreDeprecations": "5.0",
     "downlevelIteration": true,
     "skipDefaultLibCheck": true,
-    "verbatimModuleSyntax": true
+    "verbatimModuleSyntax": true,
+    "noImplicitThis": false,
   }
 }
