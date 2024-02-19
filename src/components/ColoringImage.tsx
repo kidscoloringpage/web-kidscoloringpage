@@ -16,7 +16,7 @@ export function ColoringImage(props: ColoringImageProps) {
                     by {downloaded} Kids</p>}
             <img src={src} alt={alt} className="h-fit bg-cover"/>
             <div className="flex flex-col gap-y-1.5 items-start">
-            <p className="font-sansita font-bold">{title}</p>
+            <p className="font-sansita font-bold capitalize">{title}</p>
                 <button
                     onClick={() => {
                         const a = document.createElement('a');
