@@ -3,6 +3,7 @@ import '../global.css';
 import Footer from "../components/Global/Footer.astro";
 import Authenticator from '../components/AuthFlow/Authenticator.astro';
 import Header from "../components/Global/Header.astro";
+import { LoginDialog } from '../components/AuthFlow/LoginDialog';
 
 export interface Props {
 	title?: string;
@@ -56,5 +57,6 @@ const canonicalUrl = givenCanonical || currentPageAbsoluteUrl;
 		<slot name='after-footer' />
 
 		<Authenticator />
+		<LoginDialog client:idle />
 	</body>
 </html>

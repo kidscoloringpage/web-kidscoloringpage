@@ -3,26 +3,13 @@ import Rating from "../components/Rating.astro";
 import {Faqs} from "../components/Faqs";
 import GuestLayout from "../layouts/GuestLayout.astro";
 import {ColoringImage} from "../components/ColoringImage";
+import {hasLoginDialog} from "../stores/page";
+import {HomepageHero} from "../components/Homepage/HomepageHero";
+import {StatsHero} from "../components/Homepage/StatsHero";
 ---
 
 <GuestLayout>
-    <div slot="after-menu"
-         class="container flex flex-col md:flex-row justify-center md:justify-between items-center md:items-end relative z-20 md:!mt-6 px-4 md:px-0 px-responsive">
-        <div class="flex flex-col gap-y-5 mb-12 md:mb-16">
-            <p class="font-sansita text-3xl sm:text-4xl md:text-6xl flex flex-row items-center gap-x-3">Introducing AI <img src="/icon-magic-wand.png" alt="icon-magic-wand" class="w-[52px] h-auto" /></p>
-            <p class="font-wonderbar text-3xl sm:text-4xl md:text-6xl lg:text-6xl xl:text-6xl">
-                <span class="text-[#6A7DF6]">Kids</span>
-                <span class="text-[#347C44]">Coloring</span>
-                <span class="text-[#EF60B7]">Page</span>
-            </p>
-            <p class="font-light text-xl md:text-2xl md:w-3/5">Unlock Your Child's Imagination: KidsColoringPage Allows Parents to Inspire and Let Their Kids Color Anything They Imagine.</p>
-            <a href="" class="button flex flex-row w-fit items-center gap-x-4">
-                Start using for free
-                <img src="/icon-angle-right.png" alt="icon-angle-right" class="w-[10px] h-auto mt-[4px]" />
-            </a>
-        </div>
-        <img src="/girl-painting.png" alt="girl-painting" class="w-full md:w-2/4 mx-auto md:absolute md:right-0 md:-z-10" />
-    </div>
+    <HomepageHero slot="after-menu" client:load />
     <div class="container flex flex-col gap-y-6 py-12 md:py-20 px-4 md:px-0 px-responsive">
         <p class="font-sansita font-bold text-4xl items-center leading-10 md:leading-0">
             <span>Use AI</span>
@@ -40,28 +27,7 @@ import {ColoringImage} from "../components/ColoringImage";
             </div>
         </div>
     </div>
-    <div class="bg-[#F36A3B]">
-        <div class="container flex flex-col md:flex-row justify-between gap-y-6 md:gap-y-0 md:gap-x-28 py-10 items-center px-4 md:px-0 px-responsive">
-            <div class="flex flex-col md:flex-row flex-1 justify-between gap-y-4 md:gap-y-0 text-center md:text-left">
-                <div class="flex flex-col gap-y-2 font-sansita">
-                    <p class="font-bold text-5xl text-white flex flex-row gap-x-3 justify-center md:justify-start">
-                        <span>#1</span>
-                        <img src="/icon-magic-wand.png" alt="icon-magic-wand" class="w-[45px] h-auto" />
-                    </p>
-                    <p class="text-xl text-[#EBEBEB] font-light">AI coloring page generator</p>
-                </div>
-                <div class="flex flex-col gap-y-2 font-sansita">
-                    <p class="font-bold text-5xl text-white">580,000+</p>
-                    <p class="text-xl text-[#EBEBEB] font-light">Coloring sheets created!</p>
-                </div>
-                <div class="flex flex-col gap-y-2 font-sansita">
-                    <p class="font-bold text-5xl text-white">5,000+</p>
-                    <p class="text-xl text-[#EBEBEB] font-light">Parents using for their kids</p>
-                </div>
-            </div>
-            <a href="" class="button-2 hidden-responsive">Start using for free</a>
-        </div>
-    </div>
+    <StatsHero client:load />
     <div class="container py-12 md:py-20 px-4 md:px-0 px-responsive">
         <p class="font-bold font-sansita text-4xl mb-8">How it works</p>
         <div class="max-auto">

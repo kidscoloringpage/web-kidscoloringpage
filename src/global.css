@@ -15,6 +15,12 @@
     box-shadow: 2px 4px 0 0 #E9C6BA, 2px 4px 0 1px #000000;
 }
 
+.button-3 {
+    @apply bg-[#F28637] text-black font-bold font-sansita py-2.5 px-7 border rounded-full;
+    border-color: #000000;
+    box-shadow: 2px 4px 0 0 #FFFFFF, 2px 4px 0 1px #000000;
+}
+
 .button:hover, .button-2:hover {
     @apply text-[#F36A3B];
 }
