@@ -6,11 +6,14 @@ import {
 } from '../Global/Dialog';
 import { useStore } from '@nanostores/react';
 import {hasLoginDialog, hasRecoverPasswordDialog, hasRegisterDialog} from '../../stores/page';
-import { useEffect } from 'react';
+import {useEffect, useState} from 'react';
 import { AUTH_REDIRECT_KEY } from '../../lib/auth-redirect';
 
 export function LoginDialog() {
     const $hasLoginDialog = useStore(hasLoginDialog);
+
+    const [email, setEmail] = useState<string>('');
+    const [password, setPassword] = useState<string>('');
 
     // Set the page location to the current page
     // in the localstorage so that we can redirect
@@ -37,9 +40,15 @@ export function LoginDialog() {
                     </DialogHeader>
                     <div className='flex flex-col items-start pt-8'>
                         <div className="w-full flex flex-col mb-5">
-                            <input type="email" placeholder='Email address'
+                            <input type="email"
+                                   placeholder='Email address'
+                                   value={email}
+                                   onInput={(e) => setEmail(String((e.target as any).value))}
                                    className="text-[#999999] outline-none py-4 px-8 border border-[#999999] rounded-full mb-3.5"/>
-                            <input type="password" placeholder='Password'
+                            <input type="password"
+                                   placeholder='Password'
+                                   value={password}
+                                   onInput={(e) => setPassword(String((e.target as any).value))}
                                    className="text-[#999999] outline-none py-4 px-8 border border-[#999999] rounded-full mb-5"/>
 
                             <button className="group button flex flex-row items-center gap-x-2">
