@@ -43,7 +43,7 @@ export function LoginDialog() {
                                    className="text-[#999999] outline-none py-4 px-8 border border-[#999999] rounded-full mb-5"/>
 
                             <button className="group button flex flex-row items-center gap-x-2">
-                                <span className="flex-1 text-center group-hover:text-[#F36A3B]">Login</span>
+                                <span className="flex-1 text-center group-hover:text-[#F36A3B] text-xl">Login</span>
                                 <img src="/icon-angle-right.png" alt="icon-angle-right"
                                      className="w-[10px] h-auto mt-[4px]"/>
                             </button>
@@ -62,7 +62,7 @@ export function LoginDialog() {
                     <div className="px-8">
                         <button className="group button-3 flex flex-row items-center gap-x-2 w-full">
                             <span
-                                className="flex-1 text-center text-white group-hover:text-black">Create an account</span>
+                                className="flex-1 text-center text-white group-hover:text-black text-xl">Create an account</span>
                             <img src="/icon-angle-right-white.png" alt="icon-angle-right"
                                  className="w-[10px] h-auto mt-[4px]"/>
                         </button>
