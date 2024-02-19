@@ -53,7 +53,7 @@ export function RecoverPasswordDialog() {
                             }}
                             className="group button-3 flex flex-row items-center gap-x-2 w-full">
                             <span
-                                className="flex-1 text-center text-white group-hover:text-black text-xl">Create an account</span>
+                                className="flex-1 text-center text-white text-xl">Create an account</span>
                             <img src="/icon-angle-right-white.png" alt="icon-angle-right"
                                  className="w-[10px] h-auto mt-[4px]"/>
                         </button>
