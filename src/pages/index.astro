@@ -2,6 +2,7 @@
 import Rating from "../components/Rating.astro";
 import {Faqs} from "../components/Faqs";
 import GuestLayout from "../layouts/GuestLayout.astro";
+import {ColoringImage} from "../components/ColoringImage";
 ---
 
 <GuestLayout>
@@ -31,39 +32,11 @@ import GuestLayout from "../layouts/GuestLayout.astro";
         <p class="text-xl text-[#545454]">Unleash your imagination! KidsColoringPage turns your ideas into coloring pages for your kids to color. From dinosaurs to fairies, let's bring their creativity to life!</p>
         <p class="text-[#545454] font-light text-base"><span class="font-semibold">Not sure what to try?</span> Some example prompts with images are below. The best images incorporate one subject, a setting, and a style. For example: Alebrije turtle at the beach.</p>
         <div class="max-auto">
-            <div class="grid gap-4 grid-cols-2 md:grid-cols-3">
-                <div class="flex flex-col border border-black rounded-2xl p-4 md:p-6 gap-y-4 relative bg-[#F4F3F3] justify-between">
-                    <p class="bg-[#F36A3B] py-1.5 md:py-2 px-2 md:px-3 w-fit text-white font-sansita font-medium md:font-bold rounded-3xl text-xs md:text-sm top-2 md:top-3 left-2 md:left-3 absolute">Colored by 5,210 Kids</p>
-                    <img src="/image-dino.png" alt="icon-dino" class="w-fit bg-cover" />
-                    <div class="flex flex-col gap-y-1 md:gap-y-1.5 items-start">
-                        <p class="font-sansita font-bold">Little dino holding a sword</p>
-                        <button class="text-[#6A7DF6] font-sansita font-bold border-b border-b-[#6A7DF6] leading-snug">Download</button>
-                    </div>
-                </div>
-                <div class="flex flex-col border border-black rounded-2xl p-4 md:p-6 gap-y-4 relative bg-[#F4F3F3] justify-between">
-                    <p class="bg-[#F36A3B] py-1.5 md:py-2 px-2 md:px-3 w-fit text-white font-sansita font-medium md:font-bold rounded-3xl text-xs md:text-sm top-2 md:top-3 left-2 md:left-3 absolute">Colored by 1,210 Kids</p>
-                    <img src="/image-doll.png" alt="icon-dino" class="w-fit bg-cover" />
-                    <div class="flex flex-col gap-y-1.5 items-start">
-                        <p class="font-sansita font-bold">Little dino holding a sword</p>
-                        <button class="text-[#6A7DF6] font-sansita font-bold border-b border-b-[#6A7DF6] leading-snug">Download</button>
-                    </div>
-                </div>
-                <div class="flex flex-col border border-black rounded-2xl p-4 md:p-6 gap-y-4 relative bg-[#F4F3F3] justify-between">
-                    <p class="bg-[#F36A3B] py-1.5 md:py-2 px-2 md:px-3 w-fit text-white font-sansita font-medium md:font-bold rounded-3xl text-xs md:text-sm top-2 md:top-3 left-2 md:left-3 absolute">Colored by 9,830 Kids</p>
-                    <img src="/image-mario.png" alt="icon-dino" class="w-fit bg-cover" />
-                    <div class="flex flex-col gap-y-1.5 items-start">
-                        <p class="font-sansita font-bold">Little dino holding a sword</p>
-                        <button class="text-[#6A7DF6] font-sansita font-bold border-b border-b-[#6A7DF6] leading-snug">Download</button>
-                    </div>
-                </div>
-                <div class="flex flex-col border border-black rounded-2xl p-4 md:p-6 gap-y-4 relative bg-[#F4F3F3] justify-between md:hidden">
-                    <p class="bg-[#F36A3B] py-1.5 md:py-2 px-2 md:px-3 w-fit text-white font-sansita font-medium md:font-bold rounded-3xl text-xs md:text-sm top-2 md:top-3 left-2 md:left-3 absolute">Colored by 3,670 Kids</p>
-                    <img src="/image-lightyear.png" alt="icon-dino" class="w-fit bg-cover" />
-                    <div class="flex flex-col gap-y-1.5 items-start">
-                        <p class="font-sansita font-bold">Buzz light year with woody</p>
-                        <button class="text-[#6A7DF6] font-sansita font-bold border-b border-b-[#6A7DF6] leading-snug">Download</button>
-                    </div>
-                </div>
+            <div class="grid gap-4 grid-cols-2 md:grid-cols-4">
+                <ColoringImage client:load src="/color-pages/Elsa and anna.png" title="Elsa and anna" alt="Elsa and anna" downloaded="5,210" />
+                <ColoringImage client:load src="/color-pages/Winnie-the-Pooh.png" title="Winnie-the-Pooh" alt="Winnie-the-Pooh" downloaded="1,210" />
+                <ColoringImage client:load src="/color-pages/dino holding a sword.png" title="dino holding a sword" alt="dino holding a sword" downloaded="9,830" />
+                <ColoringImage client:load src="/color-pages/scooby dooby doo2.png" title="scooby dooby doo" alt="scooby dooby doo" downloaded="3,670" />
             </div>
         </div>
     </div>

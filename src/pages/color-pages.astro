@@ -1,5 +1,6 @@
 ---
 import GuestLayout from "../layouts/GuestLayout.astro";
+import { ColoringImage } from "../components/ColoringImage";
 ---
 <GuestLayout>
     <div class="container py-8 md:py-12 px-4 md:px-0 px-responsive">
@@ -8,404 +9,63 @@ import GuestLayout from "../layouts/GuestLayout.astro";
 
         <div class="max-auto">
             <div class="grid gap-4 grid-cols-2 md:grid-cols-4">
-                <div class="flex flex-col border border-black rounded-2xl p-4 md:p-6 gap-y-4 relative bg-[#F4F3F3] justify-between">
-                    <img src="/color-pages/aladdin.png" class="w-fit bg-cover color-page-img" loading="lazy" alt="aladdin" />
-                    <div class="flex flex-col gap-y-1 md:gap-y-1.5 items-start">
-                        <p class="capitalize font-sansita font-bold">aladdin</p>
-                        <button class="text-[#6A7DF6] font-sansita font-bold border-b border-b-[#6A7DF6] leading-snug download-color-page">Download</button>
-                    </div>
-                </div>
-                <div class="flex flex-col border border-black rounded-2xl p-4 md:p-6 gap-y-4 relative bg-[#F4F3F3] justify-between">
-                    <img src="/color-pages/anime.png" class="w-fit bg-cover color-page-img" loading="lazy" alt="anime" />
-                    <div class="flex flex-col gap-y-1 md:gap-y-1.5 items-start">
-                        <p class="capitalize font-sansita font-bold">anime</p>
-                        <button class="text-[#6A7DF6] font-sansita font-bold border-b border-b-[#6A7DF6] leading-snug download-color-page">Download</button>
-                    </div>
-                </div>
-                <div class="flex flex-col border border-black rounded-2xl p-4 md:p-6 gap-y-4 relative bg-[#F4F3F3] justify-between">
-                    <img src="/color-pages/anime2.png" class="w-fit bg-cover color-page-img" loading="lazy" alt="anime" />
-                    <div class="flex flex-col gap-y-1 md:gap-y-1.5 items-start">
-                        <p class="capitalize font-sansita font-bold">anime</p>
-                        <button class="text-[#6A7DF6] font-sansita font-bold border-b border-b-[#6A7DF6] leading-snug download-color-page">Download</button>
-                    </div>
-                </div>
-                <div class="flex flex-col border border-black rounded-2xl p-4 md:p-6 gap-y-4 relative bg-[#F4F3F3] justify-between">
-                    <img src="/color-pages/Baby.png" class="w-fit bg-cover color-page-img" loading="lazy" alt="Baby" />
-                    <div class="flex flex-col gap-y-1 md:gap-y-1.5 items-start">
-                        <p class="capitalize font-sansita font-bold">Baby</p>
-                        <button class="text-[#6A7DF6] font-sansita font-bold border-b border-b-[#6A7DF6] leading-snug download-color-page">Download</button>
-                    </div>
-                </div>
-                <div class="flex flex-col border border-black rounded-2xl p-4 md:p-6 gap-y-4 relative bg-[#F4F3F3] justify-between">
-                    <img src="/color-pages/Baby yoda.png" class="w-fit bg-cover color-page-img" loading="lazy" alt="Baby yoda" />
-                    <div class="flex flex-col gap-y-1 md:gap-y-1.5 items-start">
-                        <p class="capitalize font-sansita font-bold">Baby yoda</p>
-                        <button class="text-[#6A7DF6] font-sansita font-bold border-b border-b-[#6A7DF6] leading-snug download-color-page">Download</button>
-                    </div>
-                </div>
-                <div class="flex flex-col border border-black rounded-2xl p-4 md:p-6 gap-y-4 relative bg-[#F4F3F3] justify-between">
-                    <img src="/color-pages/Barbie.png" class="w-fit bg-cover color-page-img" loading="lazy" alt="Barbie" />
-                    <div class="flex flex-col gap-y-1 md:gap-y-1.5 items-start">
-                        <p class="capitalize font-sansita font-bold">Barbie</p>
-                        <button class="text-[#6A7DF6] font-sansita font-bold border-b border-b-[#6A7DF6] leading-snug download-color-page">Download</button>
-                    </div>
-                </div>
-                <div class="flex flex-col border border-black rounded-2xl p-4 md:p-6 gap-y-4 relative bg-[#F4F3F3] justify-between">
-                    <img src="/color-pages/batman.png" class="w-fit bg-cover color-page-img" loading="lazy" alt="batman" />
-                    <div class="flex flex-col gap-y-1 md:gap-y-1.5 items-start">
-                        <p class="capitalize font-sansita font-bold">batman</p>
-                        <button class="text-[#6A7DF6] font-sansita font-bold border-b border-b-[#6A7DF6] leading-snug download-color-page">Download</button>
-                    </div>
-                </div>
-                <div class="flex flex-col border border-black rounded-2xl p-4 md:p-6 gap-y-4 relative bg-[#F4F3F3] justify-between">
-                    <img src="/color-pages/bear.png" class="w-fit bg-cover color-page-img" loading="lazy" alt="bear" />
-                    <div class="flex flex-col gap-y-1 md:gap-y-1.5 items-start">
-                        <p class="capitalize font-sansita font-bold">bear</p>
-                        <button class="text-[#6A7DF6] font-sansita font-bold border-b border-b-[#6A7DF6] leading-snug download-color-page">Download</button>
-                    </div>
-                </div>
-                <div class="flex flex-col border border-black rounded-2xl p-4 md:p-6 gap-y-4 relative bg-[#F4F3F3] justify-between">
-                    <img src="/color-pages/butterfly.png" class="w-fit bg-cover color-page-img" loading="lazy" alt="butterfly" />
-                    <div class="flex flex-col gap-y-1 md:gap-y-1.5 items-start">
-                        <p class="capitalize font-sansita font-bold">butterfly</p>
-                        <button class="text-[#6A7DF6] font-sansita font-bold border-b border-b-[#6A7DF6] leading-snug download-color-page">Download</button>
-                    </div>
-                </div>
-                <div class="flex flex-col border border-black rounded-2xl p-4 md:p-6 gap-y-4 relative bg-[#F4F3F3] justify-between">
-                    <img src="/color-pages/captain america.png" class="w-fit bg-cover color-page-img" loading="lazy" alt="captain america" />
-                    <div class="flex flex-col gap-y-1 md:gap-y-1.5 items-start">
-                        <p class="capitalize font-sansita font-bold">captain america</p>
-                        <button class="text-[#6A7DF6] font-sansita font-bold border-b border-b-[#6A7DF6] leading-snug download-color-page">Download</button>
-                    </div>
-                </div>
-                <div class="flex flex-col border border-black rounded-2xl p-4 md:p-6 gap-y-4 relative bg-[#F4F3F3] justify-between">
-                    <img src="/color-pages/castle.png" class="w-fit bg-cover color-page-img" loading="lazy" alt="castle" />
-                    <div class="flex flex-col gap-y-1 md:gap-y-1.5 items-start">
-                        <p class="capitalize font-sansita font-bold">castle</p>
-                        <button class="text-[#6A7DF6] font-sansita font-bold border-b border-b-[#6A7DF6] leading-snug download-color-page">Download</button>
-                    </div>
-                </div>
-                <div class="flex flex-col border border-black rounded-2xl p-4 md:p-6 gap-y-4 relative bg-[#F4F3F3] justify-between">
-                    <img src="/color-pages/Cat.png" class="w-fit bg-cover color-page-img" loading="lazy" alt="Cat" />
-                    <div class="flex flex-col gap-y-1 md:gap-y-1.5 items-start">
-                        <p class="capitalize font-sansita font-bold">Cat</p>
-                        <button class="text-[#6A7DF6] font-sansita font-bold border-b border-b-[#6A7DF6] leading-snug download-color-page">Download</button>
-                    </div>
-                </div>
-                <div class="flex flex-col border border-black rounded-2xl p-4 md:p-6 gap-y-4 relative bg-[#F4F3F3] justify-between">
-                    <img src="/color-pages/Charmander.png" class="w-fit bg-cover color-page-img" loading="lazy" alt="Charmander" />
-                    <div class="flex flex-col gap-y-1 md:gap-y-1.5 items-start">
-                        <p class="capitalize font-sansita font-bold">Charmander</p>
-                        <button class="text-[#6A7DF6] font-sansita font-bold border-b border-b-[#6A7DF6] leading-snug download-color-page">Download</button>
-                    </div>
-                </div>
-                <div class="flex flex-col border border-black rounded-2xl p-4 md:p-6 gap-y-4 relative bg-[#F4F3F3] justify-between">
-                    <img src="/color-pages/chicken.png" class="w-fit bg-cover color-page-img" loading="lazy" alt="chicken" />
-                    <div class="flex flex-col gap-y-1 md:gap-y-1.5 items-start">
-                        <p class="capitalize font-sansita font-bold">chicken</p>
-                        <button class="text-[#6A7DF6] font-sansita font-bold border-b border-b-[#6A7DF6] leading-snug download-color-page">Download</button>
-                    </div>
-                </div>
-                <div class="flex flex-col border border-black rounded-2xl p-4 md:p-6 gap-y-4 relative bg-[#F4F3F3] justify-between">
-                    <img src="/color-pages/christmas tree outside covered in snow.png" class="w-fit bg-cover color-page-img" loading="lazy" alt="christmas tree outside covered in snow" />
-                    <div class="flex flex-col gap-y-1 md:gap-y-1.5 items-start">
-                        <p class="capitalize font-sansita font-bold">christmas tree outside covered in snow</p>
-                        <button class="text-[#6A7DF6] font-sansita font-bold border-b border-b-[#6A7DF6] leading-snug download-color-page">Download</button>
-                    </div>
-                </div>
-                <div class="flex flex-col border border-black rounded-2xl p-4 md:p-6 gap-y-4 relative bg-[#F4F3F3] justify-between">
-                    <img src="/color-pages/cozzy fire place.png" class="w-fit bg-cover color-page-img" loading="lazy" alt="cozzy fire place" />
-                    <div class="flex flex-col gap-y-1 md:gap-y-1.5 items-start">
-                        <p class="capitalize font-sansita font-bold">cozzy fire place</p>
-                        <button class="text-[#6A7DF6] font-sansita font-bold border-b border-b-[#6A7DF6] leading-snug download-color-page">Download</button>
-                    </div>
-                </div>
-                <div class="flex flex-col border border-black rounded-2xl p-4 md:p-6 gap-y-4 relative bg-[#F4F3F3] justify-between">
-                    <img src="/color-pages/dinosaurs.png" class="w-fit bg-cover color-page-img" loading="lazy" alt="dinosaurs" />
-                    <div class="flex flex-col gap-y-1 md:gap-y-1.5 items-start">
-                        <p class="capitalize font-sansita font-bold">dinosaurs</p>
-                        <button class="text-[#6A7DF6] font-sansita font-bold border-b border-b-[#6A7DF6] leading-snug download-color-page">Download</button>
-                    </div>
-                </div>
-                <div class="flex flex-col border border-black rounded-2xl p-4 md:p-6 gap-y-4 relative bg-[#F4F3F3] justify-between">
-                    <img src="/color-pages/Dog.png" class="w-fit bg-cover color-page-img" loading="lazy" alt="Dog" />
-                    <div class="flex flex-col gap-y-1 md:gap-y-1.5 items-start">
-                        <p class="capitalize font-sansita font-bold">Dog</p>
-                        <button class="text-[#6A7DF6] font-sansita font-bold border-b border-b-[#6A7DF6] leading-snug download-color-page">Download</button>
-                    </div>
-                </div>
-                <div class="flex flex-col border border-black rounded-2xl p-4 md:p-6 gap-y-4 relative bg-[#F4F3F3] justify-between">
-                    <img src="/color-pages/Dolphin Surfing the waves.png" class="w-fit bg-cover color-page-img" loading="lazy" alt="Dolphin Surfing the waves" />
-                    <div class="flex flex-col gap-y-1 md:gap-y-1.5 items-start">
-                        <p class="capitalize font-sansita font-bold">Dolphin Surfing the waves</p>
-                        <button class="text-[#6A7DF6] font-sansita font-bold border-b border-b-[#6A7DF6] leading-snug download-color-page">Download</button>
-                    </div>
-                </div>
-                <div class="flex flex-col border border-black rounded-2xl p-4 md:p-6 gap-y-4 relative bg-[#F4F3F3] justify-between">
-                    <img src="/color-pages/elephant.png" class="w-fit bg-cover color-page-img" loading="lazy" alt="elephant" />
-                    <div class="flex flex-col gap-y-1 md:gap-y-1.5 items-start">
-                        <p class="capitalize font-sansita font-bold">elephant</p>
-                        <button class="text-[#6A7DF6] font-sansita font-bold border-b border-b-[#6A7DF6] leading-snug download-color-page">Download</button>
-                    </div>
-                </div>
-                <div class="flex flex-col border border-black rounded-2xl p-4 md:p-6 gap-y-4 relative bg-[#F4F3F3] justify-between">
-                    <img src="/color-pages/Elsa.png" class="w-fit bg-cover color-page-img" loading="lazy" alt="Elsa" />
-                    <div class="flex flex-col gap-y-1 md:gap-y-1.5 items-start">
-                        <p class="capitalize font-sansita font-bold">Elsa</p>
-                        <button class="text-[#6A7DF6] font-sansita font-bold border-b border-b-[#6A7DF6] leading-snug download-color-page">Download</button>
-                    </div>
-                </div>
-                <div class="flex flex-col border border-black rounded-2xl p-4 md:p-6 gap-y-4 relative bg-[#F4F3F3] justify-between">
-                    <img src="/color-pages/Elsa and anna.png" class="w-fit bg-cover color-page-img" loading="lazy" alt="Elsa and anna" />
-                    <div class="flex flex-col gap-y-1 md:gap-y-1.5 items-start">
-                        <p class="capitalize font-sansita font-bold">Elsa and anna</p>
-                        <button class="text-[#6A7DF6] font-sansita font-bold border-b border-b-[#6A7DF6] leading-snug download-color-page">Download</button>
-                    </div>
-                </div>
-                <div class="flex flex-col border border-black rounded-2xl p-4 md:p-6 gap-y-4 relative bg-[#F4F3F3] justify-between">
-                    <img src="/color-pages/Elsa At Arendelle Castle.png" class="w-fit bg-cover color-page-img" loading="lazy" alt="Elsa At Arendelle Castle" />
-                    <div class="flex flex-col gap-y-1 md:gap-y-1.5 items-start">
-                        <p class="capitalize font-sansita font-bold">Elsa At Arendelle Castle</p>
-                        <button class="text-[#6A7DF6] font-sansita font-bold border-b border-b-[#6A7DF6] leading-snug download-color-page">Download</button>
-                    </div>
-                </div>
-                <div class="flex flex-col border border-black rounded-2xl p-4 md:p-6 gap-y-4 relative bg-[#F4F3F3] justify-between">
-                    <img src="/color-pages/Elsa in enchanted forest.png" class="w-fit bg-cover color-page-img" loading="lazy" alt="Elsa in enchanted forest" />
-                    <div class="flex flex-col gap-y-1 md:gap-y-1.5 items-start">
-                        <p class="capitalize font-sansita font-bold">Elsa in enchanted forest</p>
-                        <button class="text-[#6A7DF6] font-sansita font-bold border-b border-b-[#6A7DF6] leading-snug download-color-page">Download</button>
-                    </div>
-                </div>
-                <div class="flex flex-col border border-black rounded-2xl p-4 md:p-6 gap-y-4 relative bg-[#F4F3F3] justify-between">
-                    <img src="/color-pages/falmingo.png" class="w-fit bg-cover color-page-img" loading="lazy" alt="falmingo" />
-                    <div class="flex flex-col gap-y-1 md:gap-y-1.5 items-start">
-                        <p class="capitalize font-sansita font-bold">falmingo</p>
-                        <button class="text-[#6A7DF6] font-sansita font-bold border-b border-b-[#6A7DF6] leading-snug download-color-page">Download</button>
-                    </div>
-                </div>
-                <div class="flex flex-col border border-black rounded-2xl p-4 md:p-6 gap-y-4 relative bg-[#F4F3F3] justify-between">
-                    <img src="/color-pages/falmingo standing in the water.png" class="w-fit bg-cover color-page-img" loading="lazy" alt="falmingo standing in the water" />
-                    <div class="flex flex-col gap-y-1 md:gap-y-1.5 items-start">
-                        <p class="capitalize font-sansita font-bold">falmingo standing in the water</p>
-                        <button class="text-[#6A7DF6] font-sansita font-bold border-b border-b-[#6A7DF6] leading-snug download-color-page">Download</button>
-                    </div>
-                </div>
-                <div class="flex flex-col border border-black rounded-2xl p-4 md:p-6 gap-y-4 relative bg-[#F4F3F3] justify-between">
-                    <img src="/color-pages/godzilla.png" class="w-fit bg-cover color-page-img" loading="lazy" alt="godzilla" />
-                    <div class="flex flex-col gap-y-1 md:gap-y-1.5 items-start">
-                        <p class="capitalize font-sansita font-bold">godzilla</p>
-                        <button class="text-[#6A7DF6] font-sansita font-bold border-b border-b-[#6A7DF6] leading-snug download-color-page">Download</button>
-                    </div>
-                </div>
-                <div class="flex flex-col border border-black rounded-2xl p-4 md:p-6 gap-y-4 relative bg-[#F4F3F3] justify-between">
-                    <img src="/color-pages/Hello kitty.png" class="w-fit bg-cover color-page-img" loading="lazy" alt="Hello kitty" />
-                    <div class="flex flex-col gap-y-1 md:gap-y-1.5 items-start">
-                        <p class="capitalize font-sansita font-bold">Hello kitty</p>
-                        <button class="text-[#6A7DF6] font-sansita font-bold border-b border-b-[#6A7DF6] leading-snug download-color-page">Download</button>
-                    </div>
-                </div>
-                <div class="flex flex-col border border-black rounded-2xl p-4 md:p-6 gap-y-4 relative bg-[#F4F3F3] justify-between">
-                    <img src="/color-pages/icecream.png" class="w-fit bg-cover color-page-img" loading="lazy" alt="icecream" />
-                    <div class="flex flex-col gap-y-1 md:gap-y-1.5 items-start">
-                        <p class="capitalize font-sansita font-bold">icecream</p>
-                        <button class="text-[#6A7DF6] font-sansita font-bold border-b border-b-[#6A7DF6] leading-snug download-color-page">Download</button>
-                    </div>
-                </div>
-                <div class="flex flex-col border border-black rounded-2xl p-4 md:p-6 gap-y-4 relative bg-[#F4F3F3] justify-between">
-                    <img src="/color-pages/iron man.png" class="w-fit bg-cover color-page-img" loading="lazy" alt="iron man" />
-                    <div class="flex flex-col gap-y-1 md:gap-y-1.5 items-start">
-                        <p class="capitalize font-sansita font-bold">iron man</p>
-                        <button class="text-[#6A7DF6] font-sansita font-bold border-b border-b-[#6A7DF6] leading-snug download-color-page">Download</button>
-                    </div>
-                </div>
-                <div class="flex flex-col border border-black rounded-2xl p-4 md:p-6 gap-y-4 relative bg-[#F4F3F3] justify-between">
-                    <img src="/color-pages/iron man2.png" class="w-fit bg-cover color-page-img" loading="lazy" alt="iron man" />
-                    <div class="flex flex-col gap-y-1 md:gap-y-1.5 items-start">
-                        <p class="capitalize font-sansita font-bold">iron man</p>
-                        <button class="text-[#6A7DF6] font-sansita font-bold border-b border-b-[#6A7DF6] leading-snug download-color-page">Download</button>
-                    </div>
-                </div>
-                <div class="flex flex-col border border-black rounded-2xl p-4 md:p-6 gap-y-4 relative bg-[#F4F3F3] justify-between">
-                    <img src="/color-pages/man in space.png" class="w-fit bg-cover color-page-img" loading="lazy" alt="man in space" />
-                    <div class="flex flex-col gap-y-1 md:gap-y-1.5 items-start">
-                        <p class="capitalize font-sansita font-bold">man in space</p>
-                        <button class="text-[#6A7DF6] font-sansita font-bold border-b border-b-[#6A7DF6] leading-snug download-color-page">Download</button>
-                    </div>
-                </div>
-                <div class="flex flex-col border border-black rounded-2xl p-4 md:p-6 gap-y-4 relative bg-[#F4F3F3] justify-between">
-                    <img src="/color-pages/Mickey mouse.png" class="w-fit bg-cover color-page-img" loading="lazy" alt="Mickey mouse" />
-                    <div class="flex flex-col gap-y-1 md:gap-y-1.5 items-start">
-                        <p class="capitalize font-sansita font-bold">Mickey mouse</p>
-                        <button class="text-[#6A7DF6] font-sansita font-bold border-b border-b-[#6A7DF6] leading-snug download-color-page">Download</button>
-                    </div>
-                </div>
-                <div class="flex flex-col border border-black rounded-2xl p-4 md:p-6 gap-y-4 relative bg-[#F4F3F3] justify-between">
-                    <img src="/color-pages/mickey mouse 2.png" class="w-fit bg-cover color-page-img" loading="lazy" alt="mickey mouse" />
-                    <div class="flex flex-col gap-y-1 md:gap-y-1.5 items-start">
-                        <p class="capitalize font-sansita font-bold">mickey mouse</p>
-                        <button class="text-[#6A7DF6] font-sansita font-bold border-b border-b-[#6A7DF6] leading-snug download-color-page">Download</button>
-                    </div>
-                </div>
-                <div class="flex flex-col border border-black rounded-2xl p-4 md:p-6 gap-y-4 relative bg-[#F4F3F3] justify-between">
-                    <img src="/color-pages/minion.png" class="w-fit bg-cover color-page-img" loading="lazy" alt="minion" />
-                    <div class="flex flex-col gap-y-1 md:gap-y-1.5 items-start">
-                        <p class="capitalize font-sansita font-bold">minion</p>
-                        <button class="text-[#6A7DF6] font-sansita font-bold border-b border-b-[#6A7DF6] leading-snug download-color-page">Download</button>
-                    </div>
-                </div>
-                <div class="flex flex-col border border-black rounded-2xl p-4 md:p-6 gap-y-4 relative bg-[#F4F3F3] justify-between">
-                    <img src="/color-pages/minion2.png" class="w-fit bg-cover color-page-img" loading="lazy" alt="minion" />
-                    <div class="flex flex-col gap-y-1 md:gap-y-1.5 items-start">
-                        <p class="capitalize font-sansita font-bold">minion</p>
-                        <button class="text-[#6A7DF6] font-sansita font-bold border-b border-b-[#6A7DF6] leading-snug download-color-page">Download</button>
-                    </div>
-                </div>
-                <div class="flex flex-col border border-black rounded-2xl p-4 md:p-6 gap-y-4 relative bg-[#F4F3F3] justify-between">
-                    <img src="/color-pages/monkey.png" class="w-fit bg-cover color-page-img" loading="lazy" alt="monkey" />
-                    <div class="flex flex-col gap-y-1 md:gap-y-1.5 items-start">
-                        <p class="capitalize font-sansita font-bold">monkey</p>
-                        <button class="text-[#6A7DF6] font-sansita font-bold border-b border-b-[#6A7DF6] leading-snug download-color-page">Download</button>
-                    </div>
-                </div>
-                <div class="flex flex-col border border-black rounded-2xl p-4 md:p-6 gap-y-4 relative bg-[#F4F3F3] justify-between">
-                    <img src="/color-pages/monster.png" class="w-fit bg-cover color-page-img" loading="lazy" alt="monster" />
-                    <div class="flex flex-col gap-y-1 md:gap-y-1.5 items-start">
-                        <p class="capitalize font-sansita font-bold">monster</p>
-                        <button class="text-[#6A7DF6] font-sansita font-bold border-b border-b-[#6A7DF6] leading-snug download-color-page">Download</button>
-                    </div>
-                </div>
-                <div class="flex flex-col border border-black rounded-2xl p-4 md:p-6 gap-y-4 relative bg-[#F4F3F3] justify-between">
-                    <img src="/color-pages/mushroom.png" class="w-fit bg-cover color-page-img" loading="lazy" alt="mushroom" />
-                    <div class="flex flex-col gap-y-1 md:gap-y-1.5 items-start">
-                        <p class="capitalize font-sansita font-bold">mushroom</p>
-                        <button class="text-[#6A7DF6] font-sansita font-bold border-b border-b-[#6A7DF6] leading-snug download-color-page">Download</button>
-                    </div>
-                </div>
-                <div class="flex flex-col border border-black rounded-2xl p-4 md:p-6 gap-y-4 relative bg-[#F4F3F3] justify-between">
-                    <img src="/color-pages/Ninja.png" class="w-fit bg-cover color-page-img" loading="lazy" alt="Ninja" />
-                    <div class="flex flex-col gap-y-1 md:gap-y-1.5 items-start">
-                        <p class="capitalize font-sansita font-bold">Ninja</p>
-                        <button class="text-[#6A7DF6] font-sansita font-bold border-b border-b-[#6A7DF6] leading-snug download-color-page">Download</button>
-                    </div>
-                </div>
-                <div class="flex flex-col border border-black rounded-2xl p-4 md:p-6 gap-y-4 relative bg-[#F4F3F3] justify-between">
-                    <img src="/color-pages/olaf.png" class="w-fit bg-cover color-page-img" loading="lazy" alt="olaf" />
-                    <div class="flex flex-col gap-y-1 md:gap-y-1.5 items-start">
-                        <p class="capitalize font-sansita font-bold">olaf</p>
-                        <button class="text-[#6A7DF6] font-sansita font-bold border-b border-b-[#6A7DF6] leading-snug download-color-page">Download</button>
-                    </div>
-                </div>
-                <div class="flex flex-col border border-black rounded-2xl p-4 md:p-6 gap-y-4 relative bg-[#F4F3F3] justify-between">
-                    <img src="/color-pages/peppa pig.png" class="w-fit bg-cover color-page-img" loading="lazy" alt="peppa pig" />
-                    <div class="flex flex-col gap-y-1 md:gap-y-1.5 items-start">
-                        <p class="capitalize font-sansita font-bold">peppa pig</p>
-                        <button class="text-[#6A7DF6] font-sansita font-bold border-b border-b-[#6A7DF6] leading-snug download-color-page">Download</button>
-                    </div>
-                </div>
-                <div class="flex flex-col border border-black rounded-2xl p-4 md:p-6 gap-y-4 relative bg-[#F4F3F3] justify-between">
-                    <img src="/color-pages/santa claus.png" class="w-fit bg-cover color-page-img" loading="lazy" alt="santa claus" />
-                    <div class="flex flex-col gap-y-1 md:gap-y-1.5 items-start">
-                        <p class="capitalize font-sansita font-bold">santa claus</p>
-                        <button class="text-[#6A7DF6] font-sansita font-bold border-b border-b-[#6A7DF6] leading-snug download-color-page">Download</button>
-                    </div>
-                </div>
-                <div class="flex flex-col border border-black rounded-2xl p-4 md:p-6 gap-y-4 relative bg-[#F4F3F3] justify-between">
-                    <img src="/color-pages/santa claus with a present.png" class="w-fit bg-cover color-page-img" loading="lazy" alt="santa claus with a present" />
-                    <div class="flex flex-col gap-y-1 md:gap-y-1.5 items-start">
-                        <p class="capitalize font-sansita font-bold">santa claus with a present</p>
-                        <button class="text-[#6A7DF6] font-sansita font-bold border-b border-b-[#6A7DF6] leading-snug download-color-page">Download</button>
-                    </div>
-                </div>
-                <div class="flex flex-col border border-black rounded-2xl p-4 md:p-6 gap-y-4 relative bg-[#F4F3F3] justify-between">
-                    <img src="/color-pages/santa reindeer.png" class="w-fit bg-cover color-page-img" loading="lazy" alt="santa reindeer" />
-                    <div class="flex flex-col gap-y-1 md:gap-y-1.5 items-start">
-                        <p class="capitalize font-sansita font-bold">santa reindeer</p>
-                        <button class="text-[#6A7DF6] font-sansita font-bold border-b border-b-[#6A7DF6] leading-snug download-color-page">Download</button>
-                    </div>
-                </div>
-                <div class="flex flex-col border border-black rounded-2xl p-4 md:p-6 gap-y-4 relative bg-[#F4F3F3] justify-between">
-                    <img src="/color-pages/scooby dooby doo.png" class="w-fit bg-cover color-page-img" loading="lazy" alt="scooby dooby doo" />
-                    <div class="flex flex-col gap-y-1 md:gap-y-1.5 items-start">
-                        <p class="capitalize font-sansita font-bold">scooby dooby doo</p>
-                        <button class="text-[#6A7DF6] font-sansita font-bold border-b border-b-[#6A7DF6] leading-snug download-color-page">Download</button>
-                    </div>
-                </div>
-                <div class="flex flex-col border border-black rounded-2xl p-4 md:p-6 gap-y-4 relative bg-[#F4F3F3] justify-between">
-                    <img src="/color-pages/scooby dooby doo2.png" class="w-fit bg-cover color-page-img" loading="lazy" alt="scooby dooby doo" />
-                    <div class="flex flex-col gap-y-1 md:gap-y-1.5 items-start">
-                        <p class="capitalize font-sansita font-bold">scooby dooby doo</p>
-                        <button class="text-[#6A7DF6] font-sansita font-bold border-b border-b-[#6A7DF6] leading-snug download-color-page">Download</button>
-                    </div>
-                </div>
-                <div class="flex flex-col border border-black rounded-2xl p-4 md:p-6 gap-y-4 relative bg-[#F4F3F3] justify-between">
-                    <img src="/color-pages/super sonic.png" class="w-fit bg-cover color-page-img" loading="lazy" alt="super sonic" />
-                    <div class="flex flex-col gap-y-1 md:gap-y-1.5 items-start">
-                        <p class="capitalize font-sansita font-bold">super sonic</p>
-                        <button class="text-[#6A7DF6] font-sansita font-bold border-b border-b-[#6A7DF6] leading-snug download-color-page">Download</button>
-                    </div>
-                </div>
-                <div class="flex flex-col border border-black rounded-2xl p-4 md:p-6 gap-y-4 relative bg-[#F4F3F3] justify-between">
-                    <img src="/color-pages/thor.png" class="w-fit bg-cover color-page-img" loading="lazy" alt="thor" />
-                    <div class="flex flex-col gap-y-1 md:gap-y-1.5 items-start">
-                        <p class="capitalize font-sansita font-bold">thor</p>
-                        <button class="text-[#6A7DF6] font-sansita font-bold border-b border-b-[#6A7DF6] leading-snug download-color-page">Download</button>
-                    </div>
-                </div>
-                <div class="flex flex-col border border-black rounded-2xl p-4 md:p-6 gap-y-4 relative bg-[#F4F3F3] justify-between">
-                    <img src="/color-pages/turtle.png" class="w-fit bg-cover color-page-img" loading="lazy" alt="turtle" />
-                    <div class="flex flex-col gap-y-1 md:gap-y-1.5 items-start">
-                        <p class="capitalize font-sansita font-bold">turtle</p>
-                        <button class="text-[#6A7DF6] font-sansita font-bold border-b border-b-[#6A7DF6] leading-snug download-color-page">Download</button>
-                    </div>
-                </div>
-                <div class="flex flex-col border border-black rounded-2xl p-4 md:p-6 gap-y-4 relative bg-[#F4F3F3] justify-between">
-                    <img src="/color-pages/Twelve Excited Stars Watching A Star Circus.png" class="w-fit bg-cover color-page-img" loading="lazy" alt="Twelve Excited Stars Watching A Star Circus" />
-                    <div class="flex flex-col gap-y-1 md:gap-y-1.5 items-start">
-                        <p class="capitalize font-sansita font-bold">Twelve Excited Stars Watching A Star Circus</p>
-                        <button class="text-[#6A7DF6] font-sansita font-bold border-b border-b-[#6A7DF6] leading-snug download-color-page">Download</button>
-                    </div>
-                </div>
-                <div class="flex flex-col border border-black rounded-2xl p-4 md:p-6 gap-y-4 relative bg-[#F4F3F3] justify-between">
-                    <img src="/color-pages/Twinkling Star At A Pond.png" class="w-fit bg-cover color-page-img" loading="lazy" alt="Twinkling Star At A Pond" />
-                    <div class="flex flex-col gap-y-1 md:gap-y-1.5 items-start">
-                        <p class="capitalize font-sansita font-bold">Twinkling Star At A Pond</p>
-                        <button class="text-[#6A7DF6] font-sansita font-bold border-b border-b-[#6A7DF6] leading-snug download-color-page">Download</button>
-                    </div>
-                </div>
-                <div class="flex flex-col border border-black rounded-2xl p-4 md:p-6 gap-y-4 relative bg-[#F4F3F3] justify-between">
-                    <img src="/color-pages/warrior.png" class="w-fit bg-cover color-page-img" loading="lazy" alt="warrior" />
-                    <div class="flex flex-col gap-y-1 md:gap-y-1.5 items-start">
-                        <p class="capitalize font-sansita font-bold">warrior</p>
-                        <button class="text-[#6A7DF6] font-sansita font-bold border-b border-b-[#6A7DF6] leading-snug download-color-page">Download</button>
-                    </div>
-                </div>
-                <div class="flex flex-col border border-black rounded-2xl p-4 md:p-6 gap-y-4 relative bg-[#F4F3F3] justify-between">
-                    <img src="/color-pages/Winnie-the-Pooh.png" class="w-fit bg-cover color-page-img" loading="lazy" alt="Winnie-the-Pooh" />
-                    <div class="flex flex-col gap-y-1 md:gap-y-1.5 items-start">
-                        <p class="capitalize font-sansita font-bold">Winnie-the-Pooh</p>
-                        <button class="text-[#6A7DF6] font-sansita font-bold border-b border-b-[#6A7DF6] leading-snug download-color-page">Download</button>
-                    </div>
-                </div>
+                <ColoringImage client:load src="/color-pages/aladdin.png" title="aladdin" alt="aladdin" />
+                <ColoringImage client:load src="/color-pages/anime.png" title="anime" alt="anime" />
+                <ColoringImage client:load src="/color-pages/anime2.png" title="anime" alt="anime" />
+                <ColoringImage client:load src="/color-pages/Baby.png" title="Baby" alt="Baby" />
+                <ColoringImage client:load src="/color-pages/Baby yoda.png" title="Baby yoda" alt="Baby yoda" />
+                <ColoringImage client:load src="/color-pages/Barbie.png" title="Barbie" alt="Barbie" />
+                <ColoringImage client:load src="/color-pages/batman.png" title="batman" alt="batman" />
+                <ColoringImage client:load src="/color-pages/bear.png" title="bear" alt="bear" />
+                <ColoringImage client:load src="/color-pages/butterfly.png" title="butterfly" alt="butterfly" />
+                <ColoringImage client:load src="/color-pages/captain america.png" title="captain america" alt="captain america" />
+                <ColoringImage client:load src="/color-pages/castle.png" title="castle" alt="castle" />
+                <ColoringImage client:load src="/color-pages/Cat.png" title="Cat" alt="Cat" />
+                <ColoringImage client:load src="/color-pages/Charmander.png" title="Charmander" alt="Charmander" />
+                <ColoringImage client:load src="/color-pages/chicken.png" title="chicken" alt="chicken" />
+                <ColoringImage client:load src="/color-pages/christmas tree outside covered in snow.png" title="christmas tree outside covered in snow" alt="christmas tree outside covered in snow" />
+                <ColoringImage client:load src="/color-pages/cozzy fire place.png" title="cozzy fire place" alt="cozzy fire place" />
+                <ColoringImage client:load src="/color-pages/dinosaurs.png" title="dinosaurs" alt="dinosaurs" />
+                <ColoringImage client:load src="/color-pages/Dog.png" title="Dog" alt="Dog" />
+                <ColoringImage client:load src="/color-pages/Dolphin Surfing the waves.png" title="Dolphin Surfing the waves" alt="Dolphin Surfing the waves" />
+                <ColoringImage client:load src="/color-pages/elephant.png" title="elephant" alt="elephant" />
+                <ColoringImage client:load src="/color-pages/Elsa.png" title="Elsa" alt="Elsa" />
+                <ColoringImage client:load src="/color-pages/Elsa and anna.png" title="Elsa and anna" alt="Elsa and anna" />
+                <ColoringImage client:load src="/color-pages/Elsa At Arendelle Castle.png" title="Elsa At Arendelle Castle" alt="Elsa At Arendelle Castle" />
+                <ColoringImage client:load src="/color-pages/Elsa in enchanted forest.png" title="Elsa in enchanted forest" alt="Elsa in enchanted forest" />
+                <ColoringImage client:load src="/color-pages/falmingo.png" title="falmingo" alt="falmingo" />
+                <ColoringImage client:load src="/color-pages/falmingo standing in the water.png" title="falmingo standing in the water" alt="falmingo standing in the water" />
+                <ColoringImage client:load src="/color-pages/godzilla.png" title="godzilla" alt="godzilla" />
+                <ColoringImage client:load src="/color-pages/Hello kitty.png" title="Hello kitty" alt="Hello kitty" />
+                <ColoringImage client:load src="/color-pages/icecream.png" title="icecream" alt="icecream" />
+                <ColoringImage client:load src="/color-pages/iron man.png" title="iron man" alt="iron man" />
+                <ColoringImage client:load src="/color-pages/iron man2.png" title="iron man" alt="iron man" />
+                <ColoringImage client:load src="/color-pages/man in space.png" title="man in space" alt="man in space" />
+                <ColoringImage client:load src="/color-pages/Mickey mouse.png" title="Mickey mouse" alt="Mickey mouse" />
+                <ColoringImage client:load src="/color-pages/mickey mouse 2.png" title="mickey mouse" alt="mickey mouse" />
+                <ColoringImage client:load src="/color-pages/minion.png" title="minion" alt="minion" />
+                <ColoringImage client:load src="/color-pages/minion2.png" title="minion" alt="minion" />
+                <ColoringImage client:load src="/color-pages/monkey.png" title="monkey" alt="monkey" />
+                <ColoringImage client:load src="/color-pages/monster.png" title="monster" alt="monster" />
+                <ColoringImage client:load src="/color-pages/mushroom.png" title="mushroom" alt="mushroom" />
+                <ColoringImage client:load src="/color-pages/Ninja.png" title="Ninja" alt="Ninja" />
+                <ColoringImage client:load src="/color-pages/olaf.png" title="olaf" alt="olaf" />
+                <ColoringImage client:load src="/color-pages/peppa pig.png" title="peppa pig" alt="peppa pig" />
+                <ColoringImage client:load src="/color-pages/santa claus.png" title="santa claus" alt="santa claus" />
+                <ColoringImage client:load src="/color-pages/santa claus with a present.png" title="santa claus with a present" alt="santa claus with a present" />
+                <ColoringImage client:load src="/color-pages/santa reindeer.png" title="santa reindeer" alt="santa reindeer" />
+                <ColoringImage client:load src="/color-pages/scooby dooby doo.png" title="scooby dooby doo" alt="scooby dooby doo" />
+                <ColoringImage client:load src="/color-pages/scooby dooby doo2.png" title="scooby dooby doo" alt="scooby dooby doo" />
+                <ColoringImage client:load src="/color-pages/super sonic.png" title="super sonic" alt="super sonic" />
+                <ColoringImage client:load src="/color-pages/thor.png" title="thor" alt="thor" />
+                <ColoringImage client:load src="/color-pages/turtle.png" title="turtle" alt="turtle" />
+                <ColoringImage client:load src="/color-pages/Twelve Excited Stars Watching A Star Circus.png" title="Twelve Excited Stars Watching A Star Circus" alt="Twelve Excited Stars Watching A Star Circus" />
+                <ColoringImage client:load src="/color-pages/Twinkling Star At A Pond.png" title="Twinkling Star At A Pond" alt="Twinkling Star At A Pond" />
+                <ColoringImage client:load src="/color-pages/warrior.png" title="warrior" alt="warrior" />
+                <ColoringImage client:load src="/color-pages/Winnie-the-Pooh.png" title="Winnie-the-Pooh" alt="Winnie-the-Pooh" />
+                <ColoringImage client:load src="/color-pages/dino holding a sword.png" title="dino holding a sword" alt="dino holding a sword" />
+                <ColoringImage client:load src="/color-pages/Buzz Lightyear Flying Over A Street.png" title="Buzz Lightyear Flying Over A Street" alt="Buzz Lightyear Flying Over A Street" />
             </div>
         </div>
     </div>
 </GuestLayout>
-
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-        const downloadButtons = document.querySelectorAll('.download-color-page');
-        downloadButtons.forEach(function(button) {
-            button.addEventListener('click', function() {
-                const container = this.closest('.flex.flex-col.border');
-                const imgSrc = container.querySelector('.color-page-img').src;
-
-                const a = document.createElement('a');
-                a.href = imgSrc;
-                a.download = imgSrc.split('/').pop();
-                document.body.appendChild(a);
-                a.click();
-                document.body.removeChild(a);
-            });
-        });
-    });
-</script>
