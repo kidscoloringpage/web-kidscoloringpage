@@ -57,7 +57,7 @@ export function LoginDialog() {
                             <p className="font-sansita font-bold text-2xl">Don't have an account?</p>
                             <p className="font-light text-[#545454] text-lg">It won't take 30 seconds!</p>
                         </div>
-                        <img src="/icon-magic-wand.png" alt="icon-magic-wand" className="w-[52px] h-fit"/>
+                        <img src="/icon-magic-wand.png" alt="icon-magic-wand" className="w-[52px] h-auto"/>
                     </div>
                     <div className="px-8">
                         <button className="group button-3 flex flex-row items-center gap-x-2 w-full">
