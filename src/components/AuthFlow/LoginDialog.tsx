@@ -44,12 +44,12 @@ export function LoginDialog() {
                                    placeholder='Email address'
                                    value={email}
                                    onInput={(e) => setEmail(String((e.target as any).value))}
-                                   className="text-[#999999] outline-none py-4 px-8 border border-[#999999] rounded-full mb-3.5"/>
+                                   className="text-[#999999] placeholder-[#999999] outline-none py-4 px-8 border border-[#999999] rounded-full mb-3.5 focus:border-[#000000] focus:text-black focus:placeholder-black"/>
                             <input type="password"
                                    placeholder='Password'
                                    value={password}
                                    onInput={(e) => setPassword(String((e.target as any).value))}
-                                   className="text-[#999999] outline-none py-4 px-8 border border-[#999999] rounded-full mb-5"/>
+                                   className="text-[#999999] placeholder-[#999999] outline-none py-4 px-8 border border-[#999999] rounded-full mb-5 focus:border-[#000000] focus:text-black focus:placeholder-black"/>
 
                             <button className="group button flex flex-row items-center gap-x-2">
                                 <span className="flex-1 text-center group-hover:text-[#F36A3B] text-xl">Login</span>

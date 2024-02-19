@@ -27,7 +27,7 @@ export function RecoverPasswordDialog() {
                     <div className='flex flex-col items-start pt-8'>
                         <div className="w-full flex flex-col mb-5">
                             <input type="email" placeholder='Email address'
-                                   className="text-[#999999] outline-none py-4 px-8 border border-[#999999] rounded-full mb-3.5"/>
+                                   className="text-[#999999] placeholder-[#999999] outline-none py-4 px-8 border border-[#999999] rounded-full mb-3.5 focus:border-[#000000] focus:text-black focus:placeholder-black"/>
 
                             <button className="group button flex flex-row items-center gap-x-2">
                                 <span className="flex-1 text-center group-hover:text-[#F36A3B] text-xl">Continue</span>

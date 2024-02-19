@@ -28,9 +28,9 @@ export function RegisterDialog() {
                     <div className='flex flex-col items-start mt-8'>
                         <div className="w-full flex flex-col mb-5">
                             <input type="email" placeholder='Email address'
-                                   className="text-[#999999] outline-none py-4 px-8 border border-[#999999] rounded-full mb-3.5"/>
+                                   className="text-[#999999] placeholder-[#999999] outline-none py-4 px-8 border border-[#999999] rounded-full mb-3.5 focus:border-[#000000] focus:text-black focus:placeholder-black"/>
                             <input type="password" placeholder='Password'
-                                   className="text-[#999999] outline-none py-4 px-8 border border-[#999999] rounded-full mb-5"/>
+                                   className="text-[#999999] placeholder-[#999999] outline-none py-4 px-8 border border-[#999999] rounded-full mb-3.5 focus:border-[#000000] focus:text-black focus:placeholder-black"/>
 
                             <button
                                 onClick={() => {

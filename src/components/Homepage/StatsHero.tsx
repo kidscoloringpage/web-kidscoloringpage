@@ -2,7 +2,7 @@ import {hasLoginDialog} from "../../stores/page.ts";
 
 export function StatsHero() {
     return (
-        <div className="bg-[#F36A3B]">
+        <div className="bg-gradient-to-l from-0% from-[#000D60] via-[#612F84] to-[#944196]">
             <div
                 className="container flex flex-col md:flex-row justify-between gap-y-6 md:gap-y-0 md:gap-x-28 py-10 items-center px-4 md:px-0 px-responsive">
                 <div
@@ -23,8 +23,10 @@ export function StatsHero() {
                         <p className="text-xl text-[#EBEBEB] font-light">Parents using for their kids</p>
                     </div>
                 </div>
-                <button onClick={() => hasLoginDialog.set(true)} className="button-2 hidden-responsive">Start using for
-                    free
+                <button onClick={() => hasLoginDialog.set(true)}
+                        className="button-2 flex flex-row items-center gap-x-4">
+                    <span className="flex-1 text-center">Start using for free</span>
+                    <img src="/icon-angle-right.png" alt="icon-angle-right" className="w-[10px] h-auto mt-[4px]"/>
                 </button>
             </div>
         </div>
