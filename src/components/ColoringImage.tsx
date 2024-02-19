@@ -2,7 +2,7 @@ export interface ColoringImageProps {
     src: string;
     alt: string;
     title: string;
-    downloaded: string;
+    downloaded?: string;
 }
 
 export function ColoringImage(props: ColoringImageProps) {
