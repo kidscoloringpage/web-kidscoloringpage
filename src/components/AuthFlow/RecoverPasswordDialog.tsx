@@ -5,24 +5,13 @@ import {
     DialogTitle,
 } from '../Global/Dialog';
 import { useStore } from '@nanostores/react';
-import {hasLoginDialog, hasRecoverPasswordDialog, hasRegisterDialog} from '../../stores/page';
-import { useEffect } from 'react';
-import { AUTH_REDIRECT_KEY } from '../../lib/auth-redirect';
+import {hasRecoverPasswordDialog, hasRegisterDialog} from '../../stores/page';
 
-export function LoginDialog() {
-    const $hasLoginDialog = useStore(hasLoginDialog);
-
-    // Set the page location to the current page
-    // in the localstorage so that we can redirect
-    // the user back to the page after login.
-    useEffect(() => {
-        if ($hasLoginDialog) {
-            localStorage.setItem(AUTH_REDIRECT_KEY, window.location.pathname);
-        }
-    }, [$hasLoginDialog]);
+export function RecoverPasswordDialog() {
+    const $hasRecoverPasswordDialog = useStore(hasRecoverPasswordDialog);
 
     return (
-        <Dialog open={$hasLoginDialog} onOpenChange={hasLoginDialog.set}>
+        <Dialog open={$hasRecoverPasswordDialog} onOpenChange={hasRecoverPasswordDialog.set}>
             <DialogContent
                 allowClose={false}
                 className="sm:max-w-[490px] overflow-hidden"
@@ -30,7 +19,7 @@ export function LoginDialog() {
             >
                 <div className="p-8">
                     <DialogHeader className="text-center flex flex-row justify-between">
-                        <DialogTitle className="font-sansita font-bold text-4xl">Login</DialogTitle>
+                        <DialogTitle className="font-sansita font-bold text-4xl">Recover Password</DialogTitle>
                         <DialogClose>
                             <img src="/icon-close-black.png" alt="icon-close" className="w-[24px] h-[24px]"/>
                         </DialogClose>
@@ -39,22 +28,13 @@ export function LoginDialog() {
                         <div className="w-full flex flex-col mb-5">
                             <input type="email" placeholder='Email address'
                                    className="text-[#999999] outline-none py-4 px-8 border border-[#999999] rounded-full mb-3.5"/>
-                            <input type="password" placeholder='Password'
-                                   className="text-[#999999] outline-none py-4 px-8 border border-[#999999] rounded-full mb-5"/>
 
                             <button className="group button flex flex-row items-center gap-x-2">
-                                <span className="flex-1 text-center group-hover:text-[#F36A3B] text-xl">Login</span>
+                                <span className="flex-1 text-center group-hover:text-[#F36A3B] text-xl">Continue</span>
                                 <img src="/icon-angle-right.png" alt="icon-angle-right"
                                      className="w-[10px] h-auto mt-[4px]"/>
                             </button>
                         </div>
-                        <button
-                            onClick={() => {
-                                hasLoginDialog.set(false);
-                                hasRegisterDialog.set(false);
-                                hasRecoverPasswordDialog.set(true);
-                            }}
-                            className="text-[#545454] font-light underline text-sm">Recover password</button>
                     </div>
                 </div>
                 <DialogFooter className="py-8 bg-[#FFF2DF] rounded-t-3xl flex-col">
@@ -69,7 +49,7 @@ export function LoginDialog() {
                         <button
                             onClick={() => {
                                 hasRegisterDialog.set(true);
-                                hasLoginDialog.set(false);
+                                hasRecoverPasswordDialog.set(false);
                             }}
                             className="group button-3 flex flex-row items-center gap-x-2 w-full">
                             <span

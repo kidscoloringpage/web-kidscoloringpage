@@ -5,6 +5,7 @@ import Authenticator from '../components/AuthFlow/Authenticator.astro';
 import Header from "../components/Global/Header.astro";
 import { LoginDialog } from '../components/AuthFlow/LoginDialog';
 import { RegisterDialog } from '../components/AuthFlow/RegisterDialog';
+import { RecoverPasswordDialog } from '../components/AuthFlow/RecoverPasswordDialog';
 
 export interface Props {
 	title?: string;
@@ -60,5 +61,6 @@ const canonicalUrl = givenCanonical || currentPageAbsoluteUrl;
 		<Authenticator />
 		<LoginDialog client:idle />
 		<RegisterDialog client:idle />
+		<RecoverPasswordDialog client:idle />
 	</body>
 </html>

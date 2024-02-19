@@ -6,20 +6,9 @@ import {
 } from '../Global/Dialog';
 import { useStore } from '@nanostores/react';
 import {hasLoginDialog, hasRegisterDialog} from '../../stores/page';
-import { useEffect } from 'react';
-import { AUTH_REDIRECT_KEY } from '../../lib/auth-redirect';
 
 export function RegisterDialog() {
     const $hasRegisterDialog = useStore(hasRegisterDialog);
-
-    // Set the page location to the current page
-    // in the localstorage so that we can redirect
-    // the user back to the page after login.
-    useEffect(() => {
-        if ($hasRegisterDialog) {
-            localStorage.setItem(AUTH_REDIRECT_KEY, window.location.pathname);
-        }
-    }, [$hasRegisterDialog]);
 
     return (
         <Dialog open={$hasRegisterDialog} onOpenChange={hasRegisterDialog.set}>
