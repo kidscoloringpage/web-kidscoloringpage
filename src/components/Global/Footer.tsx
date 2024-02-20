@@ -42,7 +42,6 @@ export const Footer = () => {
                             <div className="text-[#C2C2C2] flex flex-col gap-y-1.5">
                                 <a href="#" className="hover:underline">Blog</a>
                                 <a href="/color-pages" className="hover:underline">Free Coloring Pages</a>
-                                <a href="#" className="hover:underline">About</a>
                                 <a href="#" onClick={(e) => {
                                     e.preventDefault();
                                     hasLoginDialog.set(false);
@@ -53,7 +52,6 @@ export const Footer = () => {
                                     hasRegisterDialog.set(false);
                                     hasLoginDialog.set(true);
                                 }} className="hover:underline">Log in</a>
-                                <a href="#" className="hover:underline">Support</a>
                                 <a href="/#wall-of-love" className="hover:underline">Wall of Love</a>
                                 <a href="/#pricing" className="hover:underline">Pricing</a>
                             </div>
@@ -63,7 +61,6 @@ export const Footer = () => {
                             <div className="text-[#C2C2C2] flex flex-col gap-y-1.5">
                                 <a href="#" className="hover:underline">About us</a>
                                 <a href="#" className="hover:underline">Contact us</a>
-                                <a href="#" className="hover:underline">Twitter</a>
                             </div>
                         </div>
                         <div>
