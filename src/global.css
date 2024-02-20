@@ -29,6 +29,9 @@
     .px-responsive {
         @apply px-4;
     }
+    .flex-col-responsive {
+        @apply flex-col;
+    }
     .hidden-responsive {
         @apply hidden;
     }
