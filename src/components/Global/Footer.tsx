@@ -1,5 +1,3 @@
-import {hasLoginDialog, hasRegisterDialog} from "../../stores/page";
-
 export const Footer = () => {
     return (
         <div
