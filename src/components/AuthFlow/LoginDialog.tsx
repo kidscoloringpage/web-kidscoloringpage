@@ -6,8 +6,10 @@ import {
 } from '../Global/Dialog';
 import { useStore } from '@nanostores/react';
 import {hasLoginDialog, hasRecoverPasswordDialog, hasRegisterDialog} from '../../stores/page';
-import {useEffect, useState} from 'react';
-import { AUTH_REDIRECT_KEY } from '../../lib/auth-redirect';
+import {type FormEvent, useState} from 'react';
+import {redirectAuthSuccess} from '../../lib/auth-redirect';
+import {createTokenCookie} from "../../lib/jwt.ts";
+import {httpPost} from "../../lib/http.ts";
 
 export function LoginDialog() {
     const $hasLoginDialog = useStore(hasLoginDialog);
@@ -15,14 +17,29 @@ export function LoginDialog() {
     const [email, setEmail] = useState<string>('');
     const [password, setPassword] = useState<string>('');
 
-    // Set the page location to the current page
-    // in the localstorage so that we can redirect
-    // the user back to the page after login.
-    useEffect(() => {
-        if ($hasLoginDialog) {
-            localStorage.setItem(AUTH_REDIRECT_KEY, window.location.pathname);
+    const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
+
+        const { response, error } = await httpPost<{ token: string }>(
+            `${import.meta.env.PUBLIC_API_URL}/v1-login`,
+            {
+                email,
+                password,
+            },
+        );
+
+        if (response?.token) {
+            createTokenCookie(response.token);
+            redirectAuthSuccess();
+
+            return;
         }
-    }, [$hasLoginDialog]);
+
+        if ((error as any).type === 'user_not_verified') {
+            // @todo show verify component
+            return;
+        }
+    };
 
     return (
         <Dialog open={$hasLoginDialog} onOpenChange={hasLoginDialog.set}>
@@ -39,24 +56,24 @@ export function LoginDialog() {
                         </DialogClose>
                     </DialogHeader>
                     <div className='flex flex-col items-start pt-8'>
-                        <div className="w-full flex flex-col mb-5">
+                        <form className="w-full flex flex-col mb-5" onSubmit={handleSubmit}>
                             <input type="email"
                                    placeholder='Email address'
                                    value={email}
                                    onInput={(e) => setEmail(String((e.target as any).value))}
-                                   className="text-[#999999] placeholder-[#999999] outline-none py-4 px-8 border border-[#999999] rounded-full mb-3.5 focus:border-[#000000] focus:text-black focus:placeholder-black"/>
+                                   className="text-black placeholder-[#999999] outline-none py-4 px-8 border border-[#999999] rounded-full mb-3.5 focus:border-[#000000] focus:text-black focus:placeholder-black"/>
                             <input type="password"
                                    placeholder='Password'
                                    value={password}
                                    onInput={(e) => setPassword(String((e.target as any).value))}
-                                   className="text-[#999999] placeholder-[#999999] outline-none py-4 px-8 border border-[#999999] rounded-full mb-5 focus:border-[#000000] focus:text-black focus:placeholder-black"/>
+                                   className="text-black placeholder-[#999999] outline-none py-4 px-8 border border-[#999999] rounded-full mb-5 focus:border-[#000000] focus:text-black focus:placeholder-black"/>
 
                             <button className="group button flex flex-row items-center gap-x-2">
                                 <span className="flex-1 text-center group-hover:text-[#F36A3B] text-xl">Login</span>
                                 <img src="/icon-angle-right.png" alt="icon-angle-right"
                                      className="w-[10px] h-auto mt-[4px]"/>
                             </button>
-                        </div>
+                        </form>
                         <button
                             onClick={() => {
                                 hasLoginDialog.set(false);

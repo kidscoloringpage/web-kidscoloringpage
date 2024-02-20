@@ -1,0 +1,26 @@
+---
+import {MobileNavButton} from '../MobileNavButton'
+import {LoginButton} from './LoginButton'
+import {LogoutButton} from "./LogoutButton";
+
+const { currentUser } = Astro.locals;
+---
+
+<div
+        class="container flex flex-col md:flex-row items-center pt-10 justify-between !pb-10 z-20 relative px-responsive px-4 md:px-0">
+    <div class="flex flex-row justify-between w-full flex-1">
+        <a href="/" class="font-wonderbar text-3xl">kids coloring page</a>
+        <MobileNavButton client:load />
+    </div>
+    <div class="hidden md:block w-full md:w-auto mt-3 md:mt-0" id="menu">
+        <div
+                class="flex flex-col md:flex-row items-center gap-x-8 gap-y-4 md:gap-y-0 flex-1 text-white md:text-black bg-black md:bg-transparent py-5 md:py-0 rounded-xl">
+            { currentUser && <a href="/dashboard" class="hover:text-[#F36A3C]">Dashboard</a> }
+            <a href="/color-pages" class="hover:text-[#F36A3C]">Free coloring pages</a>
+            <a href="/#wall-of-love" class="hover:text-[#F36A3C]">Wall of love</a>
+            <a href="/#pricing" class="hover:text-[#F36A3C]">Pricing</a>
+            { !currentUser && <LoginButton client:load/> }
+            { currentUser && <LogoutButton client:load/> }
+        </div>
+    </div>
+</div>

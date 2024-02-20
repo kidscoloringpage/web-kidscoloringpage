@@ -1,0 +1,16 @@
+---
+import AuthLayout from "../layouts/AuthLayout.astro";
+
+const {currentUser} = Astro.locals;
+if (!currentUser) {
+    return Astro.redirect('/');
+}
+---
+
+<AuthLayout>
+    <div class="bg-[#FFF2DF]">
+        <div class="container py-8 md:py-12 px-4 md:px-0 px-responsive">
+            <p class="font-bold font-sansita text-4xl mb-5">I am on dashboard</p>
+        </div>
+    </div>
+</AuthLayout>

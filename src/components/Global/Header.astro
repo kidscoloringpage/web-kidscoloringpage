@@ -1,9 +1,9 @@
 ---
-import { Menu } from "./Menu";
+import Menu from "./Menu.astro";
 ---
 <div class="bg-[#FFF2DF] relative">
     <img src="/pattern-1.png" alt="pattern-1" class="max-w-[10%] h-auto absolute top-0 left-0 hidden md:block hidden-responsive" />
     <img src="/pattern-2.png" alt="pattern-1" class="max-w-[8%] h-auto absolute top-0 right-0 hidden md:block hidden-responsive" />
-    <Menu client:load />
+    <Menu />
     <slot name="after-menu" />
 </div>

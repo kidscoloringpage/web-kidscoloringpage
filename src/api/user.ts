@@ -1,5 +1,5 @@
-import {type APIContext} from 'astro';
-import {api} from './api.ts';
+import { type APIContext } from 'astro';
+import { api } from './api.ts';
 
 export interface UserDocument {
     _id?: string;
@@ -34,48 +34,15 @@ export interface UserDocument {
 export function userApi(context: APIContext) {
     return {
         getMyDetail: async function () {
-            const {response, error} = await api(context).get<UserDocument>(
+            const { response, error } = await api(context).get<UserDocument>(
                 `${import.meta.env.PUBLIC_API_URL}/v1-me`,
             );
 
             if (error) {
-                return {error};
+                return { error };
             }
 
-            return {user: response};
+            return { user: response };
         },
-
-        login: async function (email: string, password: string) {
-            const {response, error} = await api().post<{ token: string }>(
-                `${import.meta.env.PUBLIC_API_URL}/v1-login`,
-                {
-                    email,
-                    password
-                },
-            );
-
-            if (error) {
-                return {error};
-            }
-
-            return response;
-        },
-
-        register: async function (email: string, password: string) {
-            const {response, error} = await api().post<{ status: 'ok' }>(
-                `${import.meta.env.PUBLIC_API_URL}/v1-register`,
-                {
-                    email,
-                    password,
-                },
-            );
-
-            if (error || response?.status !== 'ok') {
-                return {error};
-            }
-
-            return response;
-        }
     };
 }
-

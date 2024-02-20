@@ -40,20 +40,10 @@ export const Footer = () => {
                         <div>
                             <p className="text-white font-semibold text-lg mb-4">Kids Coloring</p>
                             <div className="text-[#C2C2C2] flex flex-col gap-y-1.5">
-                                <a href="#" className="hover:underline">Blog</a>
                                 <a href="/color-pages" className="hover:underline">Free Coloring Pages</a>
-                                <a href="#" onClick={(e) => {
-                                    e.preventDefault();
-                                    hasLoginDialog.set(false);
-                                    hasRegisterDialog.set(true);
-                                }} className="hover:underline">Sign up</a>
-                                <a href="#" onClick={(e) => {
-                                    e.preventDefault();
-                                    hasRegisterDialog.set(false);
-                                    hasLoginDialog.set(true);
-                                }} className="hover:underline">Log in</a>
                                 <a href="/#wall-of-love" className="hover:underline">Wall of Love</a>
                                 <a href="/#pricing" className="hover:underline">Pricing</a>
+                                <a href="#" className="hover:underline">Blog</a>
                             </div>
                         </div>
                         <div>

@@ -21,8 +21,8 @@ type ApiReturn<ResponseType, ErrorType> = {
   error?: ErrorType | FetchError;
 };
 
-export function api(context?: APIContext) {
-  const token = context?.cookies?.get(TOKEN_COOKIE_NAME)?.value;
+export function api(context: APIContext) {
+  const token = context.cookies.get(TOKEN_COOKIE_NAME)?.value;
 
   async function apiCall<ResponseType = AppResponse, ErrorType = AppError>(
     url: string,
@@ -35,6 +35,7 @@ export function api(context?: APIContext) {
         headers: new Headers({
           'Content-Type': 'application/json',
           Accept: 'application/json',
+          'x-app-identifier': 'manyapis.com',
           ...(token ? { Authorization: `Bearer ${token}` } : {}),
           ...(options?.headers ?? {}),
         }),

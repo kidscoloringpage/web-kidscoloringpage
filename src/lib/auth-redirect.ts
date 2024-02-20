@@ -9,13 +9,12 @@ export function redirectAuthSuccess() {
   }
 
   window.location.href =
-    window.localStorage.getItem(AUTH_REDIRECT_KEY) || '/account';
+    window.localStorage.getItem(AUTH_REDIRECT_KEY) || '/dashboard';
 }
 
 function redirectGuestUser() {
-  // prettier-ignore
   const authenticatedRoutes = [
-    '/account',
+    '/dashboard',
   ];
 
   // If the user is on an authenticated route, redirect them to the home page
