@@ -1,4 +1,5 @@
 ---
+import { Toaster } from 'sonner';
 import '../global.css';
 import {Footer} from "../components/Global/Footer";
 import Authenticator from '../components/AuthFlow/Authenticator.astro';
@@ -51,6 +52,8 @@ const canonicalUrl = givenCanonical || currentPageAbsoluteUrl;
 			</Fragment>
 		</Header>
 
+		<Toaster richColors={true} client:load />
+
 		<slot />
 
 		<slot name='footer'>
@@ -59,8 +62,8 @@ const canonicalUrl = givenCanonical || currentPageAbsoluteUrl;
 		<slot name='after-footer' />
 
 		<Authenticator />
-		<LoginDialog client:idle />
-		<RegisterDialog client:idle />
-		<RecoverPasswordDialog client:idle />
+		<LoginDialog client:load />
+		<RegisterDialog client:load />
+		<RecoverPasswordDialog client:load />
 	</body>
 </html>

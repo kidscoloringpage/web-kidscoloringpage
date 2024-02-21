@@ -6,43 +6,67 @@ import {
 } from '../Global/Dialog';
 import { useStore } from '@nanostores/react';
 import {hasLoginDialog, hasRecoverPasswordDialog, hasRegisterDialog} from '../../stores/page';
-import {type FormEvent, useState} from 'react';
+import {useCallback} from 'react';
 import {redirectAuthSuccess} from '../../lib/auth-redirect';
 import {createTokenCookie} from "../../lib/jwt.ts";
 import {httpPost} from "../../lib/http.ts";
+import { toast } from 'sonner';
+import { useForm } from 'react-hook-form';
+import {useYupSchema, Yup, yupFormResolver, type YupResolverType} from "../../lib/yup.ts";
 
 export function LoginDialog() {
     const $hasLoginDialog = useStore(hasLoginDialog);
 
-    const [email, setEmail] = useState<string>('');
-    const [password, setPassword] = useState<string>('');
+    const { schema } = useYupSchema({
+        email: Yup.string().email().required().label('Email address'),
+        password: Yup.string().required().label('Password'),
+    });
 
-    const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
-        e.preventDefault();
+    const {
+        register,
+        reset,
+        handleSubmit,
+        formState: { errors, isDirty, isValid },
+    } = useForm({
+        resolver: yupFormResolver(schema) as YupResolverType<{
+            email: string,
+            password: string,
+        }>,
+    });
 
-        const { response, error } = await httpPost<{ token: string }>(
-            `${import.meta.env.PUBLIC_API_URL}/v1-login`,
-            {
-                email,
-                password,
-            },
-        );
+    const onSubmit = useCallback(
+        handleSubmit(async ({email, password}) => {
 
-        if (response?.token) {
-            createTokenCookie(response.token);
-            redirectAuthSuccess();
+                const { response, error } = await httpPost<{ token: string }>(
+                    `${import.meta.env.PUBLIC_API_URL}/v1-login`,
+                    {
+                        email,
+                        password,
+                    },
+                );
 
-            return;
-        }
+                if (response?.token) {
+                    createTokenCookie(response.token);
+                    redirectAuthSuccess();
 
-        if ((error as any).type === 'user_not_verified') {
-            // @todo show verify component
-            return;
-        }
-    };
+                    return;
+                }
+
+                if ((error as any).type === 'user_not_verified') {
+                    // @todo show verify component
+                    return;
+                }
+
+                toast.error(error?.message || 'Something went wrong. Please try again later.');
+        }),
+        []
+    );
 
     return (
-        <Dialog open={$hasLoginDialog} onOpenChange={hasLoginDialog.set}>
+        <Dialog open={$hasLoginDialog} onOpenChange={(state) => {
+            if (!state) reset();
+            hasLoginDialog.set(state);
+        }}>
             <DialogContent
                 allowClose={false}
                 className="sm:max-w-[490px] overflow-hidden"
@@ -56,19 +80,32 @@ export function LoginDialog() {
                         </DialogClose>
                     </DialogHeader>
                     <div className='flex flex-col items-start pt-8'>
-                        <form className="w-full flex flex-col mb-5" onSubmit={handleSubmit}>
-                            <input type="email"
-                                   placeholder='Email address'
-                                   value={email}
-                                   onInput={(e) => setEmail(String((e.target as any).value))}
-                                   className="text-black placeholder-[#999999] outline-none py-4 px-8 border border-[#999999] rounded-full mb-3.5 focus:border-[#000000] focus:text-black focus:placeholder-black"/>
-                            <input type="password"
-                                   placeholder='Password'
-                                   value={password}
-                                   onInput={(e) => setPassword(String((e.target as any).value))}
-                                   className="text-black placeholder-[#999999] outline-none py-4 px-8 border border-[#999999] rounded-full mb-5 focus:border-[#000000] focus:text-black focus:placeholder-black"/>
+                        <form className="w-full flex flex-col mb-5" onSubmit={onSubmit}>
+                            <div className="mb-3.5 flex flex-col gap-y-1">
+                                <input type="email"
+                                       placeholder='Email address'
+                                       {...register('email')}
+                                       className={`text-black placeholder-[#999999] outline-none py-4 px-8 border ${errors?.email?.message ? 'border-red-700' : 'border-[#999999]'} rounded-full focus:border-[#000000] focus:text-black focus:placeholder-black`}/>
+                                {errors?.email?.message && (
+                                    <p className="text-xs text-red-700">
+                                        {errors?.email?.message.toString()}
+                                    </p>
+                                )}
+                            </div>
 
-                            <button className="group button flex flex-row items-center gap-x-2">
+                            <div className="mb-5 flex flex-col gap-y-1">
+                                <input type="password"
+                                       placeholder='Password'
+                                       {...register('password')}
+                                       className={`text-black placeholder-[#999999] outline-none py-4 px-8 border ${errors?.password?.message ? 'border-red-700' : 'border-[#999999]'} rounded-full focus:border-[#000000] focus:text-black focus:placeholder-black`}/>
+                                {errors?.password?.message && (
+                                    <p className="text-xs text-red-700">
+                                        {errors?.password?.message.toString()}
+                                    </p>
+                                )}
+                            </div>
+
+                            <button type="submit" className="group button flex flex-row items-center gap-x-2">
                                 <span className="flex-1 text-center group-hover:text-[#F36A3B] text-xl">Login</span>
                                 <img src="/icon-angle-right.png" alt="icon-angle-right"
                                      className="w-[10px] h-auto mt-[4px]"/>
