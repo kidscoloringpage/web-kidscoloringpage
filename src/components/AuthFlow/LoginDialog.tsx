@@ -32,7 +32,7 @@ export function LoginDialog() {
         register,
         reset,
         handleSubmit,
-        formState: { errors, isDirty, isValid },
+        formState: { errors },
     } = useForm({
         resolver: yupFormResolver(schema) as YupResolverType<{
             email: string,
