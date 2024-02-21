@@ -5,7 +5,13 @@ import {
     DialogTitle,
 } from '../Global/Dialog';
 import { useStore } from '@nanostores/react';
-import {hasLoginDialog, hasRecoverPasswordDialog, hasRegisterDialog} from '../../stores/page';
+import {
+    hasLoginDialog,
+    hasPendingVerificationDialog,
+    hasRecoverPasswordDialog,
+    hasRegisterDialog,
+    pendingVerificationEmail
+} from '../../stores/page';
 import {useCallback} from 'react';
 import {redirectAuthSuccess} from '../../lib/auth-redirect';
 import {createTokenCookie} from "../../lib/jwt.ts";
@@ -53,7 +59,10 @@ export function LoginDialog() {
                 }
 
                 if ((error as any).type === 'user_not_verified') {
-                    // @todo show verify component
+                    reset({ email: '', password: ''});
+                    pendingVerificationEmail.set(email);
+                    hasLoginDialog.set(false);
+                    hasPendingVerificationDialog.set(true);
                     return;
                 }
 
@@ -64,7 +73,7 @@ export function LoginDialog() {
 
     return (
         <Dialog open={$hasLoginDialog} onOpenChange={(state) => {
-            if (!state) reset();
+            if (!state) reset({ email: '', password: ''});
             hasLoginDialog.set(state);
         }}>
             <DialogContent
