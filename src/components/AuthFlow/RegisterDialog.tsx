@@ -49,7 +49,7 @@ export function RegisterDialog() {
             );
 
             if (error || response?.status !== 'ok') {
-                toast.error(error?.message || 'Something went wrong. Please try again later.');
+                toast.error(error?.message || 'Something went wrong. Please try again later');
                 return;
             }
 

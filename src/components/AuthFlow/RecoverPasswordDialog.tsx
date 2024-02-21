@@ -5,10 +5,54 @@ import {
     DialogTitle,
 } from '../Global/Dialog';
 import { useStore } from '@nanostores/react';
-import {hasRecoverPasswordDialog, hasRegisterDialog} from '../../stores/page';
+import {
+    hasRecoverPasswordDialog,
+    hasRegisterDialog,
+} from '../../stores/page';
+import {useYupSchema, Yup, yupFormResolver, type YupResolverType} from "../../lib/yup.ts";
+import {useForm} from "react-hook-form";
+import {useCallback} from "react";
+import {httpPost} from "../../lib/http.ts";
+import {toast} from "sonner";
 
 export function RecoverPasswordDialog() {
     const $hasRecoverPasswordDialog = useStore(hasRecoverPasswordDialog);
+
+    const { schema } = useYupSchema({
+        email: Yup.string().email().required().label('Email address'),
+    });
+
+    const {
+        register,
+        reset,
+        handleSubmit,
+        formState: { errors },
+    } = useForm({
+        resolver: yupFormResolver(schema) as YupResolverType<{
+            email: string,
+        }>,
+    });
+
+    const onSubmit = useCallback(
+        handleSubmit(async ({name, email, password}) => {
+            const { response, error } = await httpPost(
+                `${import.meta.env.PUBLIC_API_URL}/v1-forgot-password`,
+                {
+                    email,
+                },
+            );
+
+            if (error) {
+                toast.error(error.message);
+            } else {
+                resetForm();
+                toast.success('Check your email for a link to reset your password');
+            }
+        }),
+        []
+    );
+
+    const resetForm = () => reset({ email: ''});
 
     return (
         <Dialog open={$hasRecoverPasswordDialog} onOpenChange={hasRecoverPasswordDialog.set}>
@@ -25,16 +69,25 @@ export function RecoverPasswordDialog() {
                         </DialogClose>
                     </DialogHeader>
                     <div className='flex flex-col items-start pt-8'>
-                        <div className="w-full flex flex-col mb-5">
-                            <input type="email" placeholder='Email address'
-                                   className="text-[#999999] placeholder-[#999999] outline-none py-4 px-8 border border-[#999999] rounded-full mb-3.5 focus:border-[#000000] focus:text-black focus:placeholder-black"/>
+                        <form className="w-full flex flex-col mb-5" onSubmit={onSubmit}>
+                            <div className="mb-3.5 flex flex-col gap-y-1">
+                                <input type="email"
+                                       placeholder='Email address'
+                                       {...register('email')}
+                                       className={`text-black placeholder-[#999999] outline-none py-4 px-8 border ${errors?.email?.message ? 'border-red-700' : 'border-[#999999]'} rounded-full focus:border-[#000000] focus:text-black focus:placeholder-black`}/>
+                                {errors?.email?.message && (
+                                    <p className="text-xs text-red-700">
+                                        {errors?.email?.message.toString()}
+                                    </p>
+                                )}
+                            </div>
 
-                            <button className="group button flex flex-row items-center gap-x-2">
+                            <button type='submit' className="group button flex flex-row items-center gap-x-2">
                                 <span className="flex-1 text-center group-hover:text-[#F36A3B] text-xl">Continue</span>
                                 <img src="/icon-angle-right.png" alt="icon-angle-right"
                                      className="w-[10px] h-auto mt-[4px]"/>
                             </button>
-                        </div>
+                        </form>
                     </div>
                 </div>
                 <DialogFooter className="py-8 bg-[#FFF2DF] rounded-t-3xl flex-col">
@@ -48,6 +101,7 @@ export function RecoverPasswordDialog() {
                     <div className="px-8">
                         <button
                             onClick={() => {
+                                resetForm();
                                 hasRegisterDialog.set(true);
                                 hasRecoverPasswordDialog.set(false);
                             }}

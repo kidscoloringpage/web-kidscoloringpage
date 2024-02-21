@@ -66,7 +66,7 @@ export function LoginDialog() {
                     return;
                 }
 
-                toast.error(error?.message || 'Something went wrong. Please try again later.');
+                toast.error(error?.message || 'Something went wrong. Please try again later');
         }),
         []
     );

@@ -27,7 +27,7 @@ export function PendingVerificationDialog() {
             .then(({ response, error }) => {
                 if (error) {
                     setIsEmailResent(false);
-                    toast.error(error?.message || 'Something went wrong.');
+                    toast.error(error?.message || 'Something went wrong');
                     return;
                 }
 
@@ -35,7 +35,7 @@ export function PendingVerificationDialog() {
             })
             .catch(() => {
                 setIsEmailResent(false);
-                toast.error('Something went wrong. Please try again later.');
+                toast.error('Something went wrong. Please try again later');
             });
     };
 
