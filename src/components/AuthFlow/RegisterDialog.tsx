@@ -72,7 +72,7 @@ export function RegisterDialog() {
         }}>
             <DialogContent
                 allowClose={false}
-                className="sm:max-w-[490px] overflow-hidden"
+                className="sm:max-w-[490px] overflow-y-scroll md:overflow-hidden sm:max-h-screen"
                 onOpenAutoFocus={(e) => e.preventDefault()}
             >
                 <div className="p-8">
