@@ -21,6 +21,12 @@
     box-shadow: 2px 4px 0 0 #FFFFFF, 2px 4px 0 1px #000000;
 }
 
+.button-4 {
+    @apply font-bold font-sansita py-2.5 px-7 border rounded-full;
+    border-color: #000000;
+    box-shadow: 2px 4px 0 0 #E9C6BA, 2px 4px 0 1px #000000;
+}
+
 .button:hover, .button-2:hover {
     @apply text-[#F36A3B];
 }
@@ -34,6 +40,9 @@
     }
     .hidden-responsive {
         @apply hidden;
+    }
+    .scale-75-responsive {
+        @apply scale-75;
     }
     .mb-6-responsive {
         @apply mb-6;

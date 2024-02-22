@@ -4,7 +4,7 @@ import Pricing from "../components/Pricing.astro";
 import WallOfLove from "../components/WallOfLove.astro";
 import HowItWorks from "../components/Dashboard/HowItWorks.astro";
 import FreeColoringPages from "../components/Dashboard/FreeColoringPages.astro";
-import GenerateColoringPage from "../components/Dashboard/GenerateColoringPage.astro";
+import {GenerateColoringPage} from "../components/Dashboard/GenerateColoringPage";
 
 const {currentUser} = Astro.locals;
 if (!currentUser) {
@@ -13,7 +13,7 @@ if (!currentUser) {
 ---
 
 <AuthLayout>
-    <GenerateColoringPage />
+    <GenerateColoringPage client:load />
     <HowItWorks />
     <FreeColoringPages />
     <WallOfLove />
