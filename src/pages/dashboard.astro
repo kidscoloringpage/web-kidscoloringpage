@@ -1,5 +1,10 @@
 ---
 import AuthLayout from "../layouts/AuthLayout.astro";
+import Pricing from "../components/Pricing.astro";
+import WallOfLove from "../components/WallOfLove.astro";
+import HowItWorks from "../components/Dashboard/HowItWorks.astro";
+import FreeColoringPages from "../components/Dashboard/FreeColoringPages.astro";
+import GenerateColoringPage from "../components/Dashboard/GenerateColoringPage.astro";
 
 const {currentUser} = Astro.locals;
 if (!currentUser) {
@@ -8,9 +13,9 @@ if (!currentUser) {
 ---
 
 <AuthLayout>
-    <div class="bg-[#FFF2DF]">
-        <div class="container py-8 md:py-12 px-4 md:px-0 px-responsive">
-            <p class="font-bold font-sansita text-4xl mb-5">I am on dashboard</p>
-        </div>
-    </div>
+    <GenerateColoringPage />
+    <HowItWorks />
+    <FreeColoringPages />
+    <WallOfLove />
+    <Pricing />
 </AuthLayout>

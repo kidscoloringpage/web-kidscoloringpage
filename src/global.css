@@ -35,4 +35,7 @@
     .hidden-responsive {
         @apply hidden;
     }
+    .mb-6-responsive {
+        @apply mb-6;
+    }
 }
