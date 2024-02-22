@@ -46,7 +46,7 @@ const canonicalUrl = givenCanonical || currentPageAbsoluteUrl;
 		<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap" rel="stylesheet">
 		<title>{title}</title>
 	</head>
-	<body class="bg-white">
+	<body class="bg-white min-h-screen flex flex-col justify-between">
 		<Header>
 			<Fragment slot="after-menu">
 				<slot name="after-menu" />
