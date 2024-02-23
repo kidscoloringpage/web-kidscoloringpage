@@ -1,7 +1,7 @@
 import {useState} from "react";
 
 export function GenerateColoringPage() {
-    const [remainingCredits, setRemainingCredits] = useState(0);
+    const [remainingCredits, setRemainingCredits] = useState(5);
 
 
     return (
@@ -25,7 +25,7 @@ export function GenerateColoringPage() {
                             className={`rounded-full flex flex-col border ${remainingCredits > 0 ? "border-black" : "border-[#CE0B0B]"} w-[220px] h-[220px] justify-center items-center gap-y-2.5 text-center ${remainingCredits > 0 ? "bg-transparent" : "bg-[#FCE3D1]"}`}>
                             <p className={`font-sansita ${ remainingCredits > 0 ? "text-[#FFCA28]" : "text-[#D73733]"} text-7xl`}><span
                                 className="font-black">{remainingCredits}</span><span>/5</span></p>
-                            <p className="font-sansita text-xl">{ remainingCredits > 0 ? "Free credits remaining" : "Free credits finished!"}</p>
+                            <p className="font-sansita text-xl" dangerouslySetInnerHTML={{__html: remainingCredits > 0 ? "Free credits<br/>remaining" : "Free credits finished!" }} />
                         </div>
                         {!remainingCredits && <a href="#pricing"
                             className="button-4 flex flex-row w-fit items-center justify-center gap-x-4 min-w-[285px] bg-[#F28637] text-white absolute bottom-[4px]">

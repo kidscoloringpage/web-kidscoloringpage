@@ -4,18 +4,35 @@ import Pricing from "../components/Pricing.astro";
 import WallOfLove from "../components/WallOfLove.astro";
 import HowItWorks from "../components/Dashboard/HowItWorks.astro";
 import FreeColoringPages from "../components/Dashboard/FreeColoringPages.astro";
+import {MyColoringPages} from "../components/Dashboard/MyColoringPages";
 import {GenerateColoringPage} from "../components/Dashboard/GenerateColoringPage";
+import {colorSheetApi, ListColorSheetResponse} from "../api/color-sheet";
+import {Faqs} from "../components/Faqs";
 
 const {currentUser} = Astro.locals;
 if (!currentUser) {
     return Astro.redirect('/');
 }
+
+const { response: coloringPages, errors } = await colorSheetApi(Astro).list();
 ---
 
 <AuthLayout>
     <GenerateColoringPage client:load />
-    <HowItWorks />
-    <FreeColoringPages />
-    <WallOfLove />
-    <Pricing />
+    { !coloringPages?.data?.length &&
+        <Fragment>
+            <HowItWorks />
+            <FreeColoringPages />
+            <WallOfLove />
+            <Pricing />
+        </Fragment>
+    }
+    { coloringPages?.data?.length &&
+            <Fragment>
+                <MyColoringPages coloringPages={coloringPages?.data} client:load />
+                <Pricing />
+                <WallOfLove />
+                <Faqs client:load />
+            </Fragment>
+    }
 </AuthLayout>
