@@ -14,12 +14,12 @@ if (!currentUser) {
     return Astro.redirect('/');
 }
 
-const { response: coloringPages } = await colorSheetApi(Astro).list();
+const { response: {count: totalSheets} } = await colorSheetApi(Astro).count();
 ---
 
 <AuthLayout>
     <GenerateColoringPage client:load />
-    { !coloringPages?.data?.length &&
+    { !totalSheets &&
         <Fragment>
             <HowItWorks />
             <FreeColoringPages />
@@ -27,9 +27,9 @@ const { response: coloringPages } = await colorSheetApi(Astro).list();
             <Pricing />
         </Fragment>
     }
-    { coloringPages?.data?.length &&
+    { totalSheets &&
             <Fragment>
-                <MyColoringPages coloringPages={coloringPages?.data} client:load />
+                <MyColoringPages client:load />
                 <Pricing />
                 <WallOfLove />
                 <Faqs client:load />
