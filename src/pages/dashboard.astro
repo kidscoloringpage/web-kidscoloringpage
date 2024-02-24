@@ -18,7 +18,7 @@ const { response: {count: totalSheets} } = await colorSheetApi(Astro).count();
 ---
 
 <AuthLayout>
-    <GenerateColoringPage client:load />
+    <GenerateColoringPage totalCredits={currentUser?.subscription?.trialRequests} usedCredits={totalSheets} client:load />
     { !totalSheets &&
         <Fragment>
             <HowItWorks />

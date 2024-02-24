@@ -21,7 +21,7 @@ export interface UserDocument {
         amount: number;
         currency: string;
         interval: 'monthly' | 'yearly';
-        quantity: number;
+        trialRequests: number;
         status: 'active' | 'canceled' | 'expired';
         createdAt: string;
         updatedAt: string;

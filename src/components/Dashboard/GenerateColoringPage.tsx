@@ -1,11 +1,19 @@
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import {httpGet, httpPost} from "../../lib/http.ts";
 import {toast} from "sonner";
 import {newColorImageGenerated, pageProgressMessage} from "../../stores/page.ts";
+import {useCountColoringSheet} from "../../hooks/use-count-coloring-sheet.ts";
 
-export function GenerateColoringPage() {
-    const [remainingCredits] = useState(5);
+export function GenerateColoringPage(props: { totalCredits: number, usedCredits: number }) {
+    const [remainingCredits, setRemainingCredits] = useState(props?.totalCredits - props?.usedCredits);
     const [prompt, setPrompt] = useState('');
+    const [{data: countSheetsResponse}, countColoringSheet] = useCountColoringSheet();
+
+    useEffect(() => {
+        if(countSheetsResponse) {
+            setRemainingCredits(props.totalCredits - countSheetsResponse?.count || 0);
+        }
+    }, [countSheetsResponse]);
 
     const getColorSheet = async (id: string) => {
         return httpGet<{ _id: string, status: string, url: string }>(
@@ -17,7 +25,12 @@ export function GenerateColoringPage() {
     }
 
     const generateColorSheet = async () => {
-        pageProgressMessage.set('Generating coloring sheet. Please wait');
+        if (!prompt) {
+            toast.error('Please enter a prompt');
+            return;
+        }
+
+        pageProgressMessage.set('Generating coloring page. Please wait');
         const { response: createResponse, error } = await httpPost<{ _id: string, status: string }>(
             `${import.meta.env.PUBLIC_API_URL}/v1-create-coloring-sheet`,
             {
@@ -39,6 +52,7 @@ export function GenerateColoringPage() {
                 clearInterval(interval);
                 pageProgressMessage.set('');
                 toast.error('Coloring sheet generation failed. Please try again later');
+                countColoringSheet();
                 return;
             }
 
@@ -47,6 +61,7 @@ export function GenerateColoringPage() {
                 clearInterval(interval);
                 pageProgressMessage.set('');
                 newColorImageGenerated.set(true);
+                countColoringSheet();
             }
         }, 5000);
     }
@@ -71,7 +86,7 @@ export function GenerateColoringPage() {
                         <div
                             className={`rounded-full flex flex-col border ${remainingCredits > 0 ? "border-black" : "border-[#CE0B0B]"} w-[220px] h-[220px] justify-center items-center gap-y-2.5 text-center ${remainingCredits > 0 ? "bg-transparent" : "bg-[#FCE3D1]"}`}>
                             <p className={`font-sansita ${ remainingCredits > 0 ? "text-[#FFCA28]" : "text-[#D73733]"} text-7xl`}><span
-                                className="font-black">{remainingCredits}</span><span>/5</span></p>
+                                className="font-black">{remainingCredits}</span><span>/{props.totalCredits}</span></p>
                             <p className="font-sansita text-xl" dangerouslySetInnerHTML={{__html: remainingCredits > 0 ? "Free credits<br/>remaining" : "Free credits finished!" }} />
                         </div>
                         {!remainingCredits && <a href="#pricing"
@@ -99,6 +114,7 @@ export function GenerateColoringPage() {
                             className="text-black placeholder-[#999999] outline-none py-4 px-8 border border-black rounded-full focus:text-black focus:placeholder-black w-full" />
                     </label>
                     <button
+                        disabled={!remainingCredits}
                         onClick={generateColorSheet}
                         className="button flex flex-row w-fit items-center justify-center gap-x-4 relative min-w-full md:min-w-[285px]">
                         Generate color sheet
