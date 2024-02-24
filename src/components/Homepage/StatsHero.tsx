@@ -1,4 +1,5 @@
 import {hasLoginDialog} from "../../stores/page.ts";
+import {isLoggedIn} from "../../lib/jwt.ts";
 
 export function StatsHero() {
     return (
@@ -23,8 +24,16 @@ export function StatsHero() {
                         <p className="text-xl text-[#EBEBEB] font-light">Parents using for their kids</p>
                     </div>
                 </div>
-                <button onClick={() => hasLoginDialog.set(true)}
-                        className="button-2 flex flex-row items-center gap-x-4">
+                <button
+                    onClick={() => {
+                        if (isLoggedIn()) {
+                            window.location.href = '/dashboard';
+                            return;
+                        } else {
+                            hasLoginDialog.set(true)
+                        }
+                    }}
+                    className="button-2 flex flex-row items-center gap-x-4">
                     <span className="flex-1 text-center">Start using for free</span>
                     <img src="/icon-angle-right.png" alt="icon-angle-right" className="w-[10px] h-auto mt-[4px]"/>
                 </button>

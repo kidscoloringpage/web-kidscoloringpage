@@ -1,4 +1,5 @@
 import {hasLoginDialog} from "../../stores/page.ts";
+import {isLoggedIn} from "../../lib/jwt.ts";
 
 export function HomepageHero() {
     return (
@@ -14,7 +15,14 @@ export function HomepageHero() {
                 <p className="font-light text-xl md:text-2xl md:w-3/5">Unlock Your Child's Imagination: KidsColoringPage
                     Allows Parents to Inspire and Let Their Kids Color Anything They Imagine.</p>
                 <button
-                    onClick={() => hasLoginDialog.set(true)}
+                    onClick={() => {
+                        if (isLoggedIn()) {
+                            window.location.href = '/dashboard';
+                            return;
+                        } else {
+                            hasLoginDialog.set(true)
+                        }
+                    }}
                     className="button flex flex-row w-fit items-center justify-center gap-x-4 md:min-w-[252px] md:relative">
                     Start using for free
                     <img src="/icon-angle-right.png" alt="icon-angle-right" className="w-[10px] h-auto mt-[4px] md:absolute md:right-4"/>
