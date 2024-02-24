@@ -1,14 +1,12 @@
 import {
     Dialog, DialogClose,
-    DialogContent, DialogDescription, DialogFooter,
+    DialogContent, DialogDescription,
     DialogHeader,
     DialogTitle,
 } from '../Global/Dialog';
 import { useStore } from '@nanostores/react';
 import {
     hasPendingVerificationDialog,
-    hasRecoverPasswordDialog,
-    hasRegisterDialog,
     pendingVerificationEmail
 } from '../../stores/page';
 import {httpPost} from "../../lib/http.ts";
@@ -24,7 +22,7 @@ export function PendingVerificationDialog() {
         httpPost(`${import.meta.env.PUBLIC_API_URL}/v1-send-verification-email`, {
             email: $pendingVerificationEmail,
         })
-            .then(({ response, error }) => {
+            .then(({ error }) => {
                 if (error) {
                     setIsEmailResent(false);
                     toast.error(error?.message || 'Something went wrong');

@@ -6,7 +6,7 @@ import HowItWorks from "../components/Dashboard/HowItWorks.astro";
 import FreeColoringPages from "../components/Dashboard/FreeColoringPages.astro";
 import {MyColoringPages} from "../components/Dashboard/MyColoringPages";
 import {GenerateColoringPage} from "../components/Dashboard/GenerateColoringPage";
-import {colorSheetApi, ListColorSheetResponse} from "../api/color-sheet";
+import {colorSheetApi} from "../api/color-sheet";
 import {Faqs} from "../components/Faqs";
 
 const {currentUser} = Astro.locals;
@@ -14,7 +14,7 @@ if (!currentUser) {
     return Astro.redirect('/');
 }
 
-const { response: coloringPages, errors } = await colorSheetApi(Astro).list();
+const { response: coloringPages } = await colorSheetApi(Astro).list();
 ---
 
 <AuthLayout>

@@ -14,7 +14,6 @@ export function useYupSchema(schema: ObjectShape) {
   return { Yup, schema: YupSchema };
 }
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-export type YupResolverType<T = any> = Resolver<any>;
+export type YupResolverType<_ = any> = Resolver<any>;
 
 export { Yup };

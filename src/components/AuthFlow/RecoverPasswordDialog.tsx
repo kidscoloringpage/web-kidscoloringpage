@@ -34,8 +34,8 @@ export function RecoverPasswordDialog() {
     });
 
     const onSubmit = useCallback(
-        handleSubmit(async ({name, email, password}) => {
-            const { response, error } = await httpPost(
+        handleSubmit(async ({email}) => {
+            const { error } = await httpPost(
                 `${import.meta.env.PUBLIC_API_URL}/v1-forgot-password`,
                 {
                     email,

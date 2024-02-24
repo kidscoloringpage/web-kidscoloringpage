@@ -1,7 +1,7 @@
 import {useState} from "react";
 
 export function GenerateColoringPage() {
-    const [remainingCredits, setRemainingCredits] = useState(5);
+    const [remainingCredits] = useState(5);
 
 
     return (
