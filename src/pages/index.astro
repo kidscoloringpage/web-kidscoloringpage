@@ -3,7 +3,7 @@ import {Faqs} from "../components/Faqs";
 import GuestLayout from "../layouts/GuestLayout.astro";
 import {HomepageHero} from "../components/Homepage/HomepageHero";
 import {StatsHero} from "../components/Homepage/StatsHero";
-import Pricing from "../components/Pricing.astro";
+import {Pricing} from "../components/Pricing";
 import WallOfLove from "../components/WallOfLove.astro";
 import HowItWorks from "../components/Homepage/HowItWorks.astro";
 import Intro from "../components/Homepage/Intro.astro";
@@ -14,7 +14,7 @@ import Intro from "../components/Homepage/Intro.astro";
     <Intro />
     <StatsHero client:load />
     <HowItWorks />
-    <Pricing />
+    <Pricing client:load />
     <WallOfLove />
     <Faqs client:load />
 </GuestLayout>

@@ -1,4 +1,14 @@
-export const Footer = () => {
+import {toast} from "sonner";
+
+export const Footer = (props: {paymentSessionId: string}) => {
+
+    if (props.paymentSessionId && !window.sessionStorage.getItem('paymentSessionId')) {
+        toast.success('Payment successful', {
+            duration: 6000
+        });
+        window.sessionStorage.setItem('paymentSessionId', props.paymentSessionId);
+    }
+
     return (
         <div
             className="bg-gradient-to-b md:bg-gradient-to-r from-0% from-[#000D60] via-[#612F84] to-[#944196] pt-14 md:pt-20 pb-14">

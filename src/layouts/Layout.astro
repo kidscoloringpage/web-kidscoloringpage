@@ -30,6 +30,8 @@ const {
 // Remove trailing slashes to consider the page as canonical
 const currentPageAbsoluteUrl = `https://kidscoloringpage.com${permalink || ''}`;
 const canonicalUrl = givenCanonical || currentPageAbsoluteUrl;
+
+const paymentSessionId = Astro.url.searchParams.get('session_id') || '';
 ---
 
 <!doctype html>
@@ -62,7 +64,7 @@ const canonicalUrl = givenCanonical || currentPageAbsoluteUrl;
 		<slot />
 
 		<slot name='footer'>
-			<Footer client:load />
+			<Footer paymentSessionId={paymentSessionId} client:only="react" />
 		</slot>
 		<slot name='after-footer' />
 
