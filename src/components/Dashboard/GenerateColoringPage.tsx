@@ -1,8 +1,55 @@
 import {useState} from "react";
+import {httpGet, httpPost} from "../../lib/http.ts";
+import {toast} from "sonner";
+import {newColorImageGenerated, pageProgressMessage} from "../../stores/page.ts";
 
 export function GenerateColoringPage() {
     const [remainingCredits] = useState(5);
+    const [prompt, setPrompt] = useState('');
 
+    const getColorSheet = async (id: string) => {
+        return httpGet<{ _id: string, status: string, url: string }>(
+            `${import.meta.env.PUBLIC_API_URL}/v1-get-coloring-sheet`,
+            {
+                id,
+            },
+        );
+    }
+
+    const generateColorSheet = async () => {
+        pageProgressMessage.set('Generating coloring sheet. Please wait');
+        const { response: createResponse, error } = await httpPost<{ _id: string, status: string }>(
+            `${import.meta.env.PUBLIC_API_URL}/v1-create-coloring-sheet`,
+            {
+                prompt,
+            },
+        );
+
+        if (error) {
+            pageProgressMessage.set('');
+            toast.error(error?.message || 'Something went wrong. Please try again later');
+            return;
+        }
+
+        // call the getColorSheet function max 5 times with 5 seconds interval
+        let count = 0;
+        const interval = setInterval(async () => {
+            count++;
+            if (count > 10) {
+                clearInterval(interval);
+                pageProgressMessage.set('');
+                toast.error('Coloring sheet generation failed. Please try again later');
+                return;
+            }
+
+            const { response: getResponse } = await getColorSheet(createResponse._id);
+            if (getResponse?.status === 'success') {
+                clearInterval(interval);
+                pageProgressMessage.set('');
+                newColorImageGenerated.set(true);
+            }
+        }, 5000);
+    }
 
     return (
         <div className="bg-[#FFF2DF]">
@@ -42,10 +89,17 @@ export function GenerateColoringPage() {
                 </div>
                 <div className="flex flex-col md:flex-row gap-x-4 gap-y-2.5 md:gap-y-0">
                     <label htmlFor="prompt" className="flex flex-1">
-                        <input type="text" autoComplete="off" placeholder="Enter your prompt here" id="prompt"
-                               className="text-black placeholder-[#999999] outline-none py-4 px-8 border border-black rounded-full focus:text-black focus:placeholder-black w-full"/>
+                        <input
+                            type="text"
+                            autoComplete="off"
+                            placeholder="Enter your prompt here"
+                            id="prompt"
+                            value={prompt}
+                            onChange={(e) => setPrompt(e.target.value)}
+                            className="text-black placeholder-[#999999] outline-none py-4 px-8 border border-black rounded-full focus:text-black focus:placeholder-black w-full" />
                     </label>
                     <button
+                        onClick={generateColorSheet}
                         className="button flex flex-row w-fit items-center justify-center gap-x-4 relative min-w-full md:min-w-[285px]">
                         Generate color sheet
                         <img src="/icon-angle-right.png" alt="icon-angle-right"

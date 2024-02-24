@@ -8,6 +8,7 @@ import { LoginDialog } from '../components/AuthFlow/LoginDialog';
 import { RegisterDialog } from '../components/AuthFlow/RegisterDialog';
 import { RecoverPasswordDialog } from '../components/AuthFlow/RecoverPasswordDialog';
 import {PendingVerificationDialog} from "../components/AuthFlow/PendingVerificationDialog";
+import { PageProgress } from '../components/Global/PageProgress';
 
 export interface Props {
 	title?: string;
@@ -15,13 +16,15 @@ export interface Props {
 	noIndex?: boolean;
 	canonicalUrl?: string;
 	permalink?: string;
+	initialLoadingMessage?: string;
 }
 
 const {
 	title = 'KidsColoringPage',
 	canonicalUrl: givenCanonical = '',
 	permalink,
-	description
+	description,
+	initialLoadingMessage
 } = Astro.props;
 
 // Remove trailing slashes to consider the page as canonical
@@ -54,6 +57,7 @@ const canonicalUrl = givenCanonical || currentPageAbsoluteUrl;
 		</Header>
 
 		<Toaster richColors={true} client:load />
+		<PageProgress initialMessage={initialLoadingMessage} client:idle />
 
 		<slot />
 

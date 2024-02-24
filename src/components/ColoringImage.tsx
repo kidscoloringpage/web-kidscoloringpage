@@ -19,7 +19,7 @@ export function ColoringImage(props: ColoringImageProps) {
                 <p className="bg-[#F36A3B] py-1.5 md:py-2 px-2 md:px-3 w-fit text-white font-sansita font-medium md:font-bold rounded-3xl text-xs md:text-sm top-2 md:top-3 left-2 md:left-3 absolute">Colored
                     by {downloaded} Kids</p>}
             { src && <img src={src} alt={alt} className="h-fit bg-cover"/>}
-            { !src && <div className="h-full pt-5">
+            { !src && <div className="h-full pt-5 min-h-[189px] md:min-h-[349px]">
                 <Skeleton count={1} height="100%" duration={0.9} />
             </div>}
             <div className="flex flex-col gap-y-1.5 items-start">
