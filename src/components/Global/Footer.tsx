@@ -1,4 +1,6 @@
 import {toast} from "sonner";
+import {getUrlParams} from "../../lib/browser.ts";
+import {hasResetPasswordDialog} from "../../stores/page.ts";
 
 export const Footer = (props: {paymentSessionId: string}) => {
 
@@ -7,6 +9,10 @@ export const Footer = (props: {paymentSessionId: string}) => {
             duration: 6000
         });
         window.sessionStorage.setItem('paymentSessionId', props.paymentSessionId);
+    }
+
+    if (getUrlParams()['reset-password-code']) {
+        hasResetPasswordDialog.set(true);
     }
 
     return (

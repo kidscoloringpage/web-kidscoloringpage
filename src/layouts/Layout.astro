@@ -5,6 +5,7 @@ import {Footer} from "../components/Global/Footer";
 import Authenticator from '../components/AuthFlow/Authenticator.astro';
 import Header from "../components/Global/Header.astro";
 import { LoginDialog } from '../components/AuthFlow/LoginDialog';
+import { ResetPasswordDialog } from '../components/AuthFlow/ResetPasswordDialog';
 import { RegisterDialog } from '../components/AuthFlow/RegisterDialog';
 import { RecoverPasswordDialog } from '../components/AuthFlow/RecoverPasswordDialog';
 import {PendingVerificationDialog} from "../components/AuthFlow/PendingVerificationDialog";
@@ -71,6 +72,7 @@ const paymentSessionId = Astro.url.searchParams.get('session_id') || '';
 		<Authenticator />
 		<LoginDialog client:load />
 		<RegisterDialog client:load />
+		<ResetPasswordDialog client:only="react" />
 		<RecoverPasswordDialog client:load />
 		<PendingVerificationDialog client:load />
 	</body>
