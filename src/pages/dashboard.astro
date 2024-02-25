@@ -3,7 +3,7 @@ import AuthLayout from "../layouts/AuthLayout.astro";
 import {Pricing} from "../components/Pricing";
 import WallOfLove from "../components/WallOfLove.astro";
 import HowItWorks from "../components/Dashboard/HowItWorks.astro";
-import FreeColoringPages from "../components/Dashboard/FreeColoringPages.astro";
+import {FreeColoringPages} from "../components/Dashboard/FreeColoringPages";
 import {MyColoringPages} from "../components/Dashboard/MyColoringPages";
 import {GenerateColoringPage} from "../components/Dashboard/GenerateColoringPage";
 import {colorSheetApi} from "../api/color-sheet";
@@ -25,7 +25,7 @@ const { response: {count: totalSheets} } = await colorSheetApi(Astro).count();
     { !totalSheets &&
         <Fragment>
             <HowItWorks />
-            <FreeColoringPages />
+            <FreeColoringPages client:load />
             <WallOfLove />
             <Pricing hasActiveSubscription={hasActiveSubscription} client:load />
         </Fragment>

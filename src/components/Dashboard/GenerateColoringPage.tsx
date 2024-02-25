@@ -58,7 +58,7 @@ export function GenerateColoringPage(props: Props) {
                 clearInterval(interval);
                 pageProgressMessage.set('');
                 toast.error('Coloring sheet generation failed. Please try again later');
-                countColoringSheet();
+                !props?.hasActiveSubscription && countColoringSheet();
                 return;
             }
 
@@ -67,7 +67,7 @@ export function GenerateColoringPage(props: Props) {
                 clearInterval(interval);
                 pageProgressMessage.set('');
                 newColorImageGenerated.set(true);
-                countColoringSheet();
+                !props?.hasActiveSubscription && countColoringSheet();
             }
         }, 5000);
     }
