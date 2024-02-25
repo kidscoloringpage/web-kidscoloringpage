@@ -20,7 +20,7 @@ export interface UserDocument {
         statementDescriptor: string;
         amount: number;
         currency: string;
-        interval: 'monthly' | 'yearly';
+        interval: 'monthly' | 'yearly' | 'one_time';
         trialRequests: number;
         usedTrialRequests: number;
         status: 'active' | 'canceled' | 'expired';

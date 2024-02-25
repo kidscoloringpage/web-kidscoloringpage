@@ -17,7 +17,10 @@ export const onRequest = defineMiddleware(async (context: APIContext, next: Midd
         context.locals.currentUser = user;
         context.locals.currentUserId = user?._id;
         context.locals.planId = user?.subscription?.planId;
-        context.locals.hasActiveSubscription = user?.subscription?.status === 'active' && user?.subscription?.amount > 0;
+        context.locals.hasActiveSubscription =
+            user?.subscription?.status === 'active' &&
+            user?.subscription?.amount > 0 &&
+            user?.subscription?.interval !== 'one_time';
     }
 
     return next();

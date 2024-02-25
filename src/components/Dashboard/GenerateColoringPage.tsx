@@ -3,11 +3,13 @@ import {httpGet, httpPost} from "../../lib/http.ts";
 import {toast} from "sonner";
 import {newColorImageGenerated, pageProgressMessage} from "../../stores/page.ts";
 import {useCountColoringSheet} from "../../hooks/use-count-coloring-sheet.ts";
+import type {UserDocument} from "../../api/user.ts";
 
 type Props = {
     totalCredits: number;
     usedCredits: number;
     hasActiveSubscription: boolean;
+    subscriptionInterval: UserDocument['subscription']['interval']
 };
 
 export function GenerateColoringPage(props: Props) {
@@ -17,7 +19,7 @@ export function GenerateColoringPage(props: Props) {
 
     useEffect(() => {
         if(countSheetsResponse) {
-            setRemainingCredits(props.totalCredits - countSheetsResponse?.count || 0);
+            setRemainingCredits(remainingCredits - 1);
         }
     }, [countSheetsResponse]);
 
@@ -94,7 +96,11 @@ export function GenerateColoringPage(props: Props) {
                             <p className={`font-sansita ${remainingCredits > 0 ? "text-[#FFCA28]" : "text-[#D73733]"} text-7xl`}><span
                                 className="font-black">{remainingCredits}</span><span>/{props.totalCredits}</span></p>
                             <p className="font-sansita text-xl"
-                               dangerouslySetInnerHTML={{__html: remainingCredits > 0 ? "Free credits<br/>remaining" : "Free credits finished!"}}/>
+                               dangerouslySetInnerHTML={{
+                                   __html: remainingCredits > 0
+                                       ? ( props.subscriptionInterval === "one_time" ? "Credits remaining" : "Free credits<br/>remaining")
+                                       : ( props.subscriptionInterval === "one_time" ? "All credits finished" : "Free credits finished!")
+                            }}/>
                         </div>
                         {!remainingCredits && <a href="#pricing"
                                                  className="button-4 flex flex-row w-fit items-center justify-center gap-x-4 min-w-[285px] bg-[#F28637] text-white absolute bottom-[4px]">
