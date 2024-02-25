@@ -8,7 +8,7 @@ export function FreeColoringPages() {
     const $newColorImageGenerated = useStore(newColorImageGenerated);
 
     useEffect(() => {
-        window.location.reload();
+        $newColorImageGenerated && window.location.reload();
     }, [$newColorImageGenerated]);
 
     return (
