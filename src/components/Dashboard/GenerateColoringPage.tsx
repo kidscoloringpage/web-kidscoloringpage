@@ -121,7 +121,7 @@ export function GenerateColoringPage(props: Props) {
                             className="text-black placeholder-[#999999] outline-none py-4 px-8 border border-black rounded-full focus:text-black focus:placeholder-black w-full" />
                     </label>
                     <button
-                        disabled={!remainingCredits}
+                        disabled={!remainingCredits && !props?.hasActiveSubscription}
                         onClick={generateColorSheet}
                         className="button flex flex-row w-fit items-center justify-center gap-x-4 relative min-w-full md:min-w-[285px]">
                         Generate color sheet
