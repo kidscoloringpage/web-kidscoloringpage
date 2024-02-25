@@ -13,10 +13,11 @@ export const onRequest = defineMiddleware(async (context: APIContext, next: Midd
             context.cookies.delete(TOKEN_COOKIE_NAME);
         }
 
-        context.locals.currentUser = user;
-        context.locals.planId = user?.subscription?.planId;
-        context.locals.currentUserId = user?._id;
         context.locals.error = error;
+        context.locals.currentUser = user;
+        context.locals.currentUserId = user?._id;
+        context.locals.planId = user?.subscription?.planId;
+        context.locals.hasActiveSubscription = user?.subscription?.status === 'active' && user?.subscription?.amount > 0;
     }
 
     return next();

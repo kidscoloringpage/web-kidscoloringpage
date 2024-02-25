@@ -9,7 +9,7 @@ import {GenerateColoringPage} from "../components/Dashboard/GenerateColoringPage
 import {colorSheetApi} from "../api/color-sheet";
 import {Faqs} from "../components/Faqs";
 
-const {currentUser} = Astro.locals;
+const {currentUser, hasActiveSubscription} = Astro.locals;
 if (!currentUser) {
     return Astro.redirect('/');
 }
@@ -18,19 +18,22 @@ const { response: {count: totalSheets} } = await colorSheetApi(Astro).count();
 ---
 
 <AuthLayout>
-    <GenerateColoringPage totalCredits={currentUser?.subscription?.trialRequests} usedCredits={totalSheets} client:load />
+    <GenerateColoringPage
+            hasActiveSubscription={hasActiveSubscription}
+            totalCredits={currentUser?.subscription?.trialRequests}
+            usedCredits={totalSheets} client:load />
     { !totalSheets &&
         <Fragment>
             <HowItWorks />
             <FreeColoringPages />
             <WallOfLove />
-            <Pricing client:load />
+            <Pricing hasActiveSubscription={hasActiveSubscription} client:load />
         </Fragment>
     }
     { totalSheets &&
             <Fragment>
                 <MyColoringPages client:load />
-                <Pricing client:load />
+                <Pricing hasActiveSubscription={hasActiveSubscription} client:load />
                 <WallOfLove />
                 <Faqs client:load />
             </Fragment>

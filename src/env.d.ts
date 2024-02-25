@@ -12,6 +12,7 @@ declare namespace App {
     interface Locals {
         currentUser: import('./api/user.ts').UserDocument | undefined;
         planId: string | undefined;
+        hasActiveSubscription: boolean | undefined;
         currentUserId: string | undefined;
         error:
             | import('./lib/http.ts').AppError

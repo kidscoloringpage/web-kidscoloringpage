@@ -3,9 +3,28 @@ import {hasLoginDialog, pageProgressMessage} from "../stores/page.ts";
 import {httpPost} from "../lib/http.ts";
 import {toast} from "sonner";
 
-export function Pricing() {
+export function Pricing(props: { hasActiveSubscription: boolean }) {
 
-    const subscribeToPlan = async (planId: string) => {
+    async function manageSubscription() {
+        pageProgressMessage.set('Please wait');
+
+        const { response, error } = await httpPost(
+            `${import.meta.env.PUBLIC_API_URL}/v1-create-customer-portal-session`,
+            {
+                returnUrl: window.location.href,
+            },
+        );
+
+        if (error || !response) {
+            pageProgressMessage.set('');
+            toast.error(error?.message || 'Something went wrong');
+            return;
+        }
+
+        window.location.href = response.url;
+    }
+
+    async function subscribeToPlan(planId: string) {
         if (!isLoggedIn()) {
             hasLoginDialog.set(true);
             return;
@@ -59,11 +78,13 @@ export function Pricing() {
                                     <p className="text-sm">Buy as you need</p>
                                 </div>
                             </div>
-                            <a href="" className="button-2 flex flex-row items-center gap-x-2 mb-5">
+                            <button
+                                disabled={props?.hasActiveSubscription}
+                                className="button-2 flex flex-row items-center gap-x-2 mb-5 disabled:opacity-30 disabled:hover:text-black">
                                 <span className="flex-1 text-center">Buy one time</span>
                                 <img src="/icon-angle-right.png" alt="icon-angle-right"
                                      className="w-[10px] h-auto mt-[4px]"/>
-                            </a>
+                            </button>
                             <div className="flex flex-row gap-x-2 items-center">
                                 <img src="/icon-shield.png" alt="icon-shield" className="w-[24px] h-auto"/>
                                 <p className="text-xs font-medium text-[#545454]">Risk free: 2 Days Money Back
@@ -93,9 +114,10 @@ export function Pricing() {
                                 </div>
                             </div>
                             <button
-                                onClick={() => subscribeToPlan("v1-all-professional-month")}
+                                onClick={() => props?.hasActiveSubscription ? manageSubscription() : subscribeToPlan("v1-all-professional-month")}
                                 className="button-2 flex flex-row items-center gap-x-4 mb-5">
-                                <span className="flex-1 text-center">Subscribe now</span>
+                                <span
+                                    className="flex-1 text-center">{props?.hasActiveSubscription ? "Manage subscription" : "Subscribe now"}</span>
                                 <img src="/icon-angle-right.png" alt="icon-angle-right"
                                      className="w-[10px] h-auto mt-[4px]"/>
                             </button>
@@ -138,9 +160,9 @@ export function Pricing() {
                                 </div>
                             </div>
                             <button
-                                onClick={() => subscribeToPlan("v1-all-professional-year")}
+                                onClick={() => props?.hasActiveSubscription ? manageSubscription() : subscribeToPlan("v1-all-professional-year")}
                                 className="button-2 flex flex-row items-center gap-x-4 mb-5">
-                                <span className="flex-1 text-center">Subscribe now</span>
+                                <span className="flex-1 text-center">{props?.hasActiveSubscription ? "Manage subscription" : "Subscribe now"}</span>
                                 <img src="/icon-angle-right.png" alt="icon-angle-right"
                                      className="w-[10px] h-auto mt-[4px]"/>
                             </button>

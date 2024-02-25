@@ -7,6 +7,8 @@ import {Pricing} from "../components/Pricing";
 import WallOfLove from "../components/WallOfLove.astro";
 import HowItWorks from "../components/Homepage/HowItWorks.astro";
 import Intro from "../components/Homepage/Intro.astro";
+
+const { hasActiveSubscription} = Astro.locals;
 ---
 
 <GuestLayout>
@@ -14,7 +16,7 @@ import Intro from "../components/Homepage/Intro.astro";
     <Intro />
     <StatsHero client:load />
     <HowItWorks />
-    <Pricing client:load />
+    <Pricing hasActiveSubscription={hasActiveSubscription} client:load />
     <WallOfLove />
     <Faqs client:load />
 </GuestLayout>

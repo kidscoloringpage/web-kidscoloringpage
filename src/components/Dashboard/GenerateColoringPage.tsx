@@ -4,7 +4,13 @@ import {toast} from "sonner";
 import {newColorImageGenerated, pageProgressMessage} from "../../stores/page.ts";
 import {useCountColoringSheet} from "../../hooks/use-count-coloring-sheet.ts";
 
-export function GenerateColoringPage(props: { totalCredits: number, usedCredits: number }) {
+type Props = {
+    totalCredits: number;
+    usedCredits: number;
+    hasActiveSubscription: boolean;
+};
+
+export function GenerateColoringPage(props: Props) {
     const [remainingCredits, setRemainingCredits] = useState(props?.totalCredits - props?.usedCredits);
     const [prompt, setPrompt] = useState('');
     const [{data: countSheetsResponse}, countColoringSheet] = useCountColoringSheet();
@@ -81,21 +87,22 @@ export function GenerateColoringPage(props: { totalCredits: number, usedCredits:
                             <span className="text-[#EF60B7]">Page</span>
                         </p>
                     </div>
-                    <div
+                    {!props?.hasActiveSubscription && <div
                         className="relative justify-center flex flex-col items-center w-full md:w-auto scale-75 md:transform-none scale-75-responsive">
                         <div
                             className={`rounded-full flex flex-col border ${remainingCredits > 0 ? "border-black" : "border-[#CE0B0B]"} w-[220px] h-[220px] justify-center items-center gap-y-2.5 text-center ${remainingCredits > 0 ? "bg-transparent" : "bg-[#FCE3D1]"}`}>
-                            <p className={`font-sansita ${ remainingCredits > 0 ? "text-[#FFCA28]" : "text-[#D73733]"} text-7xl`}><span
+                            <p className={`font-sansita ${remainingCredits > 0 ? "text-[#FFCA28]" : "text-[#D73733]"} text-7xl`}><span
                                 className="font-black">{remainingCredits}</span><span>/{props.totalCredits}</span></p>
-                            <p className="font-sansita text-xl" dangerouslySetInnerHTML={{__html: remainingCredits > 0 ? "Free credits<br/>remaining" : "Free credits finished!" }} />
+                            <p className="font-sansita text-xl"
+                               dangerouslySetInnerHTML={{__html: remainingCredits > 0 ? "Free credits<br/>remaining" : "Free credits finished!"}}/>
                         </div>
                         {!remainingCredits && <a href="#pricing"
-                            className="button-4 flex flex-row w-fit items-center justify-center gap-x-4 min-w-[285px] bg-[#F28637] text-white absolute bottom-[4px]">
+                                                 className="button-4 flex flex-row w-fit items-center justify-center gap-x-4 min-w-[285px] bg-[#F28637] text-white absolute bottom-[4px]">
                             Upgrade to unlimited
                             <img src="/icon-angle-right-white.png" alt="icon-angle-right"
                                  className="w-[10px] h-auto mt-[4px] absolute right-4"/>
                         </a>}
-                    </div>
+                    </div>}
                 </div>
                 <div className="font-light mb-5">
                     <p className="text-2xl mb-2">Describe the theme or concept for your coloring sheet. </p>
