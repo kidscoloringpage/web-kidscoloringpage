@@ -80,6 +80,7 @@ export function Pricing(props: { hasActiveSubscription: boolean }) {
                             </div>
                             <button
                                 disabled={props?.hasActiveSubscription}
+                                onClick={() => subscribeToPlan("price_1OnnNIIFLlIQIBa8D8IVgnsZ")}
                                 className="button-2 flex flex-row items-center gap-x-2 mb-5 disabled:opacity-30 disabled:hover:text-black">
                                 <span className="flex-1 text-center">Buy one time</span>
                                 <img src="/icon-angle-right.png" alt="icon-angle-right"
