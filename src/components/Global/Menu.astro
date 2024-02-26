@@ -4,6 +4,10 @@ import {LoginButton} from './LoginButton'
 import {LogoutButton} from "./LogoutButton";
 
 const { currentUser } = Astro.locals;
+
+const isOnHomePage = ['/', '/dashboard'].includes(Astro.url.pathname);
+const wallOfLoveLink = isOnHomePage ? '#wall-of-love' : '/#wall-of-love';
+const pricingLink = isOnHomePage ? '#pricing' : '/#pricing';
 ---
 
 <div
@@ -17,8 +21,8 @@ const { currentUser } = Astro.locals;
                 class="flex flex-col md:flex-row items-center gap-x-8 gap-y-4 md:gap-y-0 flex-1 text-white md:text-black bg-black md:bg-transparent py-5 md:py-0 rounded-xl">
             { currentUser && <a href="/dashboard" class="hover:text-[#F36A3C]">Dashboard</a> }
             <a href="/color-pages" class="hover:text-[#F36A3C]">Free coloring pages</a>
-            <a href="#wall-of-love" class="hover:text-[#F36A3C]">Wall of love</a>
-            <a href="#pricing" class="hover:text-[#F36A3C]">Pricing</a>
+            <a href={wallOfLoveLink} class="hover:text-[#F36A3C]">Wall of love</a>
+            <a href={pricingLink} class="hover:text-[#F36A3C]">Pricing</a>
             { !currentUser && <LoginButton client:load/> }
             { currentUser && <LogoutButton client:load/> }
         </div>
