@@ -64,14 +64,14 @@ export const Footer = (props: {paymentSessionId: string}) => {
                             <p className="text-white font-semibold text-lg mb-4">Company</p>
                             <div className="text-[#C2C2C2] flex flex-col gap-y-1.5">
                                 <a href="#" className="hover:underline">About us</a>
-                                <a href="#" className="hover:underline">Contact us</a>
+                                <a href="mailto:hello@kidscoloringpage.com" className="hover:underline">Contact us</a>
                             </div>
                         </div>
                         <div>
                             <p className="text-white font-semibold text-lg mb-4">Follow us</p>
                             <div className="text-[#C2C2C2] flex flex-col gap-y-1.5">
-                                <a href="#" className="hover:underline">Facebook</a>
-                                <a href="#" className="hover:underline">Instagram</a>
+                                <a href="https://www.facebook.com/people/Kidscoloringpage/61556780791691/" target="_blank" className="hover:underline">Facebook</a>
+                                <a href="https://www.instagram.com/kidscoloringpage1/" target="_blank" className="hover:underline">Instagram</a>
                                 <a href="#" className="hover:underline">Twitter</a>
                             </div>
                         </div>
