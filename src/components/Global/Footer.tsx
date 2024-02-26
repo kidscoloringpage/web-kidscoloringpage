@@ -72,7 +72,7 @@ export const Footer = (props: {paymentSessionId: string}) => {
                             <div className="text-[#C2C2C2] flex flex-col gap-y-1.5">
                                 <a href="https://www.facebook.com/people/Kidscoloringpage/61556780791691/" target="_blank" className="hover:underline">Facebook</a>
                                 <a href="https://www.instagram.com/kidscoloringpage1/" target="_blank" className="hover:underline">Instagram</a>
-                                <a href="#" className="hover:underline">Twitter</a>
+                                <a href="https://twitter.com/kidsclrngpage" target="_blank" className="hover:underline">Twitter</a>
                             </div>
                         </div>
                     </div>
