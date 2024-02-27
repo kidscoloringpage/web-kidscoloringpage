@@ -37,7 +37,7 @@ export function Faqs() {
     }, []);
 
     return (
-        <div className="bg-[#FFF2DF]">
+        <div className="bg-[#FFF2DF]" id="faqs">
             <div className="container py-12 md:py-20 px-4 md:px-0 px-responsive">
                 <p className="font-bold font-sansita text-4xl mb-12">Frequently asked questions</p>
                 <div className="flex flex-col">

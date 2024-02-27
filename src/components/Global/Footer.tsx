@@ -63,7 +63,7 @@ export const Footer = (props: {paymentSessionId: string}) => {
                         <div>
                             <p className="text-white font-semibold text-lg mb-4">Company</p>
                             <div className="text-[#C2C2C2] flex flex-col gap-y-1.5">
-                                <a href="#" className="hover:underline">About us</a>
+                                <a href="/#faqs" className="hover:underline">FAQs</a>
                                 <a href="mailto:hello@kidscoloringpage.com" className="hover:underline">Contact us</a>
                             </div>
                         </div>

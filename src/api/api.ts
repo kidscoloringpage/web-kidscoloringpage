@@ -35,7 +35,6 @@ export function api(context: APIContext) {
         headers: new Headers({
           'Content-Type': 'application/json',
           Accept: 'application/json',
-          'x-real-ip': context?.clientAddress,
           ...(token ? { Authorization: `Bearer ${token}` } : {}),
           ...(options?.headers ?? {}),
         }),
