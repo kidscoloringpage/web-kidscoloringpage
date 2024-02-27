@@ -7,7 +7,8 @@
     "start": "node dist/server/entry.mjs",
     "build": "astro check && astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "format": "prettier --write ."
   },
   "dependencies": {
     "@astrojs/check": "^0.5.2",
@@ -36,6 +37,9 @@
   "devDependencies": {
     "@types/js-cookie": "^3.0.6",
     "@types/react": "~18.2.57",
-    "@types/react-dom": "~18.2.19"
+    "@types/react-dom": "~18.2.19",
+    "prettier": "^3.2.5",
+    "prettier-plugin-astro": "^0.13.0",
+    "prettier-plugin-tailwindcss": "^0.5.11"
   }
 }

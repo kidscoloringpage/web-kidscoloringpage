@@ -8,7 +8,7 @@ const { ...props } = Astro.props;
 ---
 
 <Layout {...props} noIndex={false}>
-    <slot />
-    <slot name="after-menu" slot="after-menu" />
-    <div slot='page-footer'></div>
+  <slot />
+  <slot name='after-menu' slot='after-menu' />
+  <div slot='page-footer'></div>
 </Layout>

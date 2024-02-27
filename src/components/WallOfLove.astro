@@ -1,115 +1,159 @@
 ---
-import Rating from "./Rating.astro";
+import Rating from './Rating.astro';
 ---
-<div class="container pt-12 md:pt-20 pb-8 px-4 md:px-0 px-responsive" id="wall-of-love">
-    <p class="font-bold font-sansita text-4xl mb-5">Parent's wall of love</p>
-    <p class="text-xl text-[#545454] font-light mb-12">It makes us happy to open the possibilities for kids to color whatever we want them to!</p>
-    <!--<div class="gap-5 columns-1 md:columns-3">-->
-    <div class="gap-5 columns-1 md:columns-3">
-        <div class="inline-block mb-6 md:mb-8 w-full">
-            <div class="flex flex-row gap-x-3 mb-5">
-                <img src="/person-1.png" alt="person" class="w-[77px] h-auto" />
-                <div class="flex flex-col gap-y-2">
-                    <div>
-                        <p class="font-bold font-sansita text-xl">Karen B.</p>
-                        <p class="text-[#757575] font-sansita">Oct 4, 2023</p>
-                    </div>
-                    <Rating />
-                </div>
-            </div>
-            <p class="border border-[#DFDFDF] rounded-xl text-[#545454] font-light text-lg px-6 py-4 leading-8">
-                Grandma's secret weapon! I've been using KidsColoringPage to create custom coloring books for my grandkids. It's like magic - whatever they're into, be it dinosaurs or fairy tales, I can make a coloring book for it. They think I'm the best grandma ever, and I couldn't be happier!
-            </p>
+
+<div
+  class='px-responsive container px-4 pb-8 pt-12 md:px-0 md:pt-20'
+  id='wall-of-love'
+>
+  <p class='mb-5 font-sansita text-4xl font-bold'>Parent's wall of love</p>
+  <p class='mb-12 text-xl font-light text-[#545454]'>
+    It makes us happy to open the possibilities for kids to color whatever we
+    want them to!
+  </p>
+  <!--<div class="gap-5 columns-1 md:columns-3">-->
+  <div class='columns-1 gap-5 md:columns-3'>
+    <div class='mb-6 inline-block w-full md:mb-8'>
+      <div class='mb-5 flex flex-row gap-x-3'>
+        <img src='/person-1.png' alt='person' class='h-auto w-[77px]' />
+        <div class='flex flex-col gap-y-2'>
+          <div>
+            <p class='font-sansita text-xl font-bold'>Karen B.</p>
+            <p class='font-sansita text-[#757575]'>Oct 4, 2023</p>
+          </div>
+          <Rating />
         </div>
-        <div class="inline-block mb-6 md:mb-8 w-full">
-            <div class="flex md:flex-row gap-x-3 mb-5 flex-row-reverse text-right md:text-left">
-                <img src="/person-2.png" alt="person" class="w-[77px] h-auto" />
-                <div class="flex flex-col gap-y-2">
-                    <div>
-                        <p class="font-bold font-sansita text-xl">Sam A.</p>
-                        <p class="text-[#757575] font-sansita">Oct 9, 2023</p>
-                    </div>
-                    <Rating />
-                </div>
-            </div>
-            <p class="border border-[#DFDFDF] rounded-xl text-[#545454] font-light text-lg px-6 py-4 leading-8">
-                As a homeschooling parent, KidsColoringPage has been a game-changer. It's so easy to find coloring sheets that match our lessons for the day. Whether we're exploring the ocean or the solar system, there's always something perfect to print. It makes learning fun and keeps my kids engaged. A+ for creativity and ease!
-            </p>
-        </div>
-        <div class="inline-block mb-6 md:mb-8 w-full">
-            <div class="flex flex-row gap-x-3 mb-5">
-                <img src="/person-3.png" alt="person" class="w-[77px] h-auto" />
-                <div class="flex flex-col gap-y-2">
-                    <div>
-                        <p class="font-bold font-sansita text-xl">Maria J.</p>
-                        <p class="text-[#757575] font-sansita">Oct 17, 2023</p>
-                    </div>
-                    <Rating />
-                </div>
-            </div>
-            <p class="border border-[#DFDFDF] rounded-xl text-[#545454] font-light text-lg px-6 py-4 leading-8">
-                Just printed a bunch of superhero coloring pages for my daughter's birthday party, and they were a hit! KidsColoringPage made it so easy to find unique and exciting designs. This tool has saved me so much time and has brought so much joy to our home. Highly recommend!
-            </p>
-        </div>
-        <div class="inline-block mb-6 md:mb-8 w-full">
-            <div class="flex md:flex-row gap-x-3 mb-5 flex-row-reverse text-right md:text-left">
-                <img src="/person-4.png" alt="person" class="w-[77px] h-auto" />
-                <div class="flex flex-col gap-y-2">
-                    <div>
-                        <p class="font-bold font-sansita text-xl">Renu B.</p>
-                        <p class="text-[#757575] font-sansita">Nov 1, 2023</p>
-                    </div>
-                    <Rating />
-                </div>
-            </div>
-            <p class="border border-[#DFDFDF] rounded-xl text-[#545454] font-light text-lg px-6 py-4 leading-8">
-                I never knew I needed this in my life until now. KidsColoringPage is my new favorite tool for keeping my kids entertained and creatively fulfilled. The variety and quality of images it produces are truly impressive. It's become a fun activity for the whole family to pick and print coloring pages together.
-            </p>
-        </div>
-        <div class="inline-block mb-6 md:mb-8 w-full">
-            <div class="flex flex-row gap-x-3 mb-5">
-                <img src="/person-5.png" alt="person" class="w-[77px] h-auto" />
-                <div class="flex flex-col gap-y-2">
-                    <div>
-                        <p class="font-bold font-sansita text-xl">Pratik C.</p>
-                        <p class="text-[#757575] font-sansita">Nov 3, 2023</p>
-                    </div>
-                    <Rating />
-                </div>
-            </div>
-            <p class="border border-[#DFDFDF] rounded-xl text-[#545454] font-light text-lg px-6 py-4 leading-8">
-                The best find for my crafty kids ❤️
-            </p>
-        </div>
-        <div class="inline-block mb-6 md:mb-8 w-full">
-            <div class="flex md:flex-row gap-x-3 mb-5 flex-row-reverse text-right md:text-left">
-                <img src="/person-6.png" alt="person" class="w-[77px] h-auto" />
-                <div class="flex flex-col gap-y-2">
-                    <div>
-                        <p class="font-bold font-sansita text-xl">Laura J.</p>
-                        <p class="text-[#757575] font-sansita">Nov 22, 2023</p>
-                    </div>
-                    <Rating />
-                </div>
-            </div>
-            <p class="border border-[#DFDFDF] rounded-xl text-[#545454] font-light text-lg px-6 py-4 leading-8">
-                Absolutely brilliant! 🌟
-            </p>
-        </div>
-        <div class="inline-block mb-6 md:mb-8 w-full">
-            <div class="flex flex-row gap-x-3 mb-5">
-                <img src="/person-7.png" alt="person" class="w-[77px] h-auto" />
-                <div class="flex flex-col gap-y-2">
-                    <div>
-                        <p class="font-bold font-sansita text-xl">Donna B.</p>
-                        <p class="text-[#757575] font-sansita">Nov 30, 2023</p>
-                    </div>
-                    <Rating />
-                </div>
-            </div>
-            <p class="border border-[#DFDFDF] rounded-xl text-[#545454] font-light text-lg px-6 py-4 leading-8">
-                KidsColoringPage is a blast! Whether it's for a quiet afternoon activity or getting ready for a themed party, this tool delivers. My kids are always excited to see their ideas come to life in a coloring sheet. It's fun, engaging, and sparks their imagination in the best way possible.
-            </p>
-        </div>
+      </div>
+      <p
+        class='rounded-xl border border-[#DFDFDF] px-6 py-4 text-lg font-light leading-8 text-[#545454]'
+      >
+        Grandma's secret weapon! I've been using KidsColoringPage to create
+        custom coloring books for my grandkids. It's like magic - whatever
+        they're into, be it dinosaurs or fairy tales, I can make a coloring book
+        for it. They think I'm the best grandma ever, and I couldn't be happier!
+      </p>
     </div>
+    <div class='mb-6 inline-block w-full md:mb-8'>
+      <div
+        class='mb-5 flex flex-row-reverse gap-x-3 text-right md:flex-row md:text-left'
+      >
+        <img src='/person-2.png' alt='person' class='h-auto w-[77px]' />
+        <div class='flex flex-col gap-y-2'>
+          <div>
+            <p class='font-sansita text-xl font-bold'>Sam A.</p>
+            <p class='font-sansita text-[#757575]'>Oct 9, 2023</p>
+          </div>
+          <Rating />
+        </div>
+      </div>
+      <p
+        class='rounded-xl border border-[#DFDFDF] px-6 py-4 text-lg font-light leading-8 text-[#545454]'
+      >
+        As a homeschooling parent, KidsColoringPage has been a game-changer.
+        It's so easy to find coloring sheets that match our lessons for the day.
+        Whether we're exploring the ocean or the solar system, there's always
+        something perfect to print. It makes learning fun and keeps my kids
+        engaged. A+ for creativity and ease!
+      </p>
+    </div>
+    <div class='mb-6 inline-block w-full md:mb-8'>
+      <div class='mb-5 flex flex-row gap-x-3'>
+        <img src='/person-3.png' alt='person' class='h-auto w-[77px]' />
+        <div class='flex flex-col gap-y-2'>
+          <div>
+            <p class='font-sansita text-xl font-bold'>Maria J.</p>
+            <p class='font-sansita text-[#757575]'>Oct 17, 2023</p>
+          </div>
+          <Rating />
+        </div>
+      </div>
+      <p
+        class='rounded-xl border border-[#DFDFDF] px-6 py-4 text-lg font-light leading-8 text-[#545454]'
+      >
+        Just printed a bunch of superhero coloring pages for my daughter's
+        birthday party, and they were a hit! KidsColoringPage made it so easy to
+        find unique and exciting designs. This tool has saved me so much time
+        and has brought so much joy to our home. Highly recommend!
+      </p>
+    </div>
+    <div class='mb-6 inline-block w-full md:mb-8'>
+      <div
+        class='mb-5 flex flex-row-reverse gap-x-3 text-right md:flex-row md:text-left'
+      >
+        <img src='/person-4.png' alt='person' class='h-auto w-[77px]' />
+        <div class='flex flex-col gap-y-2'>
+          <div>
+            <p class='font-sansita text-xl font-bold'>Renu B.</p>
+            <p class='font-sansita text-[#757575]'>Nov 1, 2023</p>
+          </div>
+          <Rating />
+        </div>
+      </div>
+      <p
+        class='rounded-xl border border-[#DFDFDF] px-6 py-4 text-lg font-light leading-8 text-[#545454]'
+      >
+        I never knew I needed this in my life until now. KidsColoringPage is my
+        new favorite tool for keeping my kids entertained and creatively
+        fulfilled. The variety and quality of images it produces are truly
+        impressive. It's become a fun activity for the whole family to pick and
+        print coloring pages together.
+      </p>
+    </div>
+    <div class='mb-6 inline-block w-full md:mb-8'>
+      <div class='mb-5 flex flex-row gap-x-3'>
+        <img src='/person-5.png' alt='person' class='h-auto w-[77px]' />
+        <div class='flex flex-col gap-y-2'>
+          <div>
+            <p class='font-sansita text-xl font-bold'>Pratik C.</p>
+            <p class='font-sansita text-[#757575]'>Nov 3, 2023</p>
+          </div>
+          <Rating />
+        </div>
+      </div>
+      <p
+        class='rounded-xl border border-[#DFDFDF] px-6 py-4 text-lg font-light leading-8 text-[#545454]'
+      >
+        The best find for my crafty kids ❤️
+      </p>
+    </div>
+    <div class='mb-6 inline-block w-full md:mb-8'>
+      <div
+        class='mb-5 flex flex-row-reverse gap-x-3 text-right md:flex-row md:text-left'
+      >
+        <img src='/person-6.png' alt='person' class='h-auto w-[77px]' />
+        <div class='flex flex-col gap-y-2'>
+          <div>
+            <p class='font-sansita text-xl font-bold'>Laura J.</p>
+            <p class='font-sansita text-[#757575]'>Nov 22, 2023</p>
+          </div>
+          <Rating />
+        </div>
+      </div>
+      <p
+        class='rounded-xl border border-[#DFDFDF] px-6 py-4 text-lg font-light leading-8 text-[#545454]'
+      >
+        Absolutely brilliant! 🌟
+      </p>
+    </div>
+    <div class='mb-6 inline-block w-full md:mb-8'>
+      <div class='mb-5 flex flex-row gap-x-3'>
+        <img src='/person-7.png' alt='person' class='h-auto w-[77px]' />
+        <div class='flex flex-col gap-y-2'>
+          <div>
+            <p class='font-sansita text-xl font-bold'>Donna B.</p>
+            <p class='font-sansita text-[#757575]'>Nov 30, 2023</p>
+          </div>
+          <Rating />
+        </div>
+      </div>
+      <p
+        class='rounded-xl border border-[#DFDFDF] px-6 py-4 text-lg font-light leading-8 text-[#545454]'
+      >
+        KidsColoringPage is a blast! Whether it's for a quiet afternoon activity
+        or getting ready for a themed party, this tool delivers. My kids are
+        always excited to see their ideas come to life in a coloring sheet. It's
+        fun, engaging, and sparks their imagination in the best way possible.
+      </p>
+    </div>
+  </div>
 </div>

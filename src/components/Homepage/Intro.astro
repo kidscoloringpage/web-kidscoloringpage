@@ -1,20 +1,61 @@
 ---
-import {ColoringImage} from "../ColoringImage";
+import { ColoringImage } from '../ColoringImage';
 ---
-<div class="container flex flex-col gap-y-6 py-12 md:py-20 px-4 md:px-0 px-responsive">
-    <p class="font-sansita font-bold text-4xl items-center leading-10 md:leading-0">
-        <span>Use AI</span>
-        <img src="/icon-magic-wand.png" alt="icon-magic-wand" class="w-[28px] md:w-[32px] h-auto inline-block" />
-        <span>to generate Kids coloring pages in seconds</span>
-    </p>
-    <p class="text-xl text-[#545454]">Unleash your imagination! KidsColoringPage turns your ideas into coloring pages for your kids to color. From dinosaurs to fairies, let's bring their creativity to life!</p>
-    <p class="text-[#545454] font-light text-base"><span class="font-semibold">Not sure what to try?</span> Some example prompts with images are below. The best images incorporate one subject, a setting, and a style. For example: Alebrije turtle at the beach.</p>
-    <div class="max-auto">
-        <div class="grid gap-4 grid-cols-2 md:grid-cols-4">
-            <ColoringImage client:load src="/color-pages/Elsa and anna.png" title="Elsa and anna" alt="Elsa and anna" downloaded="5,210" />
-            <ColoringImage client:load src="/color-pages/Winnie-the-Pooh.png" title="Winnie-the-Pooh" alt="Winnie-the-Pooh" downloaded="1,210" />
-            <ColoringImage client:load src="/color-pages/dino holding a sword.png" title="dino holding a sword" alt="dino holding a sword" downloaded="9,830" />
-            <ColoringImage client:load src="/color-pages/scooby dooby doo2.png" title="scooby dooby doo" alt="scooby dooby doo" downloaded="3,670" />
-        </div>
+
+<div
+  class='px-responsive container flex flex-col gap-y-6 px-4 py-12 md:px-0 md:py-20'
+>
+  <p
+    class='md:leading-0 items-center font-sansita text-4xl font-bold leading-10'
+  >
+    <span>Use AI</span>
+    <img
+      src='/icon-magic-wand.png'
+      alt='icon-magic-wand'
+      class='inline-block h-auto w-[28px] md:w-[32px]'
+    />
+    <span>to generate Kids coloring pages in seconds</span>
+  </p>
+  <p class='text-xl text-[#545454]'>
+    Unleash your imagination! KidsColoringPage turns your ideas into coloring
+    pages for your kids to color. From dinosaurs to fairies, let's bring their
+    creativity to life!
+  </p>
+  <p class='text-base font-light text-[#545454]'>
+    <span class='font-semibold'>Not sure what to try?</span> Some example prompts
+    with images are below. The best images incorporate one subject, a setting, and
+    a style. For example: Alebrije turtle at the beach.
+  </p>
+  <div class='max-auto'>
+    <div class='grid grid-cols-2 gap-4 md:grid-cols-4'>
+      <ColoringImage
+        client:load
+        src='/color-pages/Elsa and anna.png'
+        title='Elsa and anna'
+        alt='Elsa and anna'
+        downloaded='5,210'
+      />
+      <ColoringImage
+        client:load
+        src='/color-pages/Winnie-the-Pooh.png'
+        title='Winnie-the-Pooh'
+        alt='Winnie-the-Pooh'
+        downloaded='1,210'
+      />
+      <ColoringImage
+        client:load
+        src='/color-pages/dino holding a sword.png'
+        title='dino holding a sword'
+        alt='dino holding a sword'
+        downloaded='9,830'
+      />
+      <ColoringImage
+        client:load
+        src='/color-pages/scooby dooby doo2.png'
+        title='scooby dooby doo'
+        alt='scooby dooby doo'
+        downloaded='3,670'
+      />
     </div>
+  </div>
 </div>

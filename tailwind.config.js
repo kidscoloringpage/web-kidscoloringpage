@@ -11,7 +11,6 @@ export default {
         sansita: ['Sansita'],
         wonderbar: ['Wonderbar'],
       },
-
     },
   },
   plugins: [
@@ -19,18 +18,18 @@ export default {
       addBase({
         '@font-face': {
           fontFamily: 'Wonderbar',
-          src: 'url(/fonts/wonderbar.otf)'
-        }
-      })
+          src: 'url(/fonts/wonderbar.otf)',
+        },
+      });
     }),
     plugin(function ({ addBase }) {
       addBase({
         '@font-face': {
           fontFamily: 'Damion',
           fontWeight: '400',
-          src: 'url(https://fonts.gstatic.com/s/damion/v10/hv-XlzJ3KEUe_YZkamw2.woff2) format(\'woff2\')'
-        }
-      })
+          src: "url(https://fonts.gstatic.com/s/damion/v10/hv-XlzJ3KEUe_YZkamw2.woff2) format('woff2')",
+        },
+      });
     }),
   ],
 };

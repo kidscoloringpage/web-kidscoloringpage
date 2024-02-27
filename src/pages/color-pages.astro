@@ -1,73 +1,363 @@
 ---
-import GuestLayout from "../layouts/GuestLayout.astro";
-import { ColoringImage } from "../components/ColoringImage";
+import GuestLayout from '../layouts/GuestLayout.astro';
+import { ColoringImage } from '../components/ColoringImage';
 ---
-<GuestLayout>
-    <div class="bg-[#FFF2DF]">
-        <div class="container py-8 md:py-12 px-4 md:px-0 px-responsive">
-            <p class="font-bold font-sansita text-4xl mb-5">Free Printable Coloring Pages</p>
-            <p class="text-xl text-[#545454] mb-8 font-light">Whether you're a kid looking for some weekend fun, a stressed adult looking for a creative outlet, or a teacher seeking interesting education tools, we have a variety of coloring pages ready for you. Dive into a wide selection of themes from animals, cartoon characters, holidays, seasons, and much more. You're only a click away from stepping into a world of color.</p>
 
-            <div class="max-auto">
-                <div class="grid gap-4 grid-cols-2 md:grid-cols-4">
-                    <ColoringImage client:load src="/color-pages/aladdin.png" title="aladdin" alt="aladdin" />
-                    <ColoringImage client:load src="/color-pages/anime.png" title="anime" alt="anime" />
-                    <ColoringImage client:load src="/color-pages/anime2.png" title="anime" alt="anime" />
-                    <ColoringImage client:load src="/color-pages/Baby.png" title="Baby" alt="Baby" />
-                    <ColoringImage client:load src="/color-pages/Baby yoda.png" title="Baby yoda" alt="Baby yoda" />
-                    <ColoringImage client:load src="/color-pages/Barbie.png" title="Barbie" alt="Barbie" />
-                    <ColoringImage client:load src="/color-pages/batman.png" title="batman" alt="batman" />
-                    <ColoringImage client:load src="/color-pages/bear.png" title="bear" alt="bear" />
-                    <ColoringImage client:load src="/color-pages/butterfly.png" title="butterfly" alt="butterfly" />
-                    <ColoringImage client:load src="/color-pages/captain america.png" title="captain america" alt="captain america" />
-                    <ColoringImage client:load src="/color-pages/castle.png" title="castle" alt="castle" />
-                    <ColoringImage client:load src="/color-pages/Cat.png" title="Cat" alt="Cat" />
-                    <ColoringImage client:load src="/color-pages/Charmander.png" title="Charmander" alt="Charmander" />
-                    <ColoringImage client:load src="/color-pages/chicken.png" title="chicken" alt="chicken" />
-                    <ColoringImage client:load src="/color-pages/christmas tree outside covered in snow.png" title="christmas tree outside covered in snow" alt="christmas tree outside covered in snow" />
-                    <ColoringImage client:load src="/color-pages/cozzy fire place.png" title="cozzy fire place" alt="cozzy fire place" />
-                    <ColoringImage client:load src="/color-pages/dinosaurs.png" title="dinosaurs" alt="dinosaurs" />
-                    <ColoringImage client:load src="/color-pages/Dog.png" title="Dog" alt="Dog" />
-                    <ColoringImage client:load src="/color-pages/Dolphin Surfing the waves.png" title="Dolphin Surfing the waves" alt="Dolphin Surfing the waves" />
-                    <ColoringImage client:load src="/color-pages/elephant.png" title="elephant" alt="elephant" />
-                    <ColoringImage client:load src="/color-pages/Elsa.png" title="Elsa" alt="Elsa" />
-                    <ColoringImage client:load src="/color-pages/Elsa and anna.png" title="Elsa and anna" alt="Elsa and anna" />
-                    <ColoringImage client:load src="/color-pages/Elsa At Arendelle Castle.png" title="Elsa At Arendelle Castle" alt="Elsa At Arendelle Castle" />
-                    <ColoringImage client:load src="/color-pages/Elsa in enchanted forest.png" title="Elsa in enchanted forest" alt="Elsa in enchanted forest" />
-                    <ColoringImage client:load src="/color-pages/falmingo.png" title="falmingo" alt="falmingo" />
-                    <ColoringImage client:load src="/color-pages/falmingo standing in the water.png" title="falmingo standing in the water" alt="falmingo standing in the water" />
-                    <ColoringImage client:load src="/color-pages/godzilla.png" title="godzilla" alt="godzilla" />
-                    <ColoringImage client:load src="/color-pages/Hello kitty.png" title="Hello kitty" alt="Hello kitty" />
-                    <ColoringImage client:load src="/color-pages/icecream.png" title="icecream" alt="icecream" />
-                    <ColoringImage client:load src="/color-pages/iron man.png" title="iron man" alt="iron man" />
-                    <ColoringImage client:load src="/color-pages/iron man2.png" title="iron man" alt="iron man" />
-                    <ColoringImage client:load src="/color-pages/man in space.png" title="man in space" alt="man in space" />
-                    <ColoringImage client:load src="/color-pages/Mickey mouse.png" title="Mickey mouse" alt="Mickey mouse" />
-                    <ColoringImage client:load src="/color-pages/mickey mouse 2.png" title="mickey mouse" alt="mickey mouse" />
-                    <ColoringImage client:load src="/color-pages/minion.png" title="minion" alt="minion" />
-                    <ColoringImage client:load src="/color-pages/minion2.png" title="minion" alt="minion" />
-                    <ColoringImage client:load src="/color-pages/monkey.png" title="monkey" alt="monkey" />
-                    <ColoringImage client:load src="/color-pages/monster.png" title="monster" alt="monster" />
-                    <ColoringImage client:load src="/color-pages/mushroom.png" title="mushroom" alt="mushroom" />
-                    <ColoringImage client:load src="/color-pages/Ninja.png" title="Ninja" alt="Ninja" />
-                    <ColoringImage client:load src="/color-pages/olaf.png" title="olaf" alt="olaf" />
-                    <ColoringImage client:load src="/color-pages/peppa pig.png" title="peppa pig" alt="peppa pig" />
-                    <ColoringImage client:load src="/color-pages/santa claus.png" title="santa claus" alt="santa claus" />
-                    <ColoringImage client:load src="/color-pages/santa claus with a present.png" title="santa claus with a present" alt="santa claus with a present" />
-                    <ColoringImage client:load src="/color-pages/santa reindeer.png" title="santa reindeer" alt="santa reindeer" />
-                    <ColoringImage client:load src="/color-pages/scooby dooby doo.png" title="scooby dooby doo" alt="scooby dooby doo" />
-                    <ColoringImage client:load src="/color-pages/scooby dooby doo2.png" title="scooby dooby doo" alt="scooby dooby doo" />
-                    <ColoringImage client:load src="/color-pages/super sonic.png" title="super sonic" alt="super sonic" />
-                    <ColoringImage client:load src="/color-pages/thor.png" title="thor" alt="thor" />
-                    <ColoringImage client:load src="/color-pages/turtle.png" title="turtle" alt="turtle" />
-                    <ColoringImage client:load src="/color-pages/Twelve Excited Stars Watching A Star Circus.png" title="Twelve Excited Stars Watching A Star Circus" alt="Twelve Excited Stars Watching A Star Circus" />
-                    <ColoringImage client:load src="/color-pages/Twinkling Star At A Pond.png" title="Twinkling Star At A Pond" alt="Twinkling Star At A Pond" />
-                    <ColoringImage client:load src="/color-pages/warrior.png" title="warrior" alt="warrior" />
-                    <ColoringImage client:load src="/color-pages/Winnie-the-Pooh.png" title="Winnie-the-Pooh" alt="Winnie-the-Pooh" />
-                    <ColoringImage client:load src="/color-pages/dino holding a sword.png" title="dino holding a sword" alt="dino holding a sword" />
-                    <ColoringImage client:load src="/color-pages/Buzz Lightyear Flying Over A Street.png" title="Buzz Lightyear Flying Over A Street" alt="Buzz Lightyear Flying Over A Street" />
-                </div>
-            </div>
+<GuestLayout>
+  <div class='bg-[#FFF2DF]'>
+    <div class='px-responsive container px-4 py-8 md:px-0 md:py-12'>
+      <p class='mb-5 font-sansita text-4xl font-bold'>
+        Free Printable Coloring Pages
+      </p>
+      <p class='mb-8 text-xl font-light text-[#545454]'>
+        Whether you're a kid looking for some weekend fun, a stressed adult
+        looking for a creative outlet, or a teacher seeking interesting
+        education tools, we have a variety of coloring pages ready for you. Dive
+        into a wide selection of themes from animals, cartoon characters,
+        holidays, seasons, and much more. You're only a click away from stepping
+        into a world of color.
+      </p>
+
+      <div class='max-auto'>
+        <div class='grid grid-cols-2 gap-4 md:grid-cols-4'>
+          <ColoringImage
+            client:load
+            src='/color-pages/aladdin.png'
+            title='aladdin'
+            alt='aladdin'
+          />
+          <ColoringImage
+            client:load
+            src='/color-pages/anime.png'
+            title='anime'
+            alt='anime'
+          />
+          <ColoringImage
+            client:load
+            src='/color-pages/anime2.png'
+            title='anime'
+            alt='anime'
+          />
+          <ColoringImage
+            client:load
+            src='/color-pages/Baby.png'
+            title='Baby'
+            alt='Baby'
+          />
+          <ColoringImage
+            client:load
+            src='/color-pages/Baby yoda.png'
+            title='Baby yoda'
+            alt='Baby yoda'
+          />
+          <ColoringImage
+            client:load
+            src='/color-pages/Barbie.png'
+            title='Barbie'
+            alt='Barbie'
+          />
+          <ColoringImage
+            client:load
+            src='/color-pages/batman.png'
+            title='batman'
+            alt='batman'
+          />
+          <ColoringImage
+            client:load
+            src='/color-pages/bear.png'
+            title='bear'
+            alt='bear'
+          />
+          <ColoringImage
+            client:load
+            src='/color-pages/butterfly.png'
+            title='butterfly'
+            alt='butterfly'
+          />
+          <ColoringImage
+            client:load
+            src='/color-pages/captain america.png'
+            title='captain america'
+            alt='captain america'
+          />
+          <ColoringImage
+            client:load
+            src='/color-pages/castle.png'
+            title='castle'
+            alt='castle'
+          />
+          <ColoringImage
+            client:load
+            src='/color-pages/Cat.png'
+            title='Cat'
+            alt='Cat'
+          />
+          <ColoringImage
+            client:load
+            src='/color-pages/Charmander.png'
+            title='Charmander'
+            alt='Charmander'
+          />
+          <ColoringImage
+            client:load
+            src='/color-pages/chicken.png'
+            title='chicken'
+            alt='chicken'
+          />
+          <ColoringImage
+            client:load
+            src='/color-pages/christmas tree outside covered in snow.png'
+            title='christmas tree outside covered in snow'
+            alt='christmas tree outside covered in snow'
+          />
+          <ColoringImage
+            client:load
+            src='/color-pages/cozzy fire place.png'
+            title='cozzy fire place'
+            alt='cozzy fire place'
+          />
+          <ColoringImage
+            client:load
+            src='/color-pages/dinosaurs.png'
+            title='dinosaurs'
+            alt='dinosaurs'
+          />
+          <ColoringImage
+            client:load
+            src='/color-pages/Dog.png'
+            title='Dog'
+            alt='Dog'
+          />
+          <ColoringImage
+            client:load
+            src='/color-pages/Dolphin Surfing the waves.png'
+            title='Dolphin Surfing the waves'
+            alt='Dolphin Surfing the waves'
+          />
+          <ColoringImage
+            client:load
+            src='/color-pages/elephant.png'
+            title='elephant'
+            alt='elephant'
+          />
+          <ColoringImage
+            client:load
+            src='/color-pages/Elsa.png'
+            title='Elsa'
+            alt='Elsa'
+          />
+          <ColoringImage
+            client:load
+            src='/color-pages/Elsa and anna.png'
+            title='Elsa and anna'
+            alt='Elsa and anna'
+          />
+          <ColoringImage
+            client:load
+            src='/color-pages/Elsa At Arendelle Castle.png'
+            title='Elsa At Arendelle Castle'
+            alt='Elsa At Arendelle Castle'
+          />
+          <ColoringImage
+            client:load
+            src='/color-pages/Elsa in enchanted forest.png'
+            title='Elsa in enchanted forest'
+            alt='Elsa in enchanted forest'
+          />
+          <ColoringImage
+            client:load
+            src='/color-pages/falmingo.png'
+            title='falmingo'
+            alt='falmingo'
+          />
+          <ColoringImage
+            client:load
+            src='/color-pages/falmingo standing in the water.png'
+            title='falmingo standing in the water'
+            alt='falmingo standing in the water'
+          />
+          <ColoringImage
+            client:load
+            src='/color-pages/godzilla.png'
+            title='godzilla'
+            alt='godzilla'
+          />
+          <ColoringImage
+            client:load
+            src='/color-pages/Hello kitty.png'
+            title='Hello kitty'
+            alt='Hello kitty'
+          />
+          <ColoringImage
+            client:load
+            src='/color-pages/icecream.png'
+            title='icecream'
+            alt='icecream'
+          />
+          <ColoringImage
+            client:load
+            src='/color-pages/iron man.png'
+            title='iron man'
+            alt='iron man'
+          />
+          <ColoringImage
+            client:load
+            src='/color-pages/iron man2.png'
+            title='iron man'
+            alt='iron man'
+          />
+          <ColoringImage
+            client:load
+            src='/color-pages/man in space.png'
+            title='man in space'
+            alt='man in space'
+          />
+          <ColoringImage
+            client:load
+            src='/color-pages/Mickey mouse.png'
+            title='Mickey mouse'
+            alt='Mickey mouse'
+          />
+          <ColoringImage
+            client:load
+            src='/color-pages/mickey mouse 2.png'
+            title='mickey mouse'
+            alt='mickey mouse'
+          />
+          <ColoringImage
+            client:load
+            src='/color-pages/minion.png'
+            title='minion'
+            alt='minion'
+          />
+          <ColoringImage
+            client:load
+            src='/color-pages/minion2.png'
+            title='minion'
+            alt='minion'
+          />
+          <ColoringImage
+            client:load
+            src='/color-pages/monkey.png'
+            title='monkey'
+            alt='monkey'
+          />
+          <ColoringImage
+            client:load
+            src='/color-pages/monster.png'
+            title='monster'
+            alt='monster'
+          />
+          <ColoringImage
+            client:load
+            src='/color-pages/mushroom.png'
+            title='mushroom'
+            alt='mushroom'
+          />
+          <ColoringImage
+            client:load
+            src='/color-pages/Ninja.png'
+            title='Ninja'
+            alt='Ninja'
+          />
+          <ColoringImage
+            client:load
+            src='/color-pages/olaf.png'
+            title='olaf'
+            alt='olaf'
+          />
+          <ColoringImage
+            client:load
+            src='/color-pages/peppa pig.png'
+            title='peppa pig'
+            alt='peppa pig'
+          />
+          <ColoringImage
+            client:load
+            src='/color-pages/santa claus.png'
+            title='santa claus'
+            alt='santa claus'
+          />
+          <ColoringImage
+            client:load
+            src='/color-pages/santa claus with a present.png'
+            title='santa claus with a present'
+            alt='santa claus with a present'
+          />
+          <ColoringImage
+            client:load
+            src='/color-pages/santa reindeer.png'
+            title='santa reindeer'
+            alt='santa reindeer'
+          />
+          <ColoringImage
+            client:load
+            src='/color-pages/scooby dooby doo.png'
+            title='scooby dooby doo'
+            alt='scooby dooby doo'
+          />
+          <ColoringImage
+            client:load
+            src='/color-pages/scooby dooby doo2.png'
+            title='scooby dooby doo'
+            alt='scooby dooby doo'
+          />
+          <ColoringImage
+            client:load
+            src='/color-pages/super sonic.png'
+            title='super sonic'
+            alt='super sonic'
+          />
+          <ColoringImage
+            client:load
+            src='/color-pages/thor.png'
+            title='thor'
+            alt='thor'
+          />
+          <ColoringImage
+            client:load
+            src='/color-pages/turtle.png'
+            title='turtle'
+            alt='turtle'
+          />
+          <ColoringImage
+            client:load
+            src='/color-pages/Twelve Excited Stars Watching A Star Circus.png'
+            title='Twelve Excited Stars Watching A Star Circus'
+            alt='Twelve Excited Stars Watching A Star Circus'
+          />
+          <ColoringImage
+            client:load
+            src='/color-pages/Twinkling Star At A Pond.png'
+            title='Twinkling Star At A Pond'
+            alt='Twinkling Star At A Pond'
+          />
+          <ColoringImage
+            client:load
+            src='/color-pages/warrior.png'
+            title='warrior'
+            alt='warrior'
+          />
+          <ColoringImage
+            client:load
+            src='/color-pages/Winnie-the-Pooh.png'
+            title='Winnie-the-Pooh'
+            alt='Winnie-the-Pooh'
+          />
+          <ColoringImage
+            client:load
+            src='/color-pages/dino holding a sword.png'
+            title='dino holding a sword'
+            alt='dino holding a sword'
+          />
+          <ColoringImage
+            client:load
+            src='/color-pages/Buzz Lightyear Flying Over A Street.png'
+            title='Buzz Lightyear Flying Over A Street'
+            alt='Buzz Lightyear Flying Over A Street'
+          />
         </div>
+      </div>
     </div>
+  </div>
 </GuestLayout>

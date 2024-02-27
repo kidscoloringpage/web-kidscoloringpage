@@ -1,42 +1,50 @@
 ---
-import AuthLayout from "../layouts/AuthLayout.astro";
-import {Pricing} from "../components/Pricing";
-import WallOfLove from "../components/WallOfLove.astro";
-import HowItWorks from "../components/Dashboard/HowItWorks.astro";
-import {FreeColoringPages} from "../components/Dashboard/FreeColoringPages";
-import {MyColoringPages} from "../components/Dashboard/MyColoringPages";
-import {GenerateColoringPage} from "../components/Dashboard/GenerateColoringPage";
-import {colorSheetApi} from "../api/color-sheet";
-import {Faqs} from "../components/Faqs";
+import AuthLayout from '../layouts/AuthLayout.astro';
+import { Pricing } from '../components/Pricing';
+import WallOfLove from '../components/WallOfLove.astro';
+import HowItWorks from '../components/Dashboard/HowItWorks.astro';
+import { FreeColoringPages } from '../components/Dashboard/FreeColoringPages';
+import { MyColoringPages } from '../components/Dashboard/MyColoringPages';
+import { GenerateColoringPage } from '../components/Dashboard/GenerateColoringPage';
+import { colorSheetApi } from '../api/color-sheet';
+import { Faqs } from '../components/Faqs';
 
-const {currentUser, hasActiveSubscription} = Astro.locals;
+const { currentUser, hasActiveSubscription } = Astro.locals;
 if (!currentUser) {
-    return Astro.redirect('/');
+  return Astro.redirect('/');
 }
 
-const { response: {count: totalSheets} } = await colorSheetApi(Astro).count();
+const {
+  response: { count: totalSheets },
+} = await colorSheetApi(Astro).count();
 ---
 
 <AuthLayout>
-    <GenerateColoringPage
-            hasActiveSubscription={hasActiveSubscription}
-            subscriptionInterval={currentUser.subscription.interval}
-            totalCredits={currentUser?.subscription?.trialRequests ?? 0}
-            usedCredits={currentUser?.subscription?.usedTrialRequests ?? 0} client:load />
-    { !totalSheets &&
-        <Fragment>
-            <HowItWorks />
-            <FreeColoringPages client:load />
-            <WallOfLove />
-            <Pricing hasActiveSubscription={hasActiveSubscription} client:load />
-        </Fragment>
-    }
-    { totalSheets &&
-            <Fragment>
-                <MyColoringPages client:load />
-                <Pricing hasActiveSubscription={hasActiveSubscription} client:load />
-                <WallOfLove />
-                <Faqs client:load />
-            </Fragment>
-    }
+  <GenerateColoringPage
+    hasActiveSubscription={hasActiveSubscription}
+    subscriptionInterval={currentUser.subscription.interval}
+    totalCredits={currentUser?.subscription?.trialRequests ?? 0}
+    usedCredits={currentUser?.subscription?.usedTrialRequests ?? 0}
+    client:load
+  />
+  {
+    !totalSheets && (
+      <Fragment>
+        <HowItWorks />
+        <FreeColoringPages client:load />
+        <WallOfLove />
+        <Pricing hasActiveSubscription={hasActiveSubscription} client:load />
+      </Fragment>
+    )
+  }
+  {
+    totalSheets && (
+      <Fragment>
+        <MyColoringPages client:load />
+        <Pricing hasActiveSubscription={hasActiveSubscription} client:load />
+        <WallOfLove />
+        <Faqs client:load />
+      </Fragment>
+    )
+  }
 </AuthLayout>

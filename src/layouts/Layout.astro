@@ -1,31 +1,31 @@
 ---
 import { Toaster } from 'sonner';
 import '../global.css';
-import {Footer} from "../components/Global/Footer";
+import { Footer } from '../components/Global/Footer';
 import Authenticator from '../components/AuthFlow/Authenticator.astro';
-import Header from "../components/Global/Header.astro";
+import Header from '../components/Global/Header.astro';
 import { LoginDialog } from '../components/AuthFlow/LoginDialog';
 import { ResetPasswordDialog } from '../components/AuthFlow/ResetPasswordDialog';
 import { RegisterDialog } from '../components/AuthFlow/RegisterDialog';
 import { RecoverPasswordDialog } from '../components/AuthFlow/RecoverPasswordDialog';
-import {PendingVerificationDialog} from "../components/AuthFlow/PendingVerificationDialog";
+import { PendingVerificationDialog } from '../components/AuthFlow/PendingVerificationDialog';
 import { PageProgress } from '../components/Global/PageProgress';
 
 export interface Props {
-	title?: string;
-	description?: string;
-	noIndex?: boolean;
-	canonicalUrl?: string;
-	permalink?: string;
-	initialLoadingMessage?: string;
+  title?: string;
+  description?: string;
+  noIndex?: boolean;
+  canonicalUrl?: string;
+  permalink?: string;
+  initialLoadingMessage?: string;
 }
 
 const {
-	title = 'KidsColoringPage',
-	canonicalUrl: givenCanonical = '',
-	permalink,
-	description,
-	initialLoadingMessage
+  title = 'KidsColoringPage',
+  canonicalUrl: givenCanonical = '',
+  permalink,
+  description,
+  initialLoadingMessage,
 } = Astro.props;
 
 // Remove trailing slashes to consider the page as canonical
@@ -36,52 +36,69 @@ const paymentSessionId = Astro.url.searchParams.get('session_id') || '';
 ---
 
 <!doctype html>
-<html lang="en">
-	<head>
-		<meta charset='UTF-8' />
-		<meta name='description' content={description || 'Use AI to generate Kids coloring pages in seconds'} />
-		<meta name='viewport' content='width=device-width' />
-		<meta name='generator' content={Astro.generator} />
-		<link rel='canonical' href={canonicalUrl} />
-		<link rel="icon" type="image/svg+xml" href="/favicon.ico" />
-		<link rel="sitemap" href="/sitemap-index.xml" />
-		<!-- Google font -->
-		<link rel="preconnect" href="https://fonts.googleapis.com">
-		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-		<link href="https://fonts.googleapis.com/css2?family=Sansita:ital,wght@0,400;0,700;0,800;0,900;1,400;1,700;1,800;1,900&display=swap" rel="stylesheet">
-		<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap" rel="stylesheet">
-		<title>{title}</title>
-	</head>
-	<body class="bg-white min-h-screen flex flex-col justify-between">
-		<Header>
-			<Fragment slot="after-menu">
-				<slot name="after-menu" />
-			</Fragment>
-		</Header>
+<html lang='en'>
+  <head>
+    <meta charset='UTF-8' />
+    <meta
+      name='description'
+      content={description ||
+        'Use AI to generate Kids coloring pages in seconds'}
+    />
+    <meta name='viewport' content='width=device-width' />
+    <meta name='generator' content={Astro.generator} />
+    <link rel='canonical' href={canonicalUrl} />
+    <link rel='icon' type='image/svg+xml' href='/favicon.ico' />
+    <link rel='sitemap' href='/sitemap-index.xml' />
+    <!-- Google font -->
+    <link rel='preconnect' href='https://fonts.googleapis.com' />
+    <link rel='preconnect' href='https://fonts.gstatic.com' crossorigin />
+    <link
+      href='https://fonts.googleapis.com/css2?family=Sansita:ital,wght@0,400;0,700;0,800;0,900;1,400;1,700;1,800;1,900&display=swap'
+      rel='stylesheet'
+    />
+    <link
+      href='https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap'
+      rel='stylesheet'
+    />
+    <title>{title}</title>
+  </head>
+  <body class='flex min-h-screen flex-col justify-between bg-white'>
+    <Header>
+      <Fragment slot='after-menu'>
+        <slot name='after-menu' />
+      </Fragment>
+    </Header>
 
-		<Toaster richColors={true} client:load />
-		<PageProgress initialMessage={initialLoadingMessage} client:idle />
+    <Toaster richColors={true} client:load />
+    <PageProgress initialMessage={initialLoadingMessage} client:idle />
 
-		<slot />
+    <slot />
 
-		<slot name='footer'>
-			<Footer paymentSessionId={paymentSessionId} client:only="react" />
-		</slot>
-		<slot name='after-footer' />
+    <slot name='footer'>
+      <Footer paymentSessionId={paymentSessionId} client:only='react' />
+    </slot>
+    <slot name='after-footer' />
 
-		<Authenticator />
-		<LoginDialog client:load />
-		<RegisterDialog client:load />
-		<ResetPasswordDialog client:only="react" />
-		<RecoverPasswordDialog client:load />
-		<PendingVerificationDialog client:load />
+    <Authenticator />
+    <LoginDialog client:load />
+    <RegisterDialog client:load />
+    <ResetPasswordDialog client:only='react' />
+    <RecoverPasswordDialog client:load />
+    <PendingVerificationDialog client:load />
 
-		<script type="text/javascript">
-			(function(c,l,a,r,i,t,y){
-				c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-				t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-				y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-			})(window, document, "clarity", "script", "l814cfb381");
-		</script>
-	</body>
+    <script type='text/javascript'>
+      (function (c, l, a, r, i, t, y) {
+        c[a] =
+          c[a] ||
+          function () {
+            (c[a].q = c[a].q || []).push(arguments);
+          };
+        t = l.createElement(r);
+        t.async = 1;
+        t.src = 'https://www.clarity.ms/tag/' + i;
+        y = l.getElementsByTagName(r)[0];
+        y.parentNode.insertBefore(t, y);
+      })(window, document, 'clarity', 'script', 'l814cfb381');
+    </script>
+  </body>
 </html>

@@ -13,9 +13,7 @@ export function redirectAuthSuccess() {
 }
 
 function redirectGuestUser() {
-  const authenticatedRoutes = [
-    '/dashboard',
-  ];
+  const authenticatedRoutes = ['/dashboard'];
 
   // If the user is on an authenticated route, redirect them to the home page
   if (authenticatedRoutes.includes(window.location.pathname)) {

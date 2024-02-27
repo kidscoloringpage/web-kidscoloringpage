@@ -1,22 +1,22 @@
 ---
-import {Faqs} from "../components/Faqs";
-import GuestLayout from "../layouts/GuestLayout.astro";
-import {HomepageHero} from "../components/Homepage/HomepageHero";
-import {StatsHero} from "../components/Homepage/StatsHero";
-import {Pricing} from "../components/Pricing";
-import WallOfLove from "../components/WallOfLove.astro";
-import HowItWorks from "../components/Homepage/HowItWorks.astro";
-import Intro from "../components/Homepage/Intro.astro";
+import { Faqs } from '../components/Faqs';
+import GuestLayout from '../layouts/GuestLayout.astro';
+import { HomepageHero } from '../components/Homepage/HomepageHero';
+import { StatsHero } from '../components/Homepage/StatsHero';
+import { Pricing } from '../components/Pricing';
+import WallOfLove from '../components/WallOfLove.astro';
+import HowItWorks from '../components/Homepage/HowItWorks.astro';
+import Intro from '../components/Homepage/Intro.astro';
 
-const { hasActiveSubscription} = Astro.locals;
+const { hasActiveSubscription } = Astro.locals;
 ---
 
 <GuestLayout>
-    <HomepageHero slot="after-menu" client:load />
-    <Intro />
-    <StatsHero client:load />
-    <HowItWorks />
-    <Pricing hasActiveSubscription={hasActiveSubscription} client:load />
-    <WallOfLove />
-    <Faqs client:load />
+  <HomepageHero slot='after-menu' client:load />
+  <Intro />
+  <StatsHero client:load />
+  <HowItWorks />
+  <Pricing hasActiveSubscription={hasActiveSubscription} client:load />
+  <WallOfLove />
+  <Faqs client:load />
 </GuestLayout>

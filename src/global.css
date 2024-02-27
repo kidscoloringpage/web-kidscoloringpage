@@ -4,47 +4,56 @@
 }
 
 .button {
-  @apply bg-white text-black font-bold font-sansita py-2.5 px-7 border rounded-full;
+  @apply rounded-full border bg-white px-7 py-2.5 font-sansita font-bold text-black;
   border-color: #000000;
-  box-shadow: 2px 4px 0 0 #EF60B7, 2px 4px 0 1px #000000;
+  box-shadow:
+    2px 4px 0 0 #ef60b7,
+    2px 4px 0 1px #000000;
 }
 
 .button-2 {
-    @apply bg-white text-black font-bold font-sansita py-2.5 px-7 border rounded-full;
-    border-color: #000000;
-    box-shadow: 2px 4px 0 0 #E9C6BA, 2px 4px 0 1px #000000;
+  @apply rounded-full border bg-white px-7 py-2.5 font-sansita font-bold text-black;
+  border-color: #000000;
+  box-shadow:
+    2px 4px 0 0 #e9c6ba,
+    2px 4px 0 1px #000000;
 }
 
 .button-3 {
-    @apply bg-[#F28637] text-black font-bold font-sansita py-2.5 px-7 border rounded-full;
-    border-color: #000000;
-    box-shadow: 2px 4px 0 0 #FFFFFF, 2px 4px 0 1px #000000;
+  @apply rounded-full border bg-[#F28637] px-7 py-2.5 font-sansita font-bold text-black;
+  border-color: #000000;
+  box-shadow:
+    2px 4px 0 0 #ffffff,
+    2px 4px 0 1px #000000;
 }
 
 .button-4 {
-    @apply font-bold font-sansita py-2.5 px-7 border rounded-full;
-    border-color: #000000;
-    box-shadow: 2px 4px 0 0 #E9C6BA, 2px 4px 0 1px #000000;
+  @apply rounded-full border px-7 py-2.5 font-sansita font-bold;
+  border-color: #000000;
+  box-shadow:
+    2px 4px 0 0 #e9c6ba,
+    2px 4px 0 1px #000000;
 }
 
-.button:hover, .button-2:hover {
-    @apply text-[#F36A3B];
+.button:hover,
+.button-2:hover {
+  @apply text-[#F36A3B];
 }
 
 @media (min-width: 768px) and (max-width: 1200px) {
-    .px-responsive {
-        @apply px-4;
-    }
-    .flex-col-responsive {
-        @apply flex-col;
-    }
-    .hidden-responsive {
-        @apply hidden;
-    }
-    .scale-75-responsive {
-        @apply scale-75;
-    }
-    .mb-6-responsive {
-        @apply mb-6;
-    }
+  .px-responsive {
+    @apply px-4;
+  }
+  .flex-col-responsive {
+    @apply flex-col;
+  }
+  .hidden-responsive {
+    @apply hidden;
+  }
+  .scale-75-responsive {
+    @apply scale-75;
+  }
+  .mb-6-responsive {
+    @apply mb-6;
+  }
 }

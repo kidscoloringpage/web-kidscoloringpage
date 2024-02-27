@@ -2,11 +2,7 @@
   "extends": "astro/tsconfigs/strict",
   "compilerOptions": {
     "target": "ES6",
-    "lib": [
-      "DOM",
-      "DOM.Iterable",
-      "ESNext"
-    ],
+    "lib": ["DOM", "DOM.Iterable", "ESNext"],
     "allowJs": true,
     "skipLibCheck": true,
     "strict": true,
@@ -28,6 +24,6 @@
     "downlevelIteration": true,
     "skipDefaultLibCheck": true,
     "verbatimModuleSyntax": true,
-    "noImplicitThis": false,
+    "noImplicitThis": false
   }
 }
