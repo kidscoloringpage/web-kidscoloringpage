@@ -10,6 +10,7 @@ import { RegisterDialog } from '../components/AuthFlow/RegisterDialog';
 import { RecoverPasswordDialog } from '../components/AuthFlow/RecoverPasswordDialog';
 import { PendingVerificationDialog } from '../components/AuthFlow/PendingVerificationDialog';
 import { PageProgress } from '../components/Global/PageProgress';
+import Analytics from '../components/Analytics/Analytics.astro';
 
 export interface Props {
   title?: string;
@@ -85,6 +86,8 @@ const paymentSessionId = Astro.url.searchParams.get('session_id') || '';
     <ResetPasswordDialog client:only='react' />
     <RecoverPasswordDialog client:load />
     <PendingVerificationDialog client:load />
+
+    <Analytics />
 
     <script type='text/javascript'>
       (function (c, l, a, r, i, t, y) {

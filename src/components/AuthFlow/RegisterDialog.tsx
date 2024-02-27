@@ -5,7 +5,6 @@ import {
   DialogDescription,
   DialogFooter,
   DialogHeader,
-  DialogOverlay,
   DialogTitle,
 } from '../Global/Dialog';
 import { useStore } from '@nanostores/react';
@@ -22,15 +21,13 @@ import {
   type YupResolverType,
 } from '../../lib/yup.ts';
 import { useForm } from 'react-hook-form';
-import { useCallback, useState } from 'react';
+import { useCallback } from 'react';
 import { httpPost } from '../../lib/http.ts';
 import { toast } from 'sonner';
 import { GoogleButton } from './GoogleButton.tsx';
 
 export function RegisterDialog() {
   const $hasRegisterDialog = useStore(hasRegisterDialog);
-
-  const [showRegisterWithEmail, setShowRegisterWithEmail] = useState(false);
 
   const { schema } = useYupSchema({
     name: Yup.string().required().label('Full name'),
@@ -87,7 +84,6 @@ export function RegisterDialog() {
       onOpenChange={(state) => {
         if (!state) resetForm();
         hasRegisterDialog.set(state);
-        setShowRegisterWithEmail(false);
       }}
     >
       <DialogContent
