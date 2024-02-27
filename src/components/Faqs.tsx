@@ -46,7 +46,7 @@ export function Faqs() {
             <div className="mb-6 flex flex-col gap-y-3">
               <div className="faq-question flex cursor-pointer flex-row items-baseline gap-x-6">
                 <p className="flex-1 text-xl font-light">
-                  What is KidsColorPage.com?
+                  What is KidsColoringPage.com?
                 </p>
                 <img
                   src="/icon-angle-right.png"
