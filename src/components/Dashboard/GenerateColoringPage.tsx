@@ -1,11 +1,10 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { httpGet, httpPost } from '../../lib/http.ts';
 import { toast } from 'sonner';
 import {
   newColorImageGenerated,
   pageProgressMessage,
 } from '../../stores/page.ts';
-import { useCountColoringSheet } from '../../hooks/use-count-coloring-sheet.ts';
 import type { UserDocument } from '../../api/user.ts';
 
 type Props = {
@@ -20,14 +19,6 @@ export function GenerateColoringPage(props: Props) {
     props?.totalCredits - props?.usedCredits,
   );
   const [prompt, setPrompt] = useState('');
-  const [{ data: countSheetsResponse }, countColoringSheet] =
-    useCountColoringSheet();
-
-  useEffect(() => {
-    if (countSheetsResponse) {
-      setRemainingCredits(remainingCredits - 1);
-    }
-  }, [countSheetsResponse]);
 
   const getColorSheet = async (id: string) => {
     return httpGet<{ _id: string; status: string; url: string }>(
@@ -68,7 +59,6 @@ export function GenerateColoringPage(props: Props) {
         clearInterval(interval);
         pageProgressMessage.set('');
         toast.error('Coloring sheet generation failed. Please try again later');
-        !props?.hasActiveSubscription && countColoringSheet();
         return;
       }
 
@@ -77,7 +67,7 @@ export function GenerateColoringPage(props: Props) {
         clearInterval(interval);
         pageProgressMessage.set('');
         newColorImageGenerated.set(true);
-        !props?.hasActiveSubscription && countColoringSheet();
+        setRemainingCredits(remainingCredits - 1);
       }
     }, 5000);
   };
