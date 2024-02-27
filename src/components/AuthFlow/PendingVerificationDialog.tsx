@@ -44,7 +44,7 @@ export function PendingVerificationDialog() {
         }}>
             <DialogContent
                 allowClose={false}
-                className="sm:max-w-[490px] overflow-y-scroll md:overflow-hidden sm:max-h-screen"
+                className="sm:max-w-[490px] overflow-y-scroll h-full md:h-auto md:overflow-y-auto md:overflow-x-auto"
                 onOpenAutoFocus={(e) => e.preventDefault()}
             >
                 <div className="p-8">

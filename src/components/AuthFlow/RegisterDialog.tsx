@@ -1,7 +1,7 @@
 import {
     Dialog, DialogClose,
     DialogContent, DialogDescription, DialogFooter,
-    DialogHeader,
+    DialogHeader, DialogOverlay,
     DialogTitle,
 } from '../Global/Dialog';
 import { useStore } from '@nanostores/react';
@@ -11,12 +11,15 @@ import {
 } from '../../stores/page';
 import {useYupSchema, Yup, yupFormResolver, type YupResolverType} from "../../lib/yup.ts";
 import {useForm} from "react-hook-form";
-import {useCallback} from "react";
+import {useCallback, useState} from "react";
 import {httpPost} from "../../lib/http.ts";
 import {toast} from "sonner";
+import {GoogleButton} from "./GoogleButton.tsx";
 
 export function RegisterDialog() {
     const $hasRegisterDialog = useStore(hasRegisterDialog);
+
+    const [showRegisterWithEmail, setShowRegisterWithEmail] = useState(false);
 
     const { schema } = useYupSchema({
         name: Yup.string().required().label('Full name'),
@@ -69,10 +72,11 @@ export function RegisterDialog() {
         <Dialog open={$hasRegisterDialog} onOpenChange={(state) => {
             if (!state) resetForm();
             hasRegisterDialog.set(state);
+            setShowRegisterWithEmail(false);
         }}>
             <DialogContent
                 allowClose={false}
-                className="sm:max-w-[490px] overflow-y-scroll md:overflow-hidden sm:max-h-screen"
+                className="sm:max-w-[490px] overflow-y-scroll h-full md:h-auto md:overflow-y-auto md:overflow-x-auto"
                 onOpenAutoFocus={(e) => e.preventDefault()}
             >
                 <div className="p-8">
@@ -123,12 +127,18 @@ export function RegisterDialog() {
                             <button
                                 type="submit"
                                 className="group button-3 flex flex-row items-center gap-x-2 w-full">
-                            <span
-                                className="flex-1 text-center text-white text-xl">Register now</span>
+                        <span
+                            className="flex-1 text-center text-white text-xl">Register now</span>
                                 <img src="/icon-angle-right-white.png" alt="icon-angle-right"
                                      className="w-[10px] h-auto mt-[4px]"/>
                             </button>
                         </form>
+                        <div className="flex w-full items-center gap-2 pt-1 pb-5 text-sm text-slate-600">
+                            <div className="h-px w-full bg-slate-200"></div>
+                            OR
+                            <div className="h-px w-full bg-slate-200"></div>
+                        </div>
+                        <GoogleButton />
                     </div>
                 </div>
                 <DialogFooter className="py-8 bg-[#FFF2DF] rounded-t-3xl flex-col">

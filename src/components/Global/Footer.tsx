@@ -1,8 +1,12 @@
 import {toast} from "sonner";
 import {getUrlParams} from "../../lib/browser.ts";
-import {hasResetPasswordDialog} from "../../stores/page.ts";
+import {hasResetPasswordDialog, pageProgressMessage} from "../../stores/page.ts";
+import {httpGet} from "../../lib/http.ts";
+import {createTokenCookie} from "../../lib/jwt.ts";
+import {redirectAuthSuccess} from "../../lib/auth-redirect.ts";
 
 export const Footer = (props: {paymentSessionId: string}) => {
+    const urlParams = getUrlParams();
 
     if (props.paymentSessionId && !window.sessionStorage.getItem('paymentSessionId')) {
         toast.success('Payment successful', {
@@ -11,8 +15,36 @@ export const Footer = (props: {paymentSessionId: string}) => {
         window.sessionStorage.setItem('paymentSessionId', props.paymentSessionId);
     }
 
-    if (getUrlParams()['reset-password-code']) {
+    if (urlParams['reset-password-code']) {
         hasResetPasswordDialog.set(true);
+    }
+
+    // after social redirect from google, get the token and redirect to the dashboard
+    const code = urlParams?.code;
+    const state = urlParams?.state;
+    const provider = urlParams?.provider;
+    if (code && state && provider === 'google') {
+        pageProgressMessage.set('Logging in, please wait...');
+        httpGet<{ token: string }>(
+            `${import.meta.env.PUBLIC_API_URL}/v1-google-callback${
+                window.location.search
+            }`,
+        )
+            .then(({ response, error }) => {
+                if (!response?.token) {
+                    toast.error(error?.message || 'Something went wrong.');
+                    pageProgressMessage.set('');
+
+                    return;
+                }
+
+                createTokenCookie(response.token);
+                redirectAuthSuccess();
+            })
+            .catch(() => {
+                toast.error('Something went wrong. Please try again later.');
+                pageProgressMessage.set('');
+            });
     }
 
     return (

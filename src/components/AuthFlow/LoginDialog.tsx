@@ -12,16 +12,19 @@ import {
     hasRegisterDialog,
     pendingVerificationEmail
 } from '../../stores/page';
-import {useCallback} from 'react';
+import {useCallback, useState} from 'react';
 import {redirectAuthSuccess} from '../../lib/auth-redirect';
 import {createTokenCookie} from "../../lib/jwt.ts";
 import {httpPost} from "../../lib/http.ts";
 import { toast } from 'sonner';
 import { useForm } from 'react-hook-form';
 import {useYupSchema, Yup, yupFormResolver, type YupResolverType} from "../../lib/yup.ts";
+import {GoogleButton} from "./GoogleButton.tsx";
 
 export function LoginDialog() {
     const $hasLoginDialog = useStore(hasLoginDialog);
+
+    const [showLoginWithEmail, setShowLoginWithEmail] = useState(false);
 
     const { schema } = useYupSchema({
         email: Yup.string().email().required().label('Email address'),
@@ -75,10 +78,11 @@ export function LoginDialog() {
         <Dialog open={$hasLoginDialog} onOpenChange={(state) => {
             if (!state) reset({ email: '', password: ''});
             hasLoginDialog.set(state);
+            setShowLoginWithEmail(false);
         }}>
             <DialogContent
                 allowClose={false}
-                className="sm:max-w-[490px] overflow-y-scroll md:overflow-hidden sm:max-h-screen"
+                className="sm:max-w-[490px] overflow-y-scroll h-full md:h-auto md:overflow-y-auto md:overflow-x-auto"
                 onOpenAutoFocus={(e) => e.preventDefault()}
             >
                 <div className="p-8">
@@ -89,7 +93,21 @@ export function LoginDialog() {
                         </DialogClose>
                     </DialogHeader>
                     <div className='flex flex-col items-start pt-8'>
-                        <form className="w-full flex flex-col mb-5" onSubmit={onSubmit}>
+                        {!showLoginWithEmail && <div className="w-full">
+                            <GoogleButton />
+                            <div className="flex w-full items-center gap-2 pt-6 pb-5 text-sm text-slate-600">
+                                <div className="h-px w-full bg-slate-200"></div>
+                                OR
+                                <div className="h-px w-full bg-slate-200"></div>
+                            </div>
+                            <button
+                                onClick={() => setShowLoginWithEmail(true)}
+                                className="group button flex flex-row items-center justify-center gap-x-2 w-full mb-5">
+                            <span
+                                className="group-hover:text-[#F36A3B] text-xl">Continue with Email</span>
+                            </button>
+                        </div>}
+                        {showLoginWithEmail && <form className="w-full flex flex-col mb-5" onSubmit={onSubmit}>
                             <div className="mb-3.5 flex flex-col gap-y-1">
                                 <input type="email"
                                        placeholder='Email address'
@@ -119,14 +137,15 @@ export function LoginDialog() {
                                 <img src="/icon-angle-right.png" alt="icon-angle-right"
                                      className="w-[10px] h-auto mt-[4px]"/>
                             </button>
-                        </form>
+                        </form>}
                         <button
                             onClick={() => {
                                 hasLoginDialog.set(false);
                                 hasRegisterDialog.set(false);
                                 hasRecoverPasswordDialog.set(true);
                             }}
-                            className="text-[#545454] font-light underline text-sm">Recover password</button>
+                            className="text-[#545454] font-light underline text-sm">Recover password
+                        </button>
                     </div>
                 </div>
                 <DialogFooter className="py-8 bg-[#FFF2DF] rounded-t-3xl flex-col">
