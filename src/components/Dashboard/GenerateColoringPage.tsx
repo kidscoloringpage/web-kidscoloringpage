@@ -2,7 +2,9 @@ import { useState } from 'react';
 import { httpGet, httpPost } from '../../lib/http.ts';
 import { toast } from 'sonner';
 import {
+  hasViewColorPageDialog,
   newColorImageGenerated,
+  newColorImageGeneratedData,
   pageProgressMessage,
 } from '../../stores/page.ts';
 import type { UserDocument } from '../../api/user.ts';
@@ -21,12 +23,14 @@ export function GenerateColoringPage(props: Props) {
   const [prompt, setPrompt] = useState('');
 
   const getColorSheet = async (id: string) => {
-    return httpGet<{ _id: string; status: string; url: string }>(
-      `${import.meta.env.PUBLIC_API_URL}/v1-get-coloring-sheet`,
-      {
-        id,
-      },
-    );
+    return httpGet<{
+      _id: string;
+      status: string;
+      url: string;
+      prompt: string;
+    }>(`${import.meta.env.PUBLIC_API_URL}/v1-get-coloring-sheet`, {
+      id,
+    });
   };
 
   const generateColorSheet = async () => {
@@ -67,6 +71,11 @@ export function GenerateColoringPage(props: Props) {
         clearInterval(interval);
         pageProgressMessage.set('');
         newColorImageGenerated.set(true);
+        newColorImageGeneratedData.set({
+          url: getResponse.url,
+          prompt: getResponse.prompt,
+        });
+        hasViewColorPageDialog.set(true);
         setRemainingCredits(remainingCredits - 1);
         setPrompt('');
       }

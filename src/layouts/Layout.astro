@@ -80,11 +80,11 @@ const paymentSessionId = Astro.url.searchParams.get('session_id') || '';
     <slot name='after-footer' />
 
     <Authenticator />
-    <LoginDialog client:load />
-    <RegisterDialog client:load />
+    <LoginDialog client:only='react' />
+    <RegisterDialog client:only='react' />
     <ResetPasswordDialog client:only='react' />
-    <RecoverPasswordDialog client:load />
-    <PendingVerificationDialog client:load />
+    <RecoverPasswordDialog client:only='react' />
+    <PendingVerificationDialog client:only='react' />
 
     <Analytics />
 

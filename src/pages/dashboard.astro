@@ -8,6 +8,7 @@ import { MyColoringPages } from '../components/Dashboard/MyColoringPages';
 import { GenerateColoringPage } from '../components/Dashboard/GenerateColoringPage';
 import { colorSheetApi } from '../api/color-sheet';
 import { Faqs } from '../components/Faqs';
+import { ViewColorPageDialog } from '../components/Dashboard/ViewColorPageDialog';
 
 const { currentUser, hasActiveSubscription } = Astro.locals;
 if (!currentUser) {
@@ -47,4 +48,5 @@ const {
       </Fragment>
     )
   }
+  <ViewColorPageDialog client:only='react' />
 </AuthLayout>
