@@ -11,6 +11,7 @@ import { RecoverPasswordDialog } from '../components/AuthFlow/RecoverPasswordDia
 import { PendingVerificationDialog } from '../components/AuthFlow/PendingVerificationDialog';
 import { PageProgress } from '../components/Global/PageProgress';
 import Analytics from '../components/Analytics/Analytics.astro';
+import AdminNavigation from '../components/Admin/AdminNavigation.astro';
 
 export interface Props {
   title?: string;
@@ -79,6 +80,7 @@ const paymentSessionId = Astro.url.searchParams.get('session_id') || '';
     </slot>
     <slot name='after-footer' />
 
+    <AdminNavigation />
     <Authenticator />
     <LoginDialog client:only='react' />
     <RegisterDialog client:only='react' />

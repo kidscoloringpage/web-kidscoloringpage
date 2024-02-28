@@ -1,0 +1,19 @@
+---
+const { currentUser } = Astro.locals;
+const isSuperAdmin = currentUser?.metadata?.isSuperAdmin;
+---
+
+{
+  isSuperAdmin && (
+    <a
+      href='/admin/dashboard'
+      class='fixed bottom-5 right-5 flex cursor-pointer rounded-full bg-[#f36a3c] p-4 shadow-sm'
+    >
+      <img
+        src='/cog.svg'
+        alt='admin-dashboard'
+        class='h-8 w-8 transition-all hover:-rotate-180'
+      />
+    </a>
+  )
+}
