@@ -68,6 +68,7 @@ export function GenerateColoringPage(props: Props) {
         pageProgressMessage.set('');
         newColorImageGenerated.set(true);
         setRemainingCredits(remainingCredits - 1);
+        setPrompt('');
       }
     }, 5000);
   };
@@ -149,6 +150,11 @@ export function GenerateColoringPage(props: Props) {
               placeholder="Enter your prompt here"
               id="prompt"
               value={prompt}
+              onKeyDown={(e) => {
+                if (e.key === 'Enter') {
+                  generateColorSheet();
+                }
+              }}
               onChange={(e) => setPrompt(e.target.value)}
               className="w-full rounded-full border border-black px-8 py-4 text-black placeholder-[#999999] outline-none focus:text-black focus:placeholder-black"
             />
