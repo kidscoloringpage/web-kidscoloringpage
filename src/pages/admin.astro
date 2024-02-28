@@ -150,17 +150,17 @@ const lastPage = Math.ceil(coloringPages?.totalCount / coloringPages?.perPage);
               {page - 1 !== 0 && (
                 <a
                   href={`?page=${page - 1}`}
-                  class='min-w-[150px] rounded-lg border bg-[#fff2df] py-2.5 text-center uppercase shadow-sm'
+                  class='min-w-0 md:min-w-[150px] rounded-lg border bg-[#fff2df] text-sm md:text-base px-3 md:px-0 py-2 md:py-2.5 text-center uppercase shadow-sm'
                 >
                   Prev
                 </a>
               )}
               {page - 1 === 0 && <span />}
-              <p>{'Page ' + page + ' of ' + lastPage}</p>
+              <p class="text-sm md:text-base">{'Page ' + page + ' of ' + lastPage}</p>
               {page !== lastPage && (
                 <a
                   href={`?page=${page + 1}`}
-                  class='min-w-[150px] rounded-lg border bg-[#fff2df] py-2.5 text-center uppercase shadow-sm'
+                  class='min-w-0 md:min-w-[150px] rounded-lg border bg-[#fff2df] text-sm md:text-base px-3 md:px-0 py-2 md:py-2.5 text-center uppercase shadow-sm'
                 >
                   Next
                 </a>
