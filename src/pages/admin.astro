@@ -1,0 +1,175 @@
+---
+import GuestLayout from '../layouts/GuestLayout.astro';
+import { ColoringImage } from '../components/ColoringImage';
+import { adminApi } from '../api/admin';
+
+const page = +(Astro.url.searchParams.get('page') || 1);
+const { response: coloringPages } = await adminApi(Astro as any).list(page);
+const { response: stats } = await adminApi(Astro as any).getDashboardStats();
+const lastPage = Math.ceil(coloringPages?.totalCount / coloringPages?.perPage);
+---
+
+<GuestLayout>
+  <div class='bg-white'>
+    <div class='px-responsive container px-4 py-8 md:px-0 md:py-12'>
+      <p class='mb-5 font-sansita text-4xl font-bold'>Welcome back, admin</p>
+      <p class='mb-8 text-xl font-light text-[#545454]'>
+        Here is some statistics about the users, there subscription plans and
+        color pages they have generated
+      </p>
+      <div class='mb-5 grid grid-cols-2 gap-4 md:grid-cols-5'>
+        <div
+          class='flex flex-col justify-between gap-y-4 rounded-2xl bg-[#fff2df] p-4'
+        >
+          <img
+            src='/users.svg'
+            alt='users'
+            class='h-12 w-12 rounded-full bg-white p-2.5'
+          />
+          <div class='flex flex-col gap-y-1'>
+            <p class='font-sansita text-5xl font-bold'>{stats?.users || 0}</p>
+            <p class='text-[#545454]'>Total users</p>
+          </div>
+        </div>
+        <div class='flex flex-col justify-between rounded-2xl bg-[#fff2df] p-4'>
+          <img
+            src='/palette.svg'
+            alt='users'
+            class='h-12 w-12 rounded-full bg-white p-2.5'
+          />
+          <div class='flex flex-col gap-y-1'>
+            <p class='font-sansita text-5xl font-bold'>
+              {stats?.coloringSheets || 0}
+            </p>
+            <p class='text-[#545454]'>Total color pages</p>
+          </div>
+        </div>
+        <div class='flex flex-col justify-between rounded-2xl bg-[#fff2df] p-4'>
+          <img
+            src='/palette.svg'
+            alt='users'
+            class='h-12 w-12 rounded-full bg-white p-2.5'
+          />
+          <div class='flex flex-col gap-y-1'>
+            <p class='font-sansita text-5xl font-bold'>
+              {stats?.today?.coloringSheets || 0}
+            </p>
+            <p class='w-full truncate text-[#545454]'>
+              Color pages generated today
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class='mb-16 grid grid-cols-2 gap-4 md:grid-cols-5'>
+        <div class='flex flex-col justify-between rounded-2xl bg-[#fff2df] p-4'>
+          <img
+            src='/frown.svg'
+            alt='users'
+            class='h-12 w-12 rounded-full bg-white p-2.5'
+          />
+          <div class='flex flex-col gap-y-1'>
+            <p class='font-sansita text-5xl font-bold'>
+              {stats?.freeUsers || 0}
+            </p>
+            <p class='text-[#545454]'>Free users</p>
+          </div>
+        </div>
+        <div class='flex flex-col justify-between rounded-2xl bg-[#fff2df] p-4'>
+          <img
+            src='/dollar-sign.svg'
+            alt='users'
+            class='h-12 w-12 rounded-full bg-white p-2.5'
+          />
+          <div class='flex flex-col gap-y-1'>
+            <p class='font-sansita text-5xl font-bold'>
+              {stats?.paidUsers || 0}
+            </p>
+            <p class='text-[#545454]'>Paid users</p>
+          </div>
+        </div>
+        <div class='flex flex-col justify-between rounded-2xl bg-[#fff2df] p-4'>
+          <img
+            src='/binary.svg'
+            alt='users'
+            class='h-12 w-12 rounded-full bg-white p-2.5'
+          />
+          <div class='flex flex-col gap-y-1'>
+            <p class='font-sansita text-5xl font-bold'>
+              {stats?.oneTimeUsers || 0}
+            </p>
+            <p class='text-[#545454]'>One time subscription</p>
+          </div>
+        </div>
+        <div class='flex flex-col justify-between rounded-2xl bg-[#fff2df] p-4'>
+          <img
+            src='/repeat-1.svg'
+            alt='users'
+            class='h-12 w-12 rounded-full bg-white p-2.5'
+          />
+          <div class='flex flex-col gap-y-1'>
+            <p class='font-sansita text-5xl font-bold'>
+              {stats?.monthlyUsers || 0}
+            </p>
+            <p class='text-[#545454]'>Monthly subscriptions</p>
+          </div>
+        </div>
+        <div class='flex flex-col justify-between rounded-2xl bg-[#fff2df] p-4'>
+          <img
+            src='/repeat.svg'
+            alt='users'
+            class='h-12 w-12 rounded-full bg-white p-2.5'
+          />
+          <div class='flex flex-col gap-y-1'>
+            <p class='font-sansita text-5xl font-bold'>
+              {stats?.yearlyUsers || 0}
+            </p>
+            <p class='text-[#545454]'>Yearly subscriptions</p>
+          </div>
+        </div>
+      </div>
+      <p class='mb-5 font-sansita text-4xl font-bold'>Color pages generated</p>
+      <p class='mb-8 text-xl font-light text-[#545454]'>
+        Here are the color pages that have been generated so far by each user
+      </p>
+      <div class='max-auto'>
+        <div class='grid grid-cols-2 gap-4 md:grid-cols-4'>
+          {
+            coloringPages?.data.map((coloringPage) => (
+              <ColoringImage
+                client:load
+                src={coloringPage.url}
+                title={coloringPage.prompt}
+                alt={coloringPage.prompt}
+              />
+            ))
+          }
+        </div>
+        {
+          coloringPages?.totalCount && (
+            <div class='mt-5 flex items-center justify-between'>
+              {page - 1 !== 0 && (
+                <a
+                  href={`?page=${page - 1}`}
+                  class='min-w-[150px] rounded-lg border bg-[#fff2df] py-2.5 text-center uppercase shadow-sm'
+                >
+                  Prev
+                </a>
+              )}
+              {page - 1 === 0 && <span />}
+              <p>{'Page ' + page + ' of ' + lastPage}</p>
+              {page !== lastPage && (
+                <a
+                  href={`?page=${page + 1}`}
+                  class='min-w-[150px] rounded-lg border bg-[#fff2df] py-2.5 text-center uppercase shadow-sm'
+                >
+                  Next
+                </a>
+              )}
+              {page === lastPage && <span />}
+            </div>
+          )
+        }
+      </div>
+    </div>
+  </div>
+</GuestLayout>
