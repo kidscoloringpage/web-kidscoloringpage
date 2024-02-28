@@ -6,7 +6,7 @@ export function HomepageHero() {
     <div className="px-responsive container relative z-20 flex flex-col items-center justify-center px-4 md:!mt-6 md:flex-row md:items-end md:justify-between md:px-0">
       <div className="mb-12 flex flex-col gap-y-5 md:mb-16">
         <p className="flex flex-row items-center gap-x-3 font-sansita text-3xl sm:text-4xl md:text-6xl">
-          Introducing AI{' '}
+          Introducing{' '}
           <img
             src="/icon-magic-wand.png"
             alt="icon-magic-wand"

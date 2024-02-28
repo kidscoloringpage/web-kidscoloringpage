@@ -55,17 +55,17 @@ export function Faqs() {
                 />
               </div>
               <p className="faq-answer hidden font-light">
-                KidsColoringPage.com is an AI-powered coloring page generator!
-                Perfect for parents, teachers, adults, and Sunday School
-                instructors alike, KidsColoringPage.com transforms your
-                imagination into coloring adventures. Whether you're aiming to
-                entertain your kids, engage your students, or find a moment of
-                peace and creativity for yourself, this tool is designed to
-                cater to all your coloring needs. It's as simple as envisioning
-                what you want on a page – from educational themes to personal
-                relaxation or church activities – KidsColoringPage.com brings it
-                to life. If coloring pages are a staple in your routine, look no
-                further than KidsColoringPage.com to create them effortlessly!
+                KidsColoringPage.com is an coloring page generator! Perfect for
+                parents, teachers, adults, and Sunday School instructors alike,
+                KidsColoringPage.com transforms your imagination into coloring
+                adventures. Whether you're aiming to entertain your kids, engage
+                your students, or find a moment of peace and creativity for
+                yourself, this tool is designed to cater to all your coloring
+                needs. It's as simple as envisioning what you want on a page –
+                from educational themes to personal relaxation or church
+                activities – KidsColoringPage.com brings it to life. If coloring
+                pages are a staple in your routine, look no further than
+                KidsColoringPage.com to create them effortlessly!
               </p>
             </div>
             <div className="mb-6 border border-dashed border-[#CCCAC7] opacity-60" />

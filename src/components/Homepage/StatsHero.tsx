@@ -16,7 +16,7 @@ export function StatsHero() {
               />
             </p>
             <p className="text-xl font-light text-[#EBEBEB]">
-              AI coloring page generator
+              Coloring page generator
             </p>
           </div>
           <div className="flex flex-col gap-y-2 font-sansita">

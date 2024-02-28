@@ -88,7 +88,7 @@ export const Footer = (props: { paymentSessionId: string }) => {
               <span className="text-[#EF60B7]">PAGE</span>
             </p>
             <p className="text-[#C2C2C2]">
-              Introducing our AI platform generating kid-friendly coloring
+              Introducing our creative platform generating kid-friendly coloring
               sheets. Designed to spark creativity, our tool offers themed
               designs for endless fun. Easily customizable for educational
               needs, these sheets are both entertaining and educational. Your
