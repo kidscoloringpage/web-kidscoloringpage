@@ -94,7 +94,7 @@ export function RegisterDialog() {
         <div className="p-8">
           <DialogHeader className="flex flex-row justify-between text-center">
             <DialogTitle className="font-sansita text-4xl font-bold">
-              <span className="text-[#6A7DF6]">Create</span> an account
+              Create an account
             </DialogTitle>
             <DialogClose>
               <img
@@ -108,6 +108,12 @@ export function RegisterDialog() {
             You're one step away to create sheet for your kids
           </DialogDescription>
           <div className="mt-8 flex flex-col items-start">
+            <GoogleButton />
+            <div className="flex w-full items-center gap-2 pb-5 pt-6 font-extrabold">
+              <div className="h-px w-full border border-dashed border-b-[#BABABA]"></div>
+              <span className="text-[#999999]">OR</span>
+              <div className="h-px w-full border border-dashed border-b-[#BABABA]"></div>
+            </div>
             <form className="mb-5 flex w-full flex-col" onSubmit={onSubmit}>
               <div className="mb-3.5 flex flex-col gap-y-1">
                 <input
@@ -164,12 +170,6 @@ export function RegisterDialog() {
                 />
               </button>
             </form>
-            <div className="flex w-full items-center gap-2 pb-5 pt-1 text-sm text-slate-600">
-              <div className="h-px w-full bg-slate-200"></div>
-              OR
-              <div className="h-px w-full bg-slate-200"></div>
-            </div>
-            <GoogleButton />
           </div>
         </div>
         <DialogFooter className="flex-col rounded-t-3xl bg-[#FFF2DF] py-8">

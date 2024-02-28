@@ -31,8 +31,6 @@ import { GoogleButton } from './GoogleButton.tsx';
 export function LoginDialog() {
   const $hasLoginDialog = useStore(hasLoginDialog);
 
-  const [showLoginWithEmail, setShowLoginWithEmail] = useState(false);
-
   const { schema } = useYupSchema({
     email: Yup.string().email().required().label('Email address'),
     password: Yup.string().required().label('Password'),
@@ -88,7 +86,6 @@ export function LoginDialog() {
       onOpenChange={(state) => {
         if (!state) reset({ email: '', password: '' });
         hasLoginDialog.set(state);
-        setShowLoginWithEmail(false);
       }}
     >
       <DialogContent
@@ -110,69 +107,57 @@ export function LoginDialog() {
             </DialogClose>
           </DialogHeader>
           <div className="flex flex-col items-start pt-8">
-            {!showLoginWithEmail && (
-              <div className="w-full">
-                <GoogleButton />
-                <div className="flex w-full items-center gap-2 pb-5 pt-6 text-sm text-slate-600">
-                  <div className="h-px w-full bg-slate-200"></div>
-                  OR
-                  <div className="h-px w-full bg-slate-200"></div>
-                </div>
-                <button
-                  onClick={() => setShowLoginWithEmail(true)}
-                  className="button group mb-5 flex w-full flex-row items-center justify-center gap-x-2"
-                >
-                  <span className="text-xl group-hover:text-[#F36A3B]">
-                    Continue with Email
-                  </span>
-                </button>
+            <div className="w-full">
+              <GoogleButton />
+              <div className="flex w-full items-center gap-2 pb-5 pt-6 font-extrabold">
+                <div className="h-px w-full border border-dashed border-b-[#BABABA]"></div>
+                <span className="text-[#999999]">OR</span>
+                <div className="h-px w-full border border-dashed border-b-[#BABABA]"></div>
               </div>
-            )}
-            {showLoginWithEmail && (
-              <form className="mb-5 flex w-full flex-col" onSubmit={onSubmit}>
-                <div className="mb-3.5 flex flex-col gap-y-1">
-                  <input
-                    type="email"
-                    placeholder="Email address"
-                    {...register('email')}
-                    className={`border px-8 py-4 text-black placeholder-[#999999] outline-none ${errors?.email?.message ? 'border-red-700' : 'border-[#999999]'} rounded-full focus:border-[#000000] focus:text-black focus:placeholder-black`}
-                  />
-                  {errors?.email?.message && (
-                    <p className="text-xs text-red-700">
-                      {errors?.email?.message.toString()}
-                    </p>
-                  )}
-                </div>
+            </div>
+            <form className="mb-5 flex w-full flex-col" onSubmit={onSubmit}>
+              <div className="mb-3.5 flex flex-col gap-y-1">
+                <input
+                  type="email"
+                  placeholder="Email address"
+                  {...register('email')}
+                  className={`border px-8 py-4 text-black placeholder-[#999999] outline-none ${errors?.email?.message ? 'border-red-700' : 'border-[#999999]'} rounded-full focus:border-[#000000] focus:text-black focus:placeholder-black`}
+                />
+                {errors?.email?.message && (
+                  <p className="text-xs text-red-700">
+                    {errors?.email?.message.toString()}
+                  </p>
+                )}
+              </div>
 
-                <div className="mb-5 flex flex-col gap-y-1">
-                  <input
-                    type="password"
-                    placeholder="Password"
-                    {...register('password')}
-                    className={`border px-8 py-4 text-black placeholder-[#999999] outline-none ${errors?.password?.message ? 'border-red-700' : 'border-[#999999]'} rounded-full focus:border-[#000000] focus:text-black focus:placeholder-black`}
-                  />
-                  {errors?.password?.message && (
-                    <p className="text-xs text-red-700">
-                      {errors?.password?.message.toString()}
-                    </p>
-                  )}
-                </div>
+              <div className="mb-5 flex flex-col gap-y-1">
+                <input
+                  type="password"
+                  placeholder="Password"
+                  {...register('password')}
+                  className={`border px-8 py-4 text-black placeholder-[#999999] outline-none ${errors?.password?.message ? 'border-red-700' : 'border-[#999999]'} rounded-full focus:border-[#000000] focus:text-black focus:placeholder-black`}
+                />
+                {errors?.password?.message && (
+                  <p className="text-xs text-red-700">
+                    {errors?.password?.message.toString()}
+                  </p>
+                )}
+              </div>
 
-                <button
-                  type="submit"
-                  className="button group flex flex-row items-center gap-x-2"
-                >
-                  <span className="flex-1 text-center text-xl group-hover:text-[#F36A3B]">
-                    Login
-                  </span>
-                  <img
-                    src="/icon-angle-right.png"
-                    alt="icon-angle-right"
-                    className="mt-[4px] h-auto w-[10px]"
-                  />
-                </button>
-              </form>
-            )}
+              <button
+                type="submit"
+                className="button group flex flex-row items-center gap-x-2"
+              >
+                <span className="flex-1 text-center text-xl group-hover:text-[#F36A3B]">
+                  Login
+                </span>
+                <img
+                  src="/icon-angle-right.png"
+                  alt="icon-angle-right"
+                  className="mt-[4px] h-auto w-[10px]"
+                />
+              </button>
+            </form>
             <button
               onClick={() => {
                 hasLoginDialog.set(false);
