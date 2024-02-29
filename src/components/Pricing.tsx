@@ -99,7 +99,7 @@ export function Pricing(props: { hasActiveSubscription: boolean }) {
               <button
                 disabled={props?.hasActiveSubscription}
                 onClick={() =>
-                  subscribeToPlan('price_1OoDEjIFLlIQIBa8NWgFxnWV')
+                  subscribeToPlan('price_1Op1HgIFLlIQIBa8QctbD21z')
                 }
                 className="button-2 mb-5 flex flex-row items-center gap-x-2 disabled:opacity-30 disabled:hover:text-black"
               >
