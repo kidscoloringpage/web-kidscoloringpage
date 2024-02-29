@@ -59,7 +59,7 @@ export function Pricing(props: { hasActiveSubscription: boolean }) {
             <div className="relative flex flex-col rounded-2xl border border-black bg-white px-6 py-6">
               <p className="mb-3.5">
                 <span className="text-4xl font-black">$5</span>{' '}
-                <span className="font-semibold">/ 10 images</span>
+                <span className="font-semibold">/ 20 images</span>
               </p>
               <p className="mb-3 font-semibold">Pay as you go</p>
               <p className="mb-6 font-light text-[#545454]">
