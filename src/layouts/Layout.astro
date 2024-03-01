@@ -43,10 +43,26 @@ const paymentSessionId = Astro.url.searchParams.get('session_id') || '';
     <meta charset='UTF-8' />
     <meta
       name='description'
-      content={description || 'Generate Kids coloring pages in seconds. Unleash your imagination! KidsColoringPage turns your ideas into coloring pages for your kids to color. From dinosaurs to fairies, let\'s bring their creativity to life!'}
+      content={description ||
+        "Generate Kids coloring pages in seconds. Unleash your imagination! KidsColoringPage turns your ideas into coloring pages for your kids to color. From dinosaurs to fairies, let's bring their creativity to life!"}
     />
     <meta name='viewport' content='width=device-width' />
     <meta name='generator' content={Astro.generator} />
+    <meta
+      property='og:title'
+      content='Generate Coloring Pages For Kids In Seconds'
+    />
+    <meta property='og:site_name' content='KidsColoringPage' />
+    <meta property='og:url' content='https://kidscoloringpage.com' />
+    <meta
+      property='og:description'
+      content='Transform ideas into coloring adventures for kids with KidsColoringPage! Dinosaurs, fairies & more await. Ignite creativity in seconds.'
+    />
+    <meta property='og:type' content='website' />
+    <meta
+      property='og:image'
+      content='https://www.kidscoloringpage.com/og.png'
+    />
     <link rel='canonical' href={canonicalUrl} />
     <link rel='icon' type='image/svg+xml' href='/favicon.ico' />
     <link rel='sitemap' href='/sitemap-index.xml' />
