@@ -44,6 +44,7 @@ export function HomepageHero() {
       <img
         src="/girl-painting.png"
         alt="girl-painting"
+        loading="lazy"
         className="mx-auto w-full md:absolute md:right-0 md:-z-10 md:w-2/4"
       />
     </div>
