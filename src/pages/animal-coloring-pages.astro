@@ -1,0 +1,49 @@
+---
+import GuestLayout from '../layouts/GuestLayout.astro';
+import { ColoringImage } from '../components/ColoringImage';
+
+const coloringPages = [
+  'https://kidscoloringpage.s3.eu-west-1.amazonaws.com/animals/wolf.png',
+  'https://kidscoloringpage.s3.eu-west-1.amazonaws.com/animals/cow.png',
+  'https://kidscoloringpage.s3.eu-west-1.amazonaws.com/animals/fox.png',
+  'https://kidscoloringpage.s3.eu-west-1.amazonaws.com/animals/frog.png',
+  'https://kidscoloringpage.s3.eu-west-1.amazonaws.com/animals/giraffe.png',
+  'https://kidscoloringpage.s3.eu-west-1.amazonaws.com/animals/goat.png',
+  'https://kidscoloringpage.s3.eu-west-1.amazonaws.com/animals/horse.png',
+  'https://kidscoloringpage.s3.eu-west-1.amazonaws.com/animals/monkey.png',
+];
+---
+
+<GuestLayout>
+  <div class='bg-[#FFF2DF]'>
+    <div class='px-responsive container px-4 py-8 md:px-0 md:py-12'>
+      <p class='mb-5 font-sansita text-4xl font-bold'>
+        Animal Printable Coloring Pages
+      </p>
+      <p class='mb-8 text-xl font-light text-[#545454]'>
+        If you're a kid who adores animals, an adult looking for a peaceful
+        activity, or a teacher needing fun educational resources, we've got
+        something special for you. Dive into our collection of free animal
+        coloring pages. From fluffy bunnies to majestic lions, and everything in
+        between, we offer a world of animals waiting for your creative touch.
+        Just a click away, and you can start coloring your favorite animals
+        today.
+      </p>
+
+      <div class='max-auto'>
+        <div class='grid grid-cols-2 gap-4 md:grid-cols-4'>
+          {
+            coloringPages.map((src, index) => (
+              <ColoringImage
+                client:load
+                src={src}
+                title={src.split('/').pop().split('.')[0].replace('png', '')}
+                alt={`fruit-${index}`}
+              />
+            ))
+          }
+        </div>
+      </div>
+    </div>
+  </div>
+</GuestLayout>

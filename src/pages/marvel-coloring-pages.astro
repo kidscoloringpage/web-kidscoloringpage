@@ -1,0 +1,50 @@
+---
+import GuestLayout from '../layouts/GuestLayout.astro';
+import { ColoringImage } from '../components/ColoringImage';
+
+const coloringPages = [
+  'https://kidscoloringpage.s3.eu-west-1.amazonaws.com/marvel-characters/captain america.png',
+  'https://kidscoloringpage.s3.eu-west-1.amazonaws.com/marvel-characters/doctor strange.png',
+  'https://kidscoloringpage.s3.eu-west-1.amazonaws.com/marvel-characters/hulk.png',
+  'https://kidscoloringpage.s3.eu-west-1.amazonaws.com/marvel-characters/ironman.png',
+  'https://kidscoloringpage.s3.eu-west-1.amazonaws.com/marvel-characters/jean grey.png',
+  'https://kidscoloringpage.s3.eu-west-1.amazonaws.com/marvel-characters/professor x.png',
+  'https://kidscoloringpage.s3.eu-west-1.amazonaws.com/marvel-characters/spiderman.png',
+  'https://kidscoloringpage.s3.eu-west-1.amazonaws.com/marvel-characters/thanos.png',
+  'https://kidscoloringpage.s3.eu-west-1.amazonaws.com/marvel-characters/Wolverine.png',
+];
+---
+
+<GuestLayout>
+  <div class='bg-[#FFF2DF]'>
+    <div class='px-responsive container px-4 py-8 md:px-0 md:py-12'>
+      <p class='mb-5 font-sansita text-4xl font-bold'>
+        Marvel Printable Coloring Pages
+      </p>
+      <p class='mb-8 text-xl font-light text-[#545454]'>
+        If you're a kid who loves adventures, an adult seeking some superhero
+        action, or a teacher searching for exciting classroom materials, we have
+        the perfect coloring pages for you. Explore our awesome collection of
+        free Marvel character coloring pages. From Spider-Man swinging through
+        the city, to Iron Man in his shiny armor, and many more heroes, there's
+        a whole universe of excitement waiting for you. Just a click, and you're
+        ready to bring your favorite superheroes to life with colors.
+      </p>
+
+      <div class='max-auto'>
+        <div class='grid grid-cols-2 gap-4 md:grid-cols-4'>
+          {
+            coloringPages.map((src, index) => (
+              <ColoringImage
+                client:load
+                src={src}
+                title={src.split('/').pop().split('.')[0].replace('png', '')}
+                alt={`fruit-${index}`}
+              />
+            ))
+          }
+        </div>
+      </div>
+    </div>
+  </div>
+</GuestLayout>

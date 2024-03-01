@@ -1,0 +1,63 @@
+---
+import GuestLayout from '../layouts/GuestLayout.astro';
+import { ColoringImage } from '../components/ColoringImage';
+
+const coloringPages = [
+  'https://kidscoloringpage.s3.eu-west-1.amazonaws.com/fruits/apple.png',
+  'https://kidscoloringpage.s3.eu-west-1.amazonaws.com/fruits/apricot.png',
+  'https://kidscoloringpage.s3.eu-west-1.amazonaws.com/fruits/avocado.png',
+  'https://kidscoloringpage.s3.eu-west-1.amazonaws.com/fruits/banana.png',
+  'https://kidscoloringpage.s3.eu-west-1.amazonaws.com/fruits/blackberry.png',
+  'https://kidscoloringpage.s3.eu-west-1.amazonaws.com/fruits/blueberries.png',
+  'https://kidscoloringpage.s3.eu-west-1.amazonaws.com/fruits/cherries.png',
+  'https://kidscoloringpage.s3.eu-west-1.amazonaws.com/fruits/dates.png',
+  'https://kidscoloringpage.s3.eu-west-1.amazonaws.com/fruits/elderberries.png',
+  'https://kidscoloringpage.s3.eu-west-1.amazonaws.com/fruits/fig.png',
+  'https://kidscoloringpage.s3.eu-west-1.amazonaws.com/fruits/grapefruit.png',
+  'https://kidscoloringpage.s3.eu-west-1.amazonaws.com/fruits/grapes.png',
+  'https://kidscoloringpage.s3.eu-west-1.amazonaws.com/fruits/guava.png',
+  'https://kidscoloringpage.s3.eu-west-1.amazonaws.com/fruits/kiwis.png',
+  'https://kidscoloringpage.s3.eu-west-1.amazonaws.com/fruits/lemons.png',
+  'https://kidscoloringpage.s3.eu-west-1.amazonaws.com/fruits/mango.png',
+  'https://kidscoloringpage.s3.eu-west-1.amazonaws.com/fruits/nectarines.png',
+  'https://kidscoloringpage.s3.eu-west-1.amazonaws.com/fruits/oranges.png',
+  'https://kidscoloringpage.s3.eu-west-1.amazonaws.com/fruits/papaya.png',
+  'https://kidscoloringpage.s3.eu-west-1.amazonaws.com/fruits/peach.png',
+  'https://kidscoloringpage.s3.eu-west-1.amazonaws.com/fruits/pineapple.png',
+  'https://kidscoloringpage.s3.eu-west-1.amazonaws.com/fruits/plum.png',
+  'https://kidscoloringpage.s3.eu-west-1.amazonaws.com/fruits/strawberries.png',
+  'https://kidscoloringpage.s3.eu-west-1.amazonaws.com/fruits/watermelon.png',
+];
+---
+
+<GuestLayout>
+  <div class='bg-[#FFF2DF]'>
+    <div class='px-responsive container px-4 py-8 md:px-0 md:py-12'>
+      <p class='mb-5 font-sansita text-4xl font-bold'>
+        Fruit Printable Coloring Pages
+      </p>
+      <p class='mb-8 text-xl font-light text-[#545454]'>
+        If you're a kid ready for fun, an adult looking for a calm activity, or
+        a teacher needing cool stuff for class, we've got lots of coloring pages
+        for you. Check out our free fruit coloring pages. You can color apples,
+        mangoes, and more. Just click and start your colorful adventure with
+        fruits.
+      </p>
+
+      <div class='max-auto'>
+        <div class='grid grid-cols-2 gap-4 md:grid-cols-4'>
+          {
+            coloringPages.map((src, index) => (
+              <ColoringImage
+                client:load
+                src={src}
+                title={src.split('/').pop().split('.')[0].replace('png', '')}
+                alt={`fruit-${index}`}
+              />
+            ))
+          }
+        </div>
+      </div>
+    </div>
+  </div>
+</GuestLayout>

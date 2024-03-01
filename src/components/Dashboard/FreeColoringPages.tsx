@@ -19,7 +19,7 @@ export function FreeColoringPages() {
               Free Printable Coloring Pages
             </p>
             <a
-              href="/color-pages"
+              href="/free-coloring-pages"
               className="button hidden w-fit flex-row items-center justify-center gap-x-4 md:relative md:flex md:min-w-[195px]"
             >
               Show all
@@ -65,7 +65,7 @@ export function FreeColoringPages() {
         </div>
         <div className="flex w-full justify-end">
           <a
-            href="/color-pages"
+            href="/free-coloring-pages"
             className="button flex w-fit flex-row items-center justify-center gap-x-4 md:relative md:hidden md:min-w-[195px]"
           >
             Show all

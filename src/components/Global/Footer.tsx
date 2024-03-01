@@ -101,8 +101,17 @@ export const Footer = (props: { paymentSessionId: string }) => {
                 Kids Coloring
               </p>
               <div className="flex flex-col gap-y-1.5 text-[#C2C2C2]">
-                <a href="/color-pages" className="hover:underline">
+                <a href="/free-coloring-pages" className="hover:underline">
                   Free Coloring Pages
+                </a>
+                <a href="/marvel-coloring-pages" className="hover:underline">
+                  Marvel Coloring Pages
+                </a>
+                <a href="/animal-coloring-pages" className="hover:underline">
+                  Animal Coloring Pages
+                </a>
+                <a href="/fruit-coloring-pages" className="hover:underline">
+                  Fruit Coloring Pages
                 </a>
                 <a href="/#wall-of-love" className="hover:underline">
                   Wall of Love

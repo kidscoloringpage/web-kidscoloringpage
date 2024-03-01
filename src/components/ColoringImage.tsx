@@ -7,26 +7,11 @@ export interface ColoringImageProps {
   alt: string;
   title: string;
   downloaded?: string;
+  allowDownload?: boolean;
 }
 
-const useImageLoaded = () => {
-  const [loaded, setLoaded] = useState(false);
-  const ref = useRef<HTMLImageElement>(null);
-
-  const onLoad = () => {
-    setLoaded(true);
-  };
-
-  useEffect(() => {
-    if (ref.current && ref.current.complete) {
-      onLoad();
-    }
-  });
-
-  return [ref, loaded, onLoad];
-};
-
 export function ColoringImage(props: ColoringImageProps) {
+  const { allowDownload = true } = props;
   const [loaded, setLoaded] = useState(false);
   const ref = useRef<HTMLImageElement>(null);
 
@@ -43,7 +28,7 @@ export function ColoringImage(props: ColoringImageProps) {
   const { src, alt, title, downloaded } = props;
 
   return (
-    <div className="relative flex flex-col justify-between gap-y-4 rounded-2xl border border-black bg-white px-4 pb-4 md:px-6 md:pb-6">
+    <div className="relative flex flex-col justify-between gap-y-4 rounded-2xl border border-black bg-white px-4 pb-4 group-hover:border-[#F36A3C] group-hover:text-[#F36A3C] md:px-6 md:pb-6">
       {downloaded && loaded && (
         <p className="absolute left-2 top-2 w-fit rounded-3xl bg-[#F36A3B] px-2 py-1.5 font-sansita text-xs font-medium text-white md:left-3 md:top-3 md:px-3 md:py-2 md:text-sm md:font-bold">
           Colored by {downloaded} Kids
@@ -68,7 +53,7 @@ export function ColoringImage(props: ColoringImageProps) {
         <p className="w-full truncate font-sansita font-bold capitalize">
           {title}
         </p>
-        {src && (
+        {src && allowDownload && (
           <button
             onClick={() => {
               const a = document.createElement('a');

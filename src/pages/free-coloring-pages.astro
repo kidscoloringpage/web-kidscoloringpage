@@ -1,0 +1,75 @@
+---
+import GuestLayout from '../layouts/GuestLayout.astro';
+import { ColoringImage } from '../components/ColoringImage';
+---
+
+<GuestLayout>
+  <div class='bg-[#FFF2DF]'>
+    <div class='px-responsive container px-4 py-8 md:px-0 md:py-12'>
+      <p class='mb-5 font-sansita text-4xl font-bold'>
+        Free Printable Coloring Pages
+      </p>
+      <p class='mb-8 text-xl font-light text-[#545454]'>
+        Whether you're a kid looking for some weekend fun, a stressed adult
+        looking for a creative outlet, or a teacher seeking interesting
+        education tools, we have a variety of coloring pages ready for you. Dive
+        into a wide selection of themes from animals, cartoon characters,
+        holidays, seasons, and much more. You're only a click away from stepping
+        into a world of color.
+      </p>
+
+      <div class='max-auto'>
+        <div class='grid grid-cols-2 gap-4 md:grid-cols-3'>
+          <a
+            href='/random-coloring-pages'
+            class='group flex flex-col rounded-2xl'
+          >
+            <ColoringImage
+              client:load
+              src='/color-pages/Twinkling Star At A Pond.png'
+              title='Free random coloring pages'
+              alt='Random'
+              allowDownload={false}
+            />
+          </a>
+          <a
+            href='/fruit-coloring-pages'
+            class='group flex flex-col rounded-2xl'
+          >
+            <ColoringImage
+              client:load
+              src='https://kidscoloringpage.s3.eu-west-1.amazonaws.com/cjmd4ztbpqs6pxhrbxcrdnsfki.png'
+              title='Free fruit coloring pages'
+              alt='Fruits'
+              allowDownload={false}
+            />
+          </a>
+          <a
+            href='/marvel-coloring-pages'
+            class='group flex flex-col rounded-2xl'
+          >
+            <ColoringImage
+              client:load
+              src='https://kidscoloringpage.s3.eu-west-1.amazonaws.com/e7ine4tbugncmu4pmluwydpqzy.png'
+              title='Free marvel coloring pages'
+              alt='Marvel characters'
+              allowDownload={false}
+            />
+          </a>
+          <a
+            href='/animal-coloring-pages'
+            class='group flex flex-col rounded-2xl'
+          >
+            <ColoringImage
+              client:load
+              src='https://kidscoloringpage.s3.eu-west-1.amazonaws.com/7ag4b53by7bqsprgs6oiidrkwu.png'
+              title='Free animal coloring pages'
+              alt='Animals'
+              allowDownload={false}
+            />
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</GuestLayout>
