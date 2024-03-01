@@ -95,11 +95,11 @@ export function GenerateColoringPage(props: Props) {
                 className="h-auto w-[52px]"
               />
             </p>
-            <p className="font-wonderbar text-3xl !leading-tight sm:text-4xl md:text-6xl lg:text-6xl xl:text-6xl">
+            <h1 className="font-wonderbar text-3xl !leading-tight sm:text-4xl md:text-6xl lg:text-6xl xl:text-6xl">
               <span className="text-[#6A7DF6]">Kids</span>
               <span className="text-[#347C44]">Coloring</span>
               <span className="text-[#EF60B7]">Page</span>
-            </p>
+            </h1>
           </div>
           {!props?.hasActiveSubscription && (
             <div className="scale-75-responsive relative flex w-full scale-75 flex-col items-center justify-center md:w-auto md:transform-none">
@@ -143,9 +143,9 @@ export function GenerateColoringPage(props: Props) {
           )}
         </div>
         <div className="mb-5 font-light">
-          <p className="mb-2 text-2xl">
+          <h2 className="mb-2 text-2xl">
             Describe the theme or concept for your coloring sheet.{' '}
-          </p>
+          </h2>
           <p className="text-lg">
             For example, you might request 'A serene landscape with a majestic
             waterfall' or 'A fantastical scene featuring unicorns and dragons

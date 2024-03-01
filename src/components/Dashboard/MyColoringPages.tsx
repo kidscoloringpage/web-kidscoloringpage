@@ -32,9 +32,9 @@ export function MyColoringPages() {
       <div className="px-responsive container flex flex-col gap-y-5 px-4 py-12 md:px-0 md:py-20">
         <div className="flex flex-col gap-y-10">
           <div className="flex flex-col">
-            <p className="md:leading-0 mb-5 items-center font-sansita text-4xl font-bold leading-10">
+            <h3 className="md:leading-0 mb-5 items-center font-sansita text-4xl font-bold leading-10">
               Previous history
-            </p>
+            </h3>
             <p className="text-xl font-light text-[#545454]">
               Your previously created images here. simple download and ask your
               kids to color it.

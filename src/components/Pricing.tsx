@@ -50,7 +50,7 @@ export function Pricing(props: { hasActiveSubscription: boolean }) {
   return (
     <div className="bg-[#FFF2DF]" id="pricing">
       <div className="px-responsive container px-4 py-12 md:px-0 md:py-20">
-        <p className="mb-5 font-sansita text-4xl font-bold">Pricing Plans</p>
+        <h3 className="mb-5 font-sansita text-4xl font-bold">Pricing Plans</h3>
         <p className="mb-8 text-xl font-light text-[#545454]">
           Pick the plan that works for your baby!
         </p>

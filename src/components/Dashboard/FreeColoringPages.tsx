@@ -15,9 +15,9 @@ export function FreeColoringPages() {
       <div className="px-responsive container flex flex-col gap-y-5 px-4 py-12 md:px-0 md:py-20">
         <div className="flex flex-col gap-y-10">
           <div className="flex flex-row justify-between">
-            <p className="md:leading-0 items-center font-sansita text-4xl font-bold leading-10">
+            <h3 className="md:leading-0 items-center font-sansita text-4xl font-bold leading-10">
               Free Printable Coloring Pages
-            </p>
+            </h3>
             <a
               href="/free-coloring-pages"
               className="button hidden w-fit flex-row items-center justify-center gap-x-4 md:relative md:flex md:min-w-[195px]"

@@ -13,15 +13,15 @@ export function HomepageHero() {
             className="h-auto w-[52px]"
           />
         </p>
-        <p className="font-wonderbar text-3xl sm:text-4xl md:text-6xl lg:text-6xl xl:text-6xl">
+        <h1 className="font-wonderbar text-3xl sm:text-4xl md:text-6xl lg:text-6xl xl:text-6xl">
           <span className="text-[#6A7DF6]">Kids</span>
           <span className="text-[#347C44]">Coloring</span>
           <span className="text-[#EF60B7]">Page</span>
-        </p>
-        <p className="text-xl font-light md:w-3/5 md:text-2xl">
+        </h1>
+        <h2 className="text-xl font-light md:w-3/5 md:text-2xl">
           Unlock Your Child's Imagination: KidsColoringPage Allows Parents to
           Inspire and Let Their Kids Color Anything They Imagine.
-        </p>
+        </h2>
         <button
           onClick={() => {
             if (isLoggedIn()) {
