@@ -14,7 +14,7 @@ import {
   hasRegisterDialog,
   pendingVerificationEmail,
 } from '../../stores/page';
-import { useCallback, useState } from 'react';
+import { useCallback } from 'react';
 import { redirectAuthSuccess } from '../../lib/auth-redirect';
 import { createTokenCookie } from '../../lib/jwt.ts';
 import { httpPost } from '../../lib/http.ts';
