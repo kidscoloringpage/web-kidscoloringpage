@@ -14,5 +14,30 @@
   gtag('config', 'G-9H5CGP6NBR');
   gtag('config', 'AW-596724155');
 
-  gtag('event', 'conversion', {'send_to': 'AW-596724155/vaF1CKve0YMZELuTxZwC'});
+  gtag('event', 'conversion', { send_to: 'AW-596724155/vaF1CKve0YMZELuTxZwC' });
+
+  document.addEventListener('click', (e) => {
+    let trackEl = e.target;
+    if (!trackEl.getAttribute('ga-category')) {
+      trackEl = trackEl.closest('[ga-category]');
+    }
+
+    if (!trackEl) {
+      return;
+    }
+
+    const category = trackEl.getAttribute('ga-category');
+    const action = trackEl.getAttribute('ga-action');
+    const label = trackEl.getAttribute('ga-label');
+
+    if (!category) {
+      return;
+    }
+
+    window.fireEvent({
+      category,
+      action,
+      label,
+    });
+  });
 </script>

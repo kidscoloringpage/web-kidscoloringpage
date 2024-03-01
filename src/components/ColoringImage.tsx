@@ -41,6 +41,9 @@ export function ColoringImage(props: ColoringImageProps) {
               a.click();
               document.body.removeChild(a);
             }}
+            ga-category="DownloadClick"
+            ga-action="ColoringPageDownload"
+            ga-label={title}
             className="border-b border-b-[#6A7DF6] font-sansita font-bold leading-snug text-[#6A7DF6] hover:border-b-[#F36A3B] hover:text-[#F36A3B]"
           >
             Download
