@@ -9,7 +9,10 @@ const { response: stats } = await adminApi(Astro as any).getDashboardStats();
 const lastPage = Math.ceil(coloringPages?.totalCount / coloringPages?.perPage);
 ---
 
-<AuthLayout title='Admin Dashboard | KidsColoringPage.com'>
+<AuthLayout
+  title='Admin Dashboard | KidsColoringPage.com'
+  permalink='/admin/dashboard'
+>
   <div class='bg-white'>
     <div class='px-responsive container px-4 py-8 md:px-0 md:py-12'>
       <p class='mb-5 font-sansita text-4xl font-bold'>Welcome back, admin</p>

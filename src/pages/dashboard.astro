@@ -20,8 +20,7 @@ const {
 } = await colorSheetApi(Astro).count();
 ---
 
-<AuthLayout title='Dashboard | KidsColoringPage.com'
-  >>
+<AuthLayout title='Dashboard | KidsColoringPage.com' permalink='/dashboard'>
   <GenerateColoringPage
     hasActiveSubscription={hasActiveSubscription}
     subscriptionInterval={currentUser.subscription.interval}

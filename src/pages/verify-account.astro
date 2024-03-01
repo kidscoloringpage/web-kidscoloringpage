@@ -3,7 +3,10 @@ import GuestLayout from '../layouts/GuestLayout.astro';
 import { TriggerVerifyAccount } from '../components/AuthFlow/TriggerVerifyAccount';
 ---
 
-<GuestLayout title='Verify Your Account | KidsColoringPage.com'>
+<GuestLayout
+  title='Verify Your Account | KidsColoringPage.com'
+  permalink='/verify-account'
+>
   <div class='container flex'>
     <TriggerVerifyAccount client:load />
   </div>
