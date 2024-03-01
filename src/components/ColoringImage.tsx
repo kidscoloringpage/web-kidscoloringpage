@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import Skeleton from 'react-loading-skeleton';
 import 'react-loading-skeleton/dist/skeleton.css';
 
@@ -9,24 +9,61 @@ export interface ColoringImageProps {
   downloaded?: string;
 }
 
+const useImageLoaded = () => {
+  const [loaded, setLoaded] = useState(false);
+  const ref = useRef<HTMLImageElement>(null);
+
+  const onLoad = () => {
+    setLoaded(true);
+  };
+
+  useEffect(() => {
+    if (ref.current && ref.current.complete) {
+      onLoad();
+    }
+  });
+
+  return [ref, loaded, onLoad];
+};
+
 export function ColoringImage(props: ColoringImageProps) {
+  const [loaded, setLoaded] = useState(false);
+  const ref = useRef<HTMLImageElement>(null);
+
+  const onLoad = () => {
+    setLoaded(true);
+  };
+
+  useEffect(() => {
+    if (ref.current && ref.current.complete) {
+      onLoad();
+    }
+  });
+
   const { src, alt, title, downloaded } = props;
 
   return (
     <div className="relative flex flex-col justify-between gap-y-4 rounded-2xl border border-black bg-white px-4 pb-4 md:px-6 md:pb-6">
-      {downloaded && (
+      {downloaded && loaded && (
         <p className="absolute left-2 top-2 w-fit rounded-3xl bg-[#F36A3B] px-2 py-1.5 font-sansita text-xs font-medium text-white md:left-3 md:top-3 md:px-3 md:py-2 md:text-sm md:font-bold">
           Colored by {downloaded} Kids
         </p>
       )}
       {src && (
-        <img src={src} alt={alt} className="h-auto w-full object-cover" />
+        <img
+          ref={ref}
+          onLoad={onLoad}
+          src={src}
+          alt={alt}
+          className={`h-auto w-full object-cover ${loaded ? 'block' : 'hidden'}`}
+        />
       )}
-      {!src && (
-        <div className="h-full min-h-[189px] pt-5 md:min-h-[349px]">
-          <Skeleton count={1} height="100%" duration={0.9} />
-        </div>
-      )}
+      {!src ||
+        (!loaded && (
+          <div className="h-full min-h-[189px] pt-5 md:min-h-[349px]">
+            <Skeleton count={1} height="100%" duration={0.9} />
+          </div>
+        ))}
       <div className="flex flex-col items-start gap-y-1.5">
         <p className="w-full truncate font-sansita font-bold capitalize">
           {title}
