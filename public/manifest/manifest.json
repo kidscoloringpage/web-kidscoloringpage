@@ -1,0 +1,27 @@
+{
+  "dir": "ltr",
+  "lang": "en",
+  "name": "KidsColoringPage",
+  "scope": "/",
+  "display": "standalone",
+  "start_url": "https://kidscoloringpage.com/",
+  "short_name": "KidsColoringPage",
+  "theme_color": "#FFFFFF",
+  "description": "Generate Coloring Pages For Kids In Seconds – kidscoloringpage.com",
+  "orientation": "any",
+  "background_color": "#DA532C",
+  "related_applications": [],
+  "prefer_related_applications": false,
+  "icons": [
+    {
+      "src": "/manifest/icon152.png",
+      "sizes": "152x152",
+      "type": "image/png"
+    },
+    {
+      "src": "/manifest/icon196.png",
+      "sizes": "196x196",
+      "type": "image/png"
+    }
+  ]
+}

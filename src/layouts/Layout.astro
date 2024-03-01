@@ -28,6 +28,7 @@ const {
   permalink,
   description,
   initialLoadingMessage,
+  noIndex = false,
 } = Astro.props;
 
 // Remove trailing slashes to consider the page as canonical
@@ -46,14 +47,22 @@ const paymentSessionId = Astro.url.searchParams.get('session_id') || '';
       content={description ||
         "Generate Kids coloring pages in seconds. Unleash your imagination! KidsColoringPage turns your ideas into coloring pages for your kids to color. From dinosaurs to fairies, let's bring their creativity to life!"}
     />
-    <meta name='viewport' content='width=device-width' />
+    {noIndex && <meta name='robots' content='noindex' />}
+    <meta
+      name='viewport'
+      content='width=device-width, user-scalable=yes, initial-scale=1.0, maximum-scale=3.0, minimum-scale=1.0'
+    />
     <meta name='generator' content={Astro.generator} />
+
+    <meta property='og:image:width' content='1200' />
+    <meta property='og:image:height' content='413' />
     <meta
       property='og:title'
       content='Generate Coloring Pages For Kids In Seconds'
     />
-    <meta property='og:site_name' content='KidsColoringPage' />
-    <meta property='og:url' content='https://kidscoloringpage.com' />
+    <meta property='og:site_name' content='kidscoloringpage.com' />
+    <meta property='og:image:alt' content='kidscoloringpage.com' />
+    <meta property='og:url' content={currentPageAbsoluteUrl} />
     <meta
       property='og:description'
       content='Transform ideas into coloring adventures for kids with KidsColoringPage! Dinosaurs, fairies & more await. Ignite creativity in seconds.'
@@ -63,9 +72,48 @@ const paymentSessionId = Astro.url.searchParams.get('session_id') || '';
       property='og:image'
       content='https://www.kidscoloringpage.com/og.png'
     />
+
     <link rel='canonical' href={canonicalUrl} />
-    <link rel='icon' type='image/svg+xml' href='/favicon.ico' />
+
+    <meta name='mobile-web-app-capable' content='yes' />
+    <meta name='apple-mobile-web-app-capable' content='yes' />
+    <meta
+      name='apple-mobile-web-app-status-bar-style'
+      content='black-translucent'
+    />
+    <meta name='apple-mobile-web-app-title' content='kidscoloringpage.com' />
+    <meta name='application-name' content='kidscoloringpage.com' />
+
+    <link
+      rel='apple-touch-icon'
+      sizes='180x180'
+      href='/manifest/apple-touch-icon.png'
+    />
+    <meta name='msapplication-TileColor' content='#DA532C' />
+    <meta name='theme-color' content='#FFFFFF' />
+
+    <link rel='manifest' href='/manifest/manifest.json' />
+    <link
+      rel='icon'
+      type='image/png'
+      sizes='32x32'
+      href='/manifest/icon32.png'
+    />
+    <link
+      rel='icon'
+      type='image/png'
+      sizes='16x16'
+      href='/manifest/icon16.png'
+    />
+    <link
+      rel='shortcut icon'
+      href='/manifest/favicon.ico'
+      type='image/x-icon'
+    />
+
+    <link rel='icon' type='image/svg+xml' href='/manifest/favicon.ico' />
     <link rel='sitemap' href='/sitemap-index.xml' />
+
     <!-- Google font -->
     <link rel='preconnect' href='https://fonts.googleapis.com' />
     <link rel='preconnect' href='https://fonts.gstatic.com' crossorigin />
