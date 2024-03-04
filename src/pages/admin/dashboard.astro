@@ -3,6 +3,9 @@ import { ColoringImage } from '../../components/ColoringImage';
 import { adminApi } from '../../api/admin';
 import AuthLayout from '../../layouts/AuthLayout.astro';
 
+const { currentUser } = Astro.locals;
+const isSuperAdmin = currentUser?.metadata?.isSuperAdmin;
+
 const page = +(Astro.url.searchParams.get('page') || 1);
 const { response: coloringPages } = await adminApi(Astro as any).list(page);
 const { response: stats } = await adminApi(Astro as any).getDashboardStats();
@@ -144,6 +147,9 @@ const lastPage = Math.ceil(coloringPages?.totalCount / coloringPages?.perPage);
                 src={coloringPage.url}
                 title={coloringPage.prompt}
                 alt={coloringPage.prompt}
+                isSuperAdmin={isSuperAdmin}
+                showUserPreviewButton={true}
+                userId={coloringPage?.user?._id}
               />
             ))
           }

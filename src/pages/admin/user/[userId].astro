@@ -1,0 +1,201 @@
+---
+import AuthLayout from '../../../layouts/AuthLayout.astro';
+import { adminApi } from '../../../api/admin';
+import { ColoringImage } from '../../../components/ColoringImage';
+
+const { currentUser } = Astro.locals;
+const isSuperAdmin = currentUser?.metadata?.isSuperAdmin;
+
+const userId = Astro.params.userId;
+const page = +(Astro.url.searchParams.get('page') || 1);
+const { response: coloringPages } = await adminApi(Astro as any).list(
+  page,
+  userId,
+);
+const lastPage = Math.ceil(coloringPages?.totalCount / coloringPages?.perPage);
+
+const { response: userDetail } = await adminApi(Astro as any).getUser(userId);
+---
+
+<AuthLayout
+  title='User Profile | Admin | KidsColoringPage.com'
+  permalink='/admin/user'
+  noIndex={true}
+>
+  <div class='bg-white'>
+    <div class='px-responsive container px-4 py-8 md:px-0 md:py-12'>
+      <h1 class='mb-5 font-sansita text-4xl font-bold'>Profile Preview</h1>
+      <p class='mb-8 text-xl font-light text-[#545454]'>
+        Here you can see the user profile details and their activity.
+      </p>
+      <div class='flex w-full justify-between'>
+        <div class='flex'>
+          <div class='mb-5 grid grid-cols-2 gap-4 md:grid-cols-3'>
+            <div
+              class='flex flex-col justify-between rounded-2xl bg-[#fff2df] p-4'
+            >
+              <img
+                src='/palette.svg'
+                alt='users'
+                class='h-12 w-12 rounded-full bg-white p-2.5'
+              />
+              <div class='flex flex-col gap-y-1'>
+                <p class='font-sansita text-5xl font-bold'>
+                  {userDetail?.totalColoringSheets || 0}
+                </p>
+                <p class='text-[#545454]'>Total color pages</p>
+              </div>
+            </div>
+            <div
+              class='flex flex-col justify-between rounded-2xl bg-[#fff2df] p-4'
+            >
+              <img
+                src='/boxes.svg'
+                alt='boxes'
+                class='h-12 w-12 rounded-full bg-white p-2.5'
+              />
+              <div class='flex flex-col gap-y-1'>
+                <p class='font-sansita text-5xl font-bold'>
+                  {userDetail?.totalCredits || 0}
+                </p>
+                <p class='text-[#545454]'>Total Credits</p>
+              </div>
+            </div>
+            <div
+              class='flex flex-col justify-between rounded-2xl bg-[#fff2df]/50 p-4'
+            >
+              <img
+                src='/cookie.svg'
+                alt='cookie'
+                class='h-12 w-12 rounded-full bg-white p-2.5'
+              />
+              <div class='flex flex-col gap-y-1'>
+                <p class='font-sansita text-5xl font-bold'>
+                  {userDetail?.remainingCredits || 0}
+                </p>
+                <p class='text-[#545454]'>Remaining Credits</p>
+              </div>
+            </div>
+            <div
+              class='flex flex-col justify-between rounded-2xl bg-[#fff2df] p-4'
+            >
+              <img
+                src='/dollar-sign.svg'
+                alt='dollar-sign'
+                class='h-12 w-12 rounded-full bg-white p-2.5'
+              />
+              <div class='flex flex-col gap-y-1'>
+                <p class='font-sansita text-5xl font-bold'>
+                  {userDetail?.hasActiveSubscription ? 'PAID' : 'FREE'}
+                </p>
+                <p class='text-[#545454]'>User Type</p>
+              </div>
+            </div>
+            <div
+              class='flex flex-col justify-between rounded-2xl bg-[#fff2df] p-4'
+            >
+              <img
+                src='/dollar-sign.svg'
+                alt='dollar-sign'
+                class='h-12 w-12 rounded-full bg-white p-2.5'
+              />
+              <div class='flex flex-col gap-y-1'>
+                <p class='font-sansita text-5xl font-bold'>
+                  {
+                    userDetail?.metadata?.hasPurchasedSubscription
+                      ? 'YES'
+                      : 'NO'
+                  }
+                </p>
+                <p class='text-[#545454]'>Had subscription</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class='w-[1px] bg-gradient-to-b from-[#000000]/20 via-[#000000] via-40% to-[#000000]/20'
+        >
+        </div>
+        <div class='flex flex-col gap-y-3 text-2xl'>
+          <p>
+            <span class='inline-block min-w-40 font-sansita font-bold'
+              >Name:</span
+            >
+            <span>{userDetail?.name}</span>
+          </p>
+          <p>
+            <span class='inline-block min-w-40 font-sansita font-bold'
+              >Email:</span
+            >
+            <a href='mailto:demo@demo.com' class='text-[#6a7df6] underline'
+              >{userDetail?.email}</a
+            >
+          </p>
+          <p>
+            <span class='inline-block min-w-40 font-sansita font-bold'
+              >Auth Provider:</span
+            >
+            {userDetail?.authProvider}
+          </p>
+          <p>
+            <span class='inline-block min-w-40 font-sansita font-bold'>IP:</span
+            >
+            {userDetail?.metadata?.userIp}
+          </p>
+          <p>
+            <span class='inline-block min-w-40 font-sansita font-bold'
+              >Joined On:</span
+            >
+            {userDetail?.createdAt?.split('T')[0]}
+          </p>
+        </div>
+      </div>
+      <div class='max-auto mt-12'>
+        <h2 class='mb-3 font-sansita text-3xl font-bold'>Color Pages</h2>
+        <p class='mb-8 text-lg font-light text-[#545454]'>
+          Here you can see the user's coloring pages.
+        </p>
+        <div class='grid grid-cols-2 gap-4 md:grid-cols-4'>
+          {
+            coloringPages?.data.map((coloringPage) => (
+              <ColoringImage
+                client:load
+                src={coloringPage.url}
+                title={coloringPage.prompt}
+                alt={coloringPage.prompt}
+                isSuperAdmin={isSuperAdmin}
+              />
+            ))
+          }
+        </div>
+        {
+          coloringPages?.totalCount && (
+            <div class='mt-5 flex items-center justify-between'>
+              {page - 1 !== 0 && (
+                <a
+                  href={`?page=${page - 1}`}
+                  class='min-w-0 rounded-lg border bg-[#fff2df] px-3 py-2 text-center text-sm uppercase shadow-sm md:min-w-[150px] md:px-0 md:py-2.5 md:text-base'
+                >
+                  Prev
+                </a>
+              )}
+              {page - 1 === 0 && <span />}
+              <p class='text-sm md:text-base'>
+                {'Page ' + page + ' of ' + lastPage}
+              </p>
+              {page !== lastPage && (
+                <a
+                  href={`?page=${page + 1}`}
+                  class='min-w-0 rounded-lg border bg-[#fff2df] px-3 py-2 text-center text-sm uppercase shadow-sm md:min-w-[150px] md:px-0 md:py-2.5 md:text-base'
+                >
+                  Next
+                </a>
+              )}
+              {page === lastPage && <span />}
+            </div>
+          )
+        }
+      </div>
+    </div>
+  </div>
+</AuthLayout>
