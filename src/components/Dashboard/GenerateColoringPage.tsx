@@ -44,9 +44,10 @@ export function GenerateColoringPage(props: Props) {
       _id: string;
       status: string;
     }>(
-      !!remainingCredits && !props?.hasActiveSubscription
-        ? `${import.meta.env.PUBLIC_API_URL}/v2-create-coloring-sheet`
-        : `${import.meta.env.PUBLIC_API_URL}/v1-create-coloring-sheet`,
+      // !!remainingCredits && !props?.hasActiveSubscription
+      //   ? `${import.meta.env.PUBLIC_API_URL}/v2-create-coloring-sheet`
+      //   : `${import.meta.env.PUBLIC_API_URL}/v1-create-coloring-sheet`,
+        `${import.meta.env.PUBLIC_API_URL}/v1-create-coloring-sheet`,
       {
         prompt,
       },
