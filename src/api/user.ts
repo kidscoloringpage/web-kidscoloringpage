@@ -7,7 +7,11 @@ export interface UserDocument {
   email: string;
   isEnabled: boolean;
   authProvider: 'google';
-  metadata: Record<string, any>;
+  metadata: {
+    hasPurchasedSubscription?: boolean; // flag to identify if user has ever purchased subscription or one time purchase
+    hasActiveSubscription?: boolean; // flag to check if the user has active subscription
+    [key: string]: any;
+  };
   links?: {
     github?: string;
     linkedin?: string;

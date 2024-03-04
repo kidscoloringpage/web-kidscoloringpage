@@ -19,9 +19,7 @@ export const onRequest = defineMiddleware(
       context.locals.currentUserId = user?._id;
       context.locals.planId = user?.subscription?.planId;
       context.locals.hasActiveSubscription =
-        user?.subscription?.status === 'active' &&
-        user?.subscription?.amount > 0 &&
-        user?.subscription?.interval !== 'one_time';
+        user?.metadata?.hasActiveSubscription || false;
     }
 
     return next();
