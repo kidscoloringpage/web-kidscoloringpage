@@ -142,7 +142,7 @@ export const Footer = (props: { paymentSessionId: string }) => {
               <p className="mb-4 text-lg font-semibold text-white">Follow us</p>
               <div className="flex flex-col gap-y-1.5 text-[#C2C2C2]">
                 <a
-                  href="https://www.instagram.com/kidscoloringpage1/"
+                  href="https://www.instagram.com/kidscoloringpagez/"
                   target="_blank"
                   className="hover:underline"
                 >
@@ -156,7 +156,7 @@ export const Footer = (props: { paymentSessionId: string }) => {
                   Twitter
                 </a>
                 <a
-                  href="https://www.pinterest.ca/kidscoloringpage1/"
+                  href="https://www.pinterest.ca/kidscoloringpagez/"
                   target="_blank"
                   className="hover:underline"
                 >
