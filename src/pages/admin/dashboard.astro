@@ -4,7 +4,6 @@ import { adminApi } from '../../api/admin';
 import AuthLayout from '../../layouts/AuthLayout.astro';
 
 const { currentUser } = Astro.locals;
-const isSuperAdmin = currentUser?.metadata?.isSuperAdmin;
 
 const page = +(Astro.url.searchParams.get('page') || 1);
 const { response: coloringPages } = await adminApi(Astro as any).list(page);

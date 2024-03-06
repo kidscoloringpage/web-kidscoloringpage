@@ -9,7 +9,7 @@ export interface ColoringImageProps {
 }
 
 export function ColoringImage(props: ColoringImageProps) {
-  const { _id: id, url: src, prompt } = props?.coloringPage || {};
+  const { url: src, prompt } = props?.coloringPage || {};
   const userId = props?.coloringPage?.user?._id;
   const [loaded, setLoaded] = useState(false);
   const ref = useRef<HTMLImageElement>(null);

@@ -4,7 +4,6 @@ import { adminApi } from '../../../api/admin';
 import { ColoringImage } from '../../../components/Admin/ColoringImage';
 
 const { currentUser } = Astro.locals;
-const isSuperAdmin = currentUser?.metadata?.isSuperAdmin;
 
 const userId = Astro.params.userId;
 const page = +(Astro.url.searchParams.get('page') || 1);
