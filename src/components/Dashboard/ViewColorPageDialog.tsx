@@ -60,9 +60,9 @@ export function ViewColorPageDialog() {
                   a.click();
                   document.body.removeChild(a);
                 }}
-                ga-category="DownloadClick"
-                ga-action="ColoringPageDownload"
-                ga-label={colorImage?.prompt}
+                data-ga-category="DownloadClick"
+                data-ga-action="ColoringPageDownload"
+                data-ga-label={colorImage?.prompt}
                 className="border-b border-b-[#6A7DF6] font-sansita font-bold leading-snug text-[#6A7DF6] hover:border-b-[#F36A3B] hover:text-[#F36A3B]"
               >
                 Download

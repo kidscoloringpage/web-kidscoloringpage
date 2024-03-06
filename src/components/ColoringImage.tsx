@@ -8,22 +8,10 @@ export interface ColoringImageProps {
   title: string;
   downloaded?: string;
   allowDownload?: boolean;
-  isSuperAdmin?: boolean;
-  showUserPreviewButton?: boolean;
-  userId?: string;
 }
 
 export function ColoringImage(props: ColoringImageProps) {
-  const {
-    src,
-    alt,
-    title,
-    downloaded,
-    userId,
-    allowDownload = true,
-    isSuperAdmin = false,
-    showUserPreviewButton = false,
-  } = props;
+  const { src, alt, title, downloaded, allowDownload = true } = props;
   const [loaded, setLoaded] = useState(false);
   const ref = useRef<HTMLImageElement>(null);
 
@@ -68,43 +56,22 @@ export function ColoringImage(props: ColoringImageProps) {
         </p>
         {src && allowDownload && (
           <div className="flex w-full items-center justify-between">
-            <div>
-              <button
-                onClick={() => {
-                  const a = document.createElement('a');
-                  a.href = src;
-                  a.download = src.split('/').pop();
-                  document.body.appendChild(a);
-                  a.click();
-                  document.body.removeChild(a);
-                }}
-                ga-category="DownloadClick"
-                ga-action="ColoringPageDownload"
-                ga-label={title}
-                className="border-b border-b-[#6A7DF6] font-sansita font-bold leading-snug text-[#6A7DF6] hover:border-b-[#F36A3B] hover:text-[#F36A3B]"
-              >
-                Download
-              </button>
-            </div>
-            {isSuperAdmin && showUserPreviewButton && (
-              <a
-                href={`/admin/user/${userId}`}
-                className="group rounded-full bg-[#fff2df] p-2"
-              >
-                <svg
-                  className="h-5 w-5 stroke-black group-hover:stroke-[#6A7DF6]"
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                >
-                  <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2" />
-                  <circle cx="12" cy="7" r="4" />
-                </svg>
-              </a>
-            )}
+            <button
+              onClick={() => {
+                const a = document.createElement('a');
+                a.href = src;
+                a.download = src.split('/').pop();
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+              }}
+              data-ga-category="DownloadClick"
+              data-ga-action="ColoringPageDownload"
+              data-ga-label={title}
+              className="border-b border-b-[#6A7DF6] font-sansita font-bold leading-snug text-[#6A7DF6] hover:border-b-[#F36A3B] hover:text-[#F36A3B]"
+            >
+              Download
+            </button>
           </div>
         )}
         {!src && <p className="">Generating Image please wait...</p>}

@@ -1,5 +1,5 @@
 ---
-import { ColoringImage } from '../../components/ColoringImage';
+import { ColoringImage } from '../../components/Admin/ColoringImage';
 import { adminApi } from '../../api/admin';
 import AuthLayout from '../../layouts/AuthLayout.astro';
 
@@ -142,15 +142,7 @@ const lastPage = Math.ceil(coloringPages?.totalCount / coloringPages?.perPage);
         <div class='grid grid-cols-2 gap-4 md:grid-cols-4'>
           {
             coloringPages?.data.map((coloringPage) => (
-              <ColoringImage
-                client:load
-                src={coloringPage.url}
-                title={coloringPage.prompt}
-                alt={coloringPage.prompt}
-                isSuperAdmin={isSuperAdmin}
-                showUserPreviewButton={true}
-                userId={coloringPage?.user?._id}
-              />
+              <ColoringImage client:only='react' coloringPage={coloringPage} />
             ))
           }
         </div>

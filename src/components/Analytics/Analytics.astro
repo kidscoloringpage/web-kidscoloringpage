@@ -19,17 +19,17 @@
 
   document.addEventListener('click', (e) => {
     let trackEl = e.target;
-    if (!trackEl.getAttribute('ga-category')) {
-      trackEl = trackEl.closest('[ga-category]');
+    if (!trackEl.getAttribute('data-ga-category')) {
+      trackEl = trackEl.closest('[data-ga-category]');
     }
 
     if (!trackEl) {
       return;
     }
 
-    const category = trackEl.getAttribute('ga-category');
-    const action = trackEl.getAttribute('ga-action');
-    const label = trackEl.getAttribute('ga-label');
+    const category = trackEl.getAttribute('data-ga-category');
+    const action = trackEl.getAttribute('data-ga-action');
+    const label = trackEl.getAttribute('data-ga-label');
 
     if (!category) {
       return;

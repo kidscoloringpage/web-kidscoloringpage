@@ -1,6 +1,24 @@
 import type { APIContext } from 'astro';
 import { api } from './api.ts';
 
+export type ColoringImage = {
+  _id: string;
+  prompt: string;
+  title?: string;
+  tags?: string[];
+  status: 'pending' | 'success' | 'failed';
+  url: string;
+  isPublic?: boolean;
+  createdAt: Date;
+  updatedAt: Date;
+  user?: {
+    _id: string;
+    name: string;
+    email: string;
+    hasPurchasedSubscription: boolean;
+  };
+};
+
 export function adminApi(context: APIContext) {
   return {
     list: async function (page: number = 1, userId: string = null) {
@@ -9,20 +27,7 @@ export function adminApi(context: APIContext) {
         totalPages: number;
         currentPage: number;
         perPage: number;
-        data: {
-          _id: string;
-          prompt: string;
-          status: 'pending' | 'success' | 'failed';
-          url: string;
-          createdAt: Date;
-          updatedAt: Date;
-          user?: {
-            _id: string;
-            name: string;
-            email: string;
-            hasPurchasedSubscription: boolean;
-          };
-        }[];
+        data: ColoringImage[];
       }>(`${import.meta.env.PUBLIC_API_URL}/admin/v1-all-coloring-sheet`, {
         page,
         ...(userId && { userId }),

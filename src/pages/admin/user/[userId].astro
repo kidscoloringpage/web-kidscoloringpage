@@ -1,7 +1,7 @@
 ---
 import AuthLayout from '../../../layouts/AuthLayout.astro';
 import { adminApi } from '../../../api/admin';
-import { ColoringImage } from '../../../components/ColoringImage';
+import { ColoringImage } from '../../../components/Admin/ColoringImage';
 
 const { currentUser } = Astro.locals;
 const isSuperAdmin = currentUser?.metadata?.isSuperAdmin;
@@ -28,7 +28,7 @@ const { response: userDetail } = await adminApi(Astro as any).getUser(userId);
       <p class='mb-8 text-xl font-light text-[#545454]'>
         Here you can see the user profile details and their activity.
       </p>
-      <div class='flex w-full justify-between'>
+      <div class='flex w-full flex-col justify-between md:flex-row'>
         <div class='flex'>
           <div class='mb-5 grid grid-cols-2 gap-4 md:grid-cols-3'>
             <div
@@ -113,10 +113,10 @@ const { response: userDetail } = await adminApi(Astro as any).getUser(userId);
           </div>
         </div>
         <div
-          class='w-[1px] bg-gradient-to-b from-[#000000]/20 via-[#000000] via-40% to-[#000000]/20'
+          class='hidden w-[1px] bg-gradient-to-b from-[#000000]/20 via-[#000000] via-40% to-[#000000]/20 md:block'
         >
         </div>
-        <div class='flex flex-col gap-y-3 text-2xl'>
+        <div class='my-2 flex flex-col gap-y-3 text-2xl md:my-0'>
           <p>
             <span class='inline-block min-w-40 font-sansita font-bold'
               >Name:</span
@@ -158,13 +158,7 @@ const { response: userDetail } = await adminApi(Astro as any).getUser(userId);
         <div class='grid grid-cols-2 gap-4 md:grid-cols-4'>
           {
             coloringPages?.data.map((coloringPage) => (
-              <ColoringImage
-                client:load
-                src={coloringPage.url}
-                title={coloringPage.prompt}
-                alt={coloringPage.prompt}
-                isSuperAdmin={isSuperAdmin}
-              />
+              <ColoringImage client:load coloringPage={coloringPage} />
             ))
           }
         </div>
