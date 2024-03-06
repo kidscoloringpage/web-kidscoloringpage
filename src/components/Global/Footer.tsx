@@ -104,6 +104,9 @@ export const Footer = (props: { paymentSessionId: string }) => {
                 <a href="/free-coloring-pages" className="hover:underline">
                   Free Coloring Pages
                 </a>
+                <a href="/dinosaur-coloring-pages" className="hover:underline">
+                  Dinosaur Coloring Pages
+                </a>
                 <a href="/marvel-coloring-pages" className="hover:underline">
                   Marvel Coloring Pages
                 </a>

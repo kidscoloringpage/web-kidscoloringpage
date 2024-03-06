@@ -24,14 +24,14 @@ import { ColoringImage } from '../components/ColoringImage';
       <div class='max-auto'>
         <div class='grid grid-cols-2 gap-4 md:grid-cols-3'>
           <a
-            href='/random-coloring-pages'
+            href='/dinosaur-coloring-pages'
             class='group flex flex-col rounded-2xl'
           >
             <ColoringImage
               client:load
-              src='/color-pages/Twinkling Star At A Pond.png'
-              title='Free random coloring pages'
-              alt='Random'
+              src='https://kidscoloringpage.s3.eu-west-1.amazonaws.com/tvs4hy3bhziiq4a724jvch3mtu.png'
+              title='Free dinosaur coloring pages'
+              alt='Dinosaurs'
               allowDownload={false}
             />
           </a>
@@ -68,6 +68,18 @@ import { ColoringImage } from '../components/ColoringImage';
               src='https://kidscoloringpage.s3.eu-west-1.amazonaws.com/7ag4b53by7bqsprgs6oiidrkwu.png'
               title='Free animal coloring pages'
               alt='Animals'
+              allowDownload={false}
+            />
+          </a>
+          <a
+            href='/random-coloring-pages'
+            class='group flex flex-col rounded-2xl'
+          >
+            <ColoringImage
+              client:load
+              src='/color-pages/Twinkling Star At A Pond.png'
+              title='Free random coloring pages'
+              alt='Random'
               allowDownload={false}
             />
           </a>
