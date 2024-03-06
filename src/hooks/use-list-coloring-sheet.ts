@@ -32,7 +32,7 @@ export const useListColoringSheet = (): [
   const listColoringSheet = useCallback(() => {
     function fetchData() {
       httpGet<ListColorSheetResponse>(
-        `${import.meta.env.PUBLIC_API_URL}/v1-list-coloring-sheet`,
+        `${import.meta.env.PUBLIC_API_URL}/v1-my-coloring-sheet`,
         {},
       )
         .then(({ response, error }) => {

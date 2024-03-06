@@ -1,0 +1,51 @@
+---
+import { colorSheetApi } from '../api/color-sheet';
+import GuestLayout from '../layouts/GuestLayout.astro';
+import { ColoringImage } from '../components/ColoringImage';
+
+const page = +(Astro.url.searchParams.get('page') || 1);
+const { response: coloringPages, error } = await colorSheetApi(
+  Astro as any,
+).publicColoringPages({
+  page,
+  search: 'dinosaur',
+});
+---
+
+<GuestLayout
+  title='Animal Printable Coloring Pages | KidsColoringPage.com'
+  permalink='/animal-coloring-pages'
+>
+  <div class='bg-[#FFF2DF]'>
+    <div class='px-responsive container px-4 py-8 md:px-0 md:py-12'>
+      <h1 class='mb-5 font-sansita text-4xl font-bold'>
+        Free Dinosaur Printable Coloring Pages
+      </h1>
+      <p class='mb-8 text-xl font-light text-[#545454]'>
+        If you're a kid fascinated by prehistoric creatures, an adult seeking a
+        journey back in time, or a teacher searching for engaging learning
+        materials, we have the perfect adventure for you. Check out our
+        collection of free dinosaur coloring pages. From the mighty
+        Tyrannosaurus Rex to the towering Brachiosaurus, and all the fascinating
+        dinosaurs in between, a prehistoric world awaits your imagination. Just
+        a click away, and you can start bringing these ancient giants to life
+        with your colors.
+      </p>
+
+      <div class='max-auto'>
+        <div class='grid grid-cols-2 gap-4 md:grid-cols-4'>
+          {
+            coloringPages?.data?.map((colorPage, index) => (
+              <ColoringImage
+                client:load
+                src={colorPage?.url}
+                title={colorPage?.prompt}
+                alt={`dinosaur-${index}`}
+              />
+            ))
+          }
+        </div>
+      </div>
+    </div>
+  </div>
+</GuestLayout>
