@@ -15,36 +15,9 @@ export interface Props extends LayoutProps {
 const { frontmatter = {} } = Astro.props;
 ---
 
-<style is:global>
-  h1 {
-    @apply mb-7 font-sansita text-4xl font-bold;
-  }
-  h2 {
-    @apply mb-4 mt-8 font-sansita text-2xl font-semibold;
-  }
-  h3 {
-    @apply mb-2.5 mt-6 font-sansita text-xl font-semibold;
-  }
-  p {
-    @apply mb-5 text-lg;
-  }
-  a {
-    @apply underline;
-  }
-  table {
-    @apply my-8 w-full text-left;
-  }
-  table td,
-  table th {
-    @apply p-2;
-  }
-  a {
-    @apply hover:text-[#F36A3C];
-  }
-</style>
 <Layout {...frontmatter} noIndex={true}>
   <div class='bg-[#FFF2DF]'>
-    <div class='px-responsive container px-4 py-8 md:px-0 md:py-12'>
+    <div class='px-responsive post container px-4 py-8 md:px-0 md:py-12'>
       <slot />
     </div>
   </div>

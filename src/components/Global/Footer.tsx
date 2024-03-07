@@ -128,7 +128,7 @@ export const Footer = (props: { paymentSessionId: string }) => {
                 <a href="/#pricing" className="hover:underline">
                   Pricing
                 </a>
-                <a href="#" className="hover:underline">
+                <a href="/blog" className="hover:underline">
                   Blog
                 </a>
               </div>

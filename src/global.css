@@ -56,4 +56,31 @@
   .mb-6-responsive {
     @apply mb-6;
   }
+  .px-responsive-col-1 {
+    @apply grid-cols-1;
+  }
+}
+
+/*Blog post css*/
+.post h1 {
+  @apply mb-7 font-sansita text-4xl font-bold;
+}
+.post h2 {
+  @apply mb-4 mt-8 font-sansita text-2xl font-semibold;
+}
+.post h3 {
+  @apply mb-2.5 mt-6 font-sansita text-xl font-semibold;
+}
+.post p {
+  @apply mb-5 text-lg;
+}
+.post a {
+  @apply underline hover:text-[#F36A3C];
+}
+.post table {
+  @apply my-8 w-full text-left;
+}
+.post table td,
+.post table th {
+  @apply p-2;
 }

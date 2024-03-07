@@ -1,0 +1,55 @@
+---
+import GuestLayout from '../../layouts/GuestLayout.astro';
+const posts = await Astro.glob('./*.mdx');
+---
+
+<GuestLayout title='Blog | KidsColoringPage.com' permalink='/blog'>
+  <div class='bg-[#FFF2DF]'>
+    <div class='px-responsive container px-4 py-8 md:px-0 md:py-12'>
+      <h1 class='mb-5 font-sansita text-4xl font-bold'>Blog</h1>
+
+      <div class='max-auto'>
+        <div class='px-responsive-col-1 grid grid-cols-1 gap-4 md:grid-cols-2'>
+          {
+            posts.map((post) => (
+              <a
+                class='group relative block rounded-xl'
+                href='/blog/ignite-imagination-exciting-coloring-pages-for-kids'
+              >
+                <div class='relative h-[350px] w-full overflow-hidden rounded-xl'>
+                  <img
+                    alt=''
+                    loading='lazy'
+                    class='absolute start-0 top-0 h-full w-full object-cover'
+                    src={post?.frontmatter?.postImage}
+                    style='color: transparent;'
+                  />
+                  <div class='absolute start-0 top-0 h-full w-full bg-black bg-black/60 bg-opacity-50' />
+                </div>
+                <div class='absolute top-0 z-20'>
+                  <div class='flex h-full flex-col p-4 sm:p-6'>
+                    <div class='flex items-center'>
+                      <p class='text-sm text-white'>
+                        {post?.frontmatter?.publishedOn}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <div class='absolute bottom-0 z-20'>
+                  <div class='flex h-full flex-col p-4 sm:p-6'>
+                    <h3 class='text-lg font-semibold text-white sm:text-3xl'>
+                      {post?.frontmatter?.title?.split('-')[0]?.trim()}
+                    </h3>
+                    <p class='mt-2 text-white'>
+                      {post?.frontmatter?.subtitle} [&hellip;]
+                    </p>
+                  </div>
+                </div>
+              </a>
+            ))
+          }
+        </div>
+      </div>
+    </div>
+  </div>
+</GuestLayout>
