@@ -5,6 +5,8 @@ import vercel from '@astrojs/vercel/serverless';
 import sitemap from '@astrojs/sitemap';
 import { shouldIndexPage } from './sitemap.mjs';
 
+import mdx from '@astrojs/mdx';
+
 // https://astro.build/config
 export default defineConfig({
   site: 'https://kidscoloringpage.com',
@@ -14,6 +16,7 @@ export default defineConfig({
     sitemap({
       filter: shouldIndexPage,
     }),
+    mdx(),
   ],
   output: 'server',
   adapter: vercel(),
