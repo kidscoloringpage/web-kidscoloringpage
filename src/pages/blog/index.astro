@@ -41,7 +41,7 @@ const posts = await Astro.glob('./*.mdx');
                       {post?.frontmatter?.title?.split('-')[0]?.trim()}
                     </h3>
                     <p class='mt-2 text-white'>
-                      {post?.frontmatter?.subtitle} [&hellip;]
+                      {post?.frontmatter?.description} [&hellip;]
                     </p>
                   </div>
                 </div>

@@ -4,7 +4,7 @@ import { toast } from 'sonner';
 type Props = {
   title: string;
   publishedOn: string;
-  subtitle?: string;
+  description?: string;
   postImage?: string;
 };
 
@@ -116,10 +116,10 @@ export function Header(props: Props) {
           />
         </div>
       )}
-      {props?.subtitle && (
+      {props?.description && (
         <div className="mt-4">
           <blockquote className="border-l-4 border-black pl-4 italic">
-            <p>{props.subtitle}</p>
+            <p>{props.description}</p>
           </blockquote>
         </div>
       )}

@@ -1,10 +1,11 @@
 ---
 layout: ../../layouts/MarkdownLayout.astro
 title: 'Ignite Imagination: Exciting Coloring Pages for Kids - kidscoloringpage.com'
-subtitle: "Coloring pages hold a significant place in a child's learning journey. They serve as an excellent educational tool, aiding in the development of fine motor skills as kids navigate their coloring tools across the page. This simple activity also promotes hand-eye coordination, as they learn to color within the lines."
+description: "Coloring pages hold a significant place in a child's learning journey. They serve as an excellent educational tool, aiding in the development of fine motor skills as kids navigate their coloring tools across the page. This simple activity also promotes hand-eye coordination, as they learn to color within the lines."
 noIndex: false
 publishedOn: 'March 06, 2024'
 postImage: '/blog/post-1.jpg'
+permalink: '/blog/ignite-imagination-exciting-coloring-pages-for-kids'
 ---
 
 import { Header } from '../../components/Blog/Header.tsx';
@@ -13,7 +14,7 @@ import { Header } from '../../components/Blog/Header.tsx';
   client:load
   title={frontmatter.title.split('-')[0].trim()}
   publishedOn={frontmatter.publishedOn}
-  subtitle={frontmatter.subtitle}
+  description={frontmatter.description}
   postImage={frontmatter.postImage}
 />
 

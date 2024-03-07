@@ -5,7 +5,8 @@ import Layout from './Layout.astro';
 export interface Props extends LayoutProps {
   frontmatter: {
     title?: string;
-    subtitle?: string;
+    description?: string;
+    permalink?: string;
     noIndex?: boolean;
     publishedOn?: string;
     postImage?: string;
@@ -15,7 +16,7 @@ export interface Props extends LayoutProps {
 const { frontmatter = {} } = Astro.props;
 ---
 
-<Layout {...frontmatter} noIndex={true}>
+<Layout {...frontmatter} noIndex={false}>
   <div class='bg-[#FFF2DF]'>
     <div class='px-responsive post container px-4 py-8 md:px-0 md:py-12'>
       <slot />
