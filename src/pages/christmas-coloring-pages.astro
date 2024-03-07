@@ -1,0 +1,50 @@
+---
+import { colorSheetApi } from '../api/color-sheet';
+import GuestLayout from '../layouts/GuestLayout.astro';
+import { ColoringImage } from '../components/ColoringImage';
+
+const page = +(Astro.url.searchParams.get('page') || 1);
+const { response: coloringPages, error } = await colorSheetApi(
+  Astro as any,
+).publicColoringPages({
+  page,
+  search: 'christmas',
+});
+---
+
+<GuestLayout
+  title='Free Christmas Printable Coloring Pages | KidsColoringPage.com'
+  permalink='/christmas-coloring-pages'
+>
+  <div class='bg-[#FFF2DF]'>
+    <div class='px-responsive container px-4 py-8 md:px-0 md:py-12'>
+      <h1 class='mb-5 font-sansita text-4xl font-bold'>
+        Free Christmas Printable Coloring Pages
+      </h1>
+      <p class='mb-8 text-xl font-light text-[#545454]'>
+        If you're a kid excited for holiday cheer, an adult looking for a
+        festive activity, or a teacher in need of joyful educational resources,
+        we have just the thing. Explore our collection of free Christmas
+        coloring pages. From jolly Santa Claus and his reindeer, to cozy winter
+        scenes and beautifully decorated Christmas trees, there's a whole world
+        of holiday spirit waiting for you. Just a click, and you can start
+        spreading the Christmas joy with your colors.
+      </p>
+
+      <div class='max-auto'>
+        <div class='grid grid-cols-2 gap-4 md:grid-cols-4'>
+          {
+            coloringPages?.data?.map((colorPage, index) => (
+              <ColoringImage
+                client:load
+                src={colorPage?.url}
+                title={colorPage?.prompt}
+                alt={`christmas-${index}`}
+              />
+            ))
+          }
+        </div>
+      </div>
+    </div>
+  </div>
+</GuestLayout>
