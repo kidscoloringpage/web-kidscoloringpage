@@ -3,8 +3,6 @@ import { ColoringImage } from '../../components/Admin/ColoringImage';
 import { adminApi } from '../../api/admin';
 import AuthLayout from '../../layouts/AuthLayout.astro';
 
-const { currentUser } = Astro.locals;
-
 const page = +(Astro.url.searchParams.get('page') || 1);
 const { response: coloringPages } = await adminApi(Astro as any).list(page);
 const { response: stats } = await adminApi(Astro as any).getDashboardStats();

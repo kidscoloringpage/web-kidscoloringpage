@@ -2,7 +2,15 @@
 import type { Props as LayoutProps } from './Layout.astro';
 import Layout from './Layout.astro';
 
-export interface Props extends LayoutProps {}
+export interface Props extends LayoutProps {
+  frontmatter: {
+    title?: string;
+    subtitle?: string;
+    noIndex?: boolean;
+    publishedOn?: string;
+    postImage?: string;
+  };
+}
 
 const { frontmatter = {} } = Astro.props;
 ---

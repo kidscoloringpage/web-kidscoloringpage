@@ -109,6 +109,7 @@ export function Header(props: Props) {
       {props?.postImage && (
         <div className="flex justify-center hover:text-[#F36A3C]">
           <img
+            loading="lazy"
             src={props?.postImage}
             alt="Post thumbnail"
             className="h-64 w-full object-cover"
