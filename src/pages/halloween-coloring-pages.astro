@@ -1,0 +1,44 @@
+---
+import { colorSheetApi } from '../api/color-sheet';
+import GuestLayout from '../layouts/GuestLayout.astro';
+import { ColoringImage } from '../components/ColoringImage';
+
+const page = +(Astro.url.searchParams.get('page') || 1);
+const { response: coloringPages, error } = await colorSheetApi(
+  Astro as any,
+).publicColoringPages({
+  page,
+  search: 'halloween',
+});
+---
+
+<GuestLayout
+  title='Free Halloween Printable Coloring Pages | KidsColoringPage.com'
+  permalink='/halloween-coloring-pages'
+>
+  <div class='bg-[#FFF2DF]'>
+    <div class='px-responsive container px-4 py-8 md:px-0 md:py-12'>
+      <h1 class='mb-5 font-sansita text-4xl font-bold'>
+        Free Halloween Printable Coloring Pages
+      </h1>
+      <p class='mb-8 text-xl font-light text-[#545454]'>
+        If you're a kid thrilled by spooky fun, an adult looking for a Halloween-inspired activity, or a teacher searching for engaging holiday materials, we've got a treat for you. Discover our collection of free Halloween coloring pages. From friendly ghosts and witches on their brooms, to carved pumpkins and haunted houses, a realm of Halloween excitement awaits your creativity. Just a click away, and you can start coloring your way through a spooky adventure.
+      </p>
+
+      <div class='max-auto'>
+        <div class='grid grid-cols-2 gap-4 md:grid-cols-4'>
+          {
+            coloringPages?.data?.map((colorPage, index) => (
+              <ColoringImage
+                client:load
+                src={colorPage?.url}
+                title={colorPage?.prompt}
+                alt={`halloween-${index}`}
+              />
+            ))
+          }
+        </div>
+      </div>
+    </div>
+  </div>
+</GuestLayout>
