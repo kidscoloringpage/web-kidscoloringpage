@@ -1,0 +1,50 @@
+---
+import { colorSheetApi } from '../api/color-sheet';
+import GuestLayout from '../layouts/GuestLayout.astro';
+import { ColoringImage } from '../components/ColoringImage';
+
+const page = +(Astro.url.searchParams.get('page') || 1);
+const { response: coloringPages } = await colorSheetApi(
+  Astro as any,
+).publicColoringPages({
+  page,
+  search: 'unicorn',
+});
+---
+
+<GuestLayout
+  title='Free Unicorn Printable Coloring Pages | KidsColoringPage.com'
+  permalink='/unicorn-coloring-pages'
+>
+  <div class='bg-[#FFF2DF]'>
+    <div class='px-responsive container px-4 py-8 md:px-0 md:py-12'>
+      <h1 class='mb-5 font-sansita text-4xl font-bold'>
+        Free Unicorn Printable Coloring Pages
+      </h1>
+      <p class='mb-8 text-xl font-light text-[#545454]'>
+        If you're a kid who dreams of magical worlds, an adult in search of a
+        sprinkle of fantasy, or a teacher looking for enchanting educational
+        materials, we have a magical collection for you. Dive into our free
+        unicorn coloring pages. From majestic unicorns galloping across rainbows
+        to mystical creatures surrounded by stars and magic, a universe of
+        wonder awaits your imagination. Just a click, and you can start bringing
+        these magical unicorns to life with vibrant colors.
+      </p>
+
+      <div class='max-auto'>
+        <div class='grid grid-cols-2 gap-4 md:grid-cols-4'>
+          {
+            coloringPages?.data?.map((colorPage, index) => (
+              <ColoringImage
+                client:load
+                src={colorPage?.url}
+                title={colorPage?.prompt}
+                alt={`unicorn-${index}`}
+              />
+            ))
+          }
+        </div>
+      </div>
+    </div>
+  </div>
+</GuestLayout>
