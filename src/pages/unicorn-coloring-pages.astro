@@ -2,6 +2,7 @@
 import { colorSheetApi } from '../api/color-sheet';
 import GuestLayout from '../layouts/GuestLayout.astro';
 import { ColoringImage } from '../components/ColoringImage';
+import { Pagination } from '../components/Global/Pagination';
 
 const page = +(Astro.url.searchParams.get('page') || 1);
 const { response: coloringPages } = await colorSheetApi(
@@ -10,6 +11,8 @@ const { response: coloringPages } = await colorSheetApi(
   page,
   search: 'unicorn',
 });
+const perPage = coloringPages?.perPage || 0;
+const totalRecords = coloringPages?.totalCount || 0;
 ---
 
 <GuestLayout
@@ -44,6 +47,11 @@ const { response: coloringPages } = await colorSheetApi(
             ))
           }
         </div>
+        <Pagination
+          currentPage={page}
+          perPage={perPage}
+          totalRecords={totalRecords}
+        />
       </div>
     </div>
   </div>

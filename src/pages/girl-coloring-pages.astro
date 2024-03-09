@@ -9,29 +9,30 @@ const { response: coloringPages } = await colorSheetApi(
   Astro as any,
 ).publicColoringPages({
   page,
-  search: 'halloween',
+  search: 'girlcoloringpage',
 });
 const perPage = coloringPages?.perPage || 0;
 const totalRecords = coloringPages?.totalCount || 0;
 ---
 
 <GuestLayout
-  title='Free Halloween Printable Coloring Pages | KidsColoringPage.com'
-  permalink='/halloween-coloring-pages'
+  title='Free Dinosaur Printable Coloring Pages | KidsColoringPage.com'
+  permalink='/dinosaur-coloring-pages'
 >
   <div class='bg-[#FFF2DF]'>
     <div class='px-responsive container px-4 py-8 md:px-0 md:py-12'>
       <h1 class='mb-5 font-sansita text-4xl font-bold'>
-        Free Halloween Printable Coloring Pages
+        Free Printable Coloring Pages For Girls
       </h1>
       <p class='mb-8 text-xl font-light text-[#545454]'>
-        If you're a kid thrilled by spooky fun, an adult looking for a
-        Halloween-inspired activity, or a teacher searching for engaging holiday
-        materials, we've got a treat for you. Discover our collection of free
-        Halloween coloring pages. From friendly ghosts and witches on their
-        brooms, to carved pumpkins and haunted houses, a realm of Halloween
-        excitement awaits your creativity. Just a click away, and you can start
-        coloring your way through a spooky adventure.
+        If you're a kid who loves stories of adventure and friendship, an adult
+        seeking a relaxing creative outlet, or a teacher searching for engaging
+        and empowering materials, we've got a wonderful collection for you.
+        Check out our free girl coloring pages. From brave heroines and creative
+        artists, to everyday girls exploring the world around them, our pages
+        celebrate diversity, courage, and fun. Just a click away, and you can
+        start coloring inspirational scenes that showcase the spirit and
+        adventures of girls.
       </p>
 
       <div class='max-auto'>
@@ -42,7 +43,7 @@ const totalRecords = coloringPages?.totalCount || 0;
                 client:load
                 src={colorPage?.url}
                 title={colorPage?.prompt}
-                alt={`halloween-${index}`}
+                alt={`girlcoloringpage-${index}`}
               />
             ))
           }

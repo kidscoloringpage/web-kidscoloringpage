@@ -28,7 +28,7 @@ export function ViewColorPageDialog() {
         className="h-full overflow-y-scroll sm:max-w-[490px] md:h-auto md:overflow-x-auto md:overflow-y-auto"
         onOpenAutoFocus={(e) => e.preventDefault()}
       >
-        <div className="p-8">
+        <div className="p-8" style={{ maxWidth: 'inherit' }}>
           <DialogHeader className="flex flex-row justify-between text-center">
             <DialogTitle className="font-sansita text-4xl font-bold">
               Coloring page generated
@@ -47,7 +47,7 @@ export function ViewColorPageDialog() {
               alt="color image"
               className="h-auto w-full object-cover"
             />
-            <div className="flex flex-col items-start gap-y-1.5">
+            <div className="contents">
               <p className="w-full truncate font-sansita font-bold capitalize">
                 {colorImage?.prompt}
               </p>
