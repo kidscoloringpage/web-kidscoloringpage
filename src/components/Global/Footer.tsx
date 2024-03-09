@@ -7,6 +7,7 @@ import {
 import { httpGet } from '../../lib/http.ts';
 import { createTokenCookie } from '../../lib/jwt.ts';
 import { redirectAuthSuccess } from '../../lib/auth-redirect.ts';
+import { Subscribe } from '../Subscribe.tsx';
 
 export const Footer = (props: { paymentSessionId: string }) => {
   const urlParams = getUrlParams();
@@ -56,29 +57,7 @@ export const Footer = (props: { paymentSessionId: string }) => {
   return (
     <div className="bg-gradient-to-b from-[#000D60] from-0% via-[#612F84] to-[#944196] pb-14 pt-14 md:bg-gradient-to-r md:pt-20">
       <div className="px-responsive container px-4 md:px-0">
-        <div className="flex-col-responsive flex flex-col justify-between gap-x-14 gap-y-5 md:flex-row md:gap-y-6">
-          <div className="flex-1 font-sansita text-2xl text-white md:text-3xl">
-            <p className="mb-1">Want product news and updates? </p>
-            <p className="">Sign up for our newsletter.</p>
-          </div>
-          <div className="flex flex-1 flex-col justify-between gap-y-3">
-            <div className="flex flex-row gap-x-2.5">
-              <label className="flex-1 mix-blend-soft-light">
-                <input
-                  type="text"
-                  placeholder="Enter your email address"
-                  className="w-full gap-x-2 rounded-lg bg-[#EBEBEB] px-4 py-3 font-light text-black placeholder-black/50 outline-none md:min-w-[380px]"
-                />
-              </label>
-              <button className="w-fit rounded-lg bg-white px-6 py-2 font-medium text-black md:px-11">
-                Subscribe
-              </button>
-            </div>
-            <p className="text-xs text-[#757575]">
-              We hate spam as much as you do. You can unsubscribe at any time.
-            </p>
-          </div>
-        </div>
+        <Subscribe />
         <div className="my-6 border border-[#414141] opacity-30 md:my-10" />
         <div className="flex flex-col justify-between gap-x-14 gap-y-5 md:flex-row md:gap-y-0">
           <div className="flex flex-1 flex-col gap-y-5">
