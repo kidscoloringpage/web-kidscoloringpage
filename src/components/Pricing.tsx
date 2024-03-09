@@ -97,6 +97,9 @@ export function Pricing(props: { hasActiveSubscription: boolean }) {
                 </div>
               </div>
               <button
+                data-ga-category="Pricing"
+                data-ga-action="Click"
+                data-ga-label="BuyOneTime"
                 disabled={props?.hasActiveSubscription}
                 onClick={() =>
                   subscribeToPlan('price_1Op1HgIFLlIQIBa8QctbD21z')
@@ -159,6 +162,9 @@ export function Pricing(props: { hasActiveSubscription: boolean }) {
                 </div>
               </div>
               <button
+                data-ga-category="Pricing"
+                data-ga-action="Click"
+                data-ga-label="SubscribeMonthly"
                 onClick={() =>
                   props?.hasActiveSubscription
                     ? manageSubscription()
@@ -246,6 +252,9 @@ export function Pricing(props: { hasActiveSubscription: boolean }) {
                 </div>
               </div>
               <button
+                data-ga-category="Pricing"
+                data-ga-action="Click"
+                data-ga-label="SubscribeYearly"
                 onClick={() =>
                   props?.hasActiveSubscription
                     ? manageSubscription()

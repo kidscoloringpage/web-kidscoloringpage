@@ -16,6 +16,9 @@ export function Pagination(props: Props) {
     <div className="mt-5 flex flex-col items-center justify-between gap-y-2.5 md:flex-row">
       {currentPage - 1 !== 0 && (
         <a
+          data-ga-category="PaginationClick"
+          data-ga-action="PrevPageClick"
+          data-ga-label="PrevPageClick"
           href={`?page=${currentPage - 1}`}
           className="button relative flex w-full flex-row items-center justify-center gap-x-4 md:w-fit md:min-w-[160px]"
         >
@@ -33,6 +36,9 @@ export function Pagination(props: Props) {
       </p>
       {currentPage !== lastPage && (
         <a
+          data-ga-category="PaginationClick"
+          data-ga-action="NextPageClick"
+          data-ga-label="NextPageClick"
           href={`?page=${currentPage + 1}`}
           className="button relative flex w-full flex-row items-center justify-center gap-x-4 md:w-fit md:min-w-[160px]"
         >

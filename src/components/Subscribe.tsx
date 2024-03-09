@@ -54,6 +54,9 @@ export function Subscribe() {
             />
           </label>
           <button
+            data-ga-category="Subscribe"
+            data-ga-action="Click"
+            data-ga-label="Subscribe"
             onClick={subscribe}
             disabled={isLoading || !email}
             className="w-fit rounded-lg bg-white px-6 py-2 font-medium text-black md:px-11"
