@@ -43,6 +43,11 @@ export function Subscribe() {
             <input
               type="email"
               value={email}
+              onKeyDown={(e) => {
+                if (e.key === 'Enter' && !isLoading && email) {
+                  subscribe();
+                }
+              }}
               onChange={(e) => setEmail(e.target.value)}
               placeholder="Enter your email address"
               className="w-full gap-x-2 rounded-lg bg-[#EBEBEB] px-4 py-3 font-light text-black placeholder-black/50 outline-none md:min-w-[380px]"
