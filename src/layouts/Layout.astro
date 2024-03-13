@@ -32,7 +32,7 @@ const {
 } = Astro.props;
 
 // Remove trailing slashes to consider the page as canonical
-const currentPageAbsoluteUrl = `https://kidscoloringpage.com${permalink || ''}`;
+const currentPageAbsoluteUrl = `https://www.kidscoloringpage.com${permalink || ''}`;
 const canonicalUrl = givenCanonical || currentPageAbsoluteUrl;
 
 const paymentSessionId = Astro.url.searchParams.get('session_id') || '';
