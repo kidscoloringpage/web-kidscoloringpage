@@ -116,13 +116,13 @@ export function Header(props: Props) {
           />
         </div>
       )}
-      {props?.description && (
-        <div className="mt-4">
+      <div className="mt-4">
+        {props?.description && (
           <blockquote className="border-l-4 border-black pl-4 italic">
             <p>{props.description}</p>
           </blockquote>
-        </div>
-      )}
+        )}
+      </div>
     </div>
   );
 }
