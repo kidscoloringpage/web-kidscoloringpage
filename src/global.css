@@ -84,3 +84,7 @@
 .post table th {
   @apply p-2;
 }
+
+.post ul {
+  @apply list-inside list-disc;
+}
