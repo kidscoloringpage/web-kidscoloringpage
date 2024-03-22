@@ -43,7 +43,7 @@ const {
     )
   }
   {
-    totalSheets && (
+    totalSheets > 0 && (
       <Fragment>
         <MyColoringPages client:load />
         <Pricing hasActiveSubscription={hasActiveSubscription} client:load />
