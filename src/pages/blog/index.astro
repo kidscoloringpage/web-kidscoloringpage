@@ -14,8 +14,8 @@ const posts = await Astro.glob('./*.mdx');
             posts
               .sort(
                 (a, b) =>
-                  new Date(b?.frontmatter?.publishedOn) -
-                  new Date(a?.frontmatter?.publishedOn),
+                  new Date(b?.frontmatter?.publishedOn).getMilliseconds() -
+                  new Date(a?.frontmatter?.publishedOn).getMilliseconds(),
               )
               .map((post) => (
                 <a
