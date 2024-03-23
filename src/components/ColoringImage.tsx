@@ -75,6 +75,9 @@ export function ColoringImage(props: ColoringImageProps) {
     >
       {allowPrint && loaded && (
         <button
+          data-ga-category="PrintClick"
+          data-ga-action="ColoringPagePrint"
+          data-ga-label={title}
           onClick={print}
           className="absolute right-2 top-2 z-40 hidden rounded-lg bg-[#F36A3B] group-hover:block md:right-3 md:top-3"
           title="print"
