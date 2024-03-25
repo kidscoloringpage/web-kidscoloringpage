@@ -133,6 +133,12 @@ export const Footer = (props: { paymentSessionId: string }) => {
                 >
                   Contact us
                 </a>
+                <a href="/privacy-policy" className="hover:underline">
+                  Privacy Policy
+                </a>
+                <a href="/terms-of-service" className="hover:underline">
+                  Terms of Service
+                </a>
               </div>
             </div>
             <div>
