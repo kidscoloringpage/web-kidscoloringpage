@@ -1,5 +1,5 @@
-import { TOKEN_COOKIE_NAME } from './lib/jwt.ts';
 import { userApi } from './api/user.ts';
+import { TOKEN_COOKIE_NAME } from './lib/jwt.ts';
 import type { APIContext, MiddlewareNext } from 'astro';
 // @ts-ignore // @todo need to fix astro type, somehow it is not working
 import { defineMiddleware } from 'astro:middleware';
