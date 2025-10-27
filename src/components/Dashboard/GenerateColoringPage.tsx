@@ -43,7 +43,7 @@ export function GenerateColoringPage(props: Props) {
     const { response: createResponse, error } = await httpPost<{
       _id: string;
       status: string;
-    }>(`${import.meta.env.PUBLIC_API_URL}/v1-create-coloring-sheet`, {
+    }>(`${import.meta.env.PUBLIC_API_URL}/v3-create-coloring-sheet`, {
       prompt,
     });
 
