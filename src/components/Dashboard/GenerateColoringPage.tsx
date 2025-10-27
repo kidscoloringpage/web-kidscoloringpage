@@ -157,6 +157,7 @@ export function GenerateColoringPage(props: Props) {
               type="text"
               autoComplete="off"
               placeholder="Enter your prompt here"
+              max='100'
               id="prompt"
               value={prompt}
               onKeyDown={(e) => {
