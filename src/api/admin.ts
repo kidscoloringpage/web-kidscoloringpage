@@ -66,5 +66,71 @@ export function adminApi(context: APIContext) {
         userId,
       });
     },
+    listUsers: async function (
+      page: number = 1,
+      filters?: {
+        search?: string;
+        plan?: string;
+        status?: string;
+        dateFrom?: string;
+        dateTo?: string;
+      },
+    ) {
+      return api(context).get<{
+        perPage: number;
+        totalPages: number;
+        currentPage: number;
+        totalCount: number;
+        data: Array<{
+          _id?: string;
+          name: string;
+          email: string;
+          password: string;
+          isEnabled: boolean;
+          authProvider: 'github' | 'google' | 'email';
+          metadata?: {
+            hasPurchasedSubscription?: boolean;
+            hasActiveSubscription?: boolean;
+            [key: string]: any;
+          };
+          verificationCode: string;
+          resetPasswordCode: string;
+          links?: {
+            github?: string;
+            linkedin?: string;
+            twitter?: string;
+            website?: string;
+          };
+          resetPasswordCodeAt: Date;
+          verifiedAt: Date;
+          createdAt: Date;
+          updatedAt: Date;
+          subscription: {
+            _id?: string;
+            userId: string;
+            planId: string;
+            name: string;
+            statementDescriptor: string;
+            amount: number;
+            currency: string;
+            interval: 'monthly' | 'yearly' | 'one_time';
+            quantity: number;
+            status: 'active' | 'canceled' | 'expired';
+            trialRequests?: number;
+            usedTrialRequests?: number;
+            metadata?: Record<string, any>;
+            createdAt: Date;
+            updatedAt: Date;
+          };
+        }>;
+      }>(`${import.meta.env.PUBLIC_API_URL}/admin/v1-list-users`, {
+        page,
+        ...(filters?.search && { search: filters.search }),
+        ...(filters?.plan && { plan: filters.plan }),
+        ...(filters?.status && { status: filters.status }),
+        ...(filters?.dateFrom && { dateFrom: filters.dateFrom }),
+        ...(filters?.dateTo && { dateTo: filters.dateTo }),
+      });
+    },
   };
 }

@@ -1,12 +1,59 @@
 ---
-import { ColoringImage } from '../../components/Admin/ColoringImage';
 import { adminApi } from '../../api/admin';
 import AuthLayout from '../../layouts/AuthLayout.astro';
 
 const page = +(Astro.url.searchParams.get('page') || 1);
-const { response: coloringPages } = await adminApi(Astro as any).list(page);
-const { response: stats } = await adminApi(Astro as any).getDashboardStats();
-const lastPage = Math.ceil(coloringPages?.totalCount / coloringPages?.perPage);
+const search = Astro.url.searchParams.get('search') || '';
+const plan = Astro.url.searchParams.get('plan') || '';
+const status = Astro.url.searchParams.get('status') || '';
+const dateFrom = Astro.url.searchParams.get('dateFrom') || '';
+const dateTo = Astro.url.searchParams.get('dateTo') || '';
+
+const filters = {
+  ...(search && { search }),
+  ...(plan && { plan }),
+  ...(status && { status }),
+  ...(dateFrom && { dateFrom }),
+  ...(dateTo && { dateTo }),
+};
+
+const { response: users } = await adminApi(Astro as any).listUsers(page, Object.keys(filters).length > 0 ? filters : undefined);
+const lastPage = Math.ceil(users?.totalCount / users?.perPage);
+
+function buildQueryString(params: Record<string, string | number>) {
+  const searchParams = new URLSearchParams();
+  if (search) searchParams.set('search', search);
+  if (plan) searchParams.set('plan', plan);
+  if (status) searchParams.set('status', status);
+  if (dateFrom) searchParams.set('dateFrom', dateFrom);
+  if (dateTo) searchParams.set('dateTo', dateTo);
+
+  Object.entries(params).forEach(([key, value]) => {
+    if (value) searchParams.set(key, String(value));
+  });
+
+  const query = searchParams.toString();
+  return query ? `?${query}` : '';
+}
+
+function getUserStatus(user: { isEnabled: boolean; verifiedAt: Date | null }) {
+  // Priority order matches backend filter logic:
+  // active: isEnabled = true AND verifiedAt != null
+  if (user.isEnabled && user.verifiedAt) {
+    return 'active';
+  }
+  // inactive: isEnabled = false (covers both "inactive" and "disabled")
+  if (!user.isEnabled) {
+    return 'inactive';
+  }
+  // unverified: verifiedAt = null (user is enabled but not verified, could also be "enabled")
+  if (!user.verifiedAt) {
+    return 'unverified';
+  }
+  // verified: verifiedAt != null but not active (shouldn't happen if logic is correct, but handle it)
+  // This would mean verifiedAt exists but user is not enabled, which contradicts our earlier check
+  return 'inactive';
+}
 ---
 
 <AuthLayout
@@ -16,160 +63,164 @@ const lastPage = Math.ceil(coloringPages?.totalCount / coloringPages?.perPage);
 >
   <div class='bg-white'>
     <div class='px-responsive container px-4 py-8 md:px-0 md:py-12'>
-      <p class='mb-5 font-sansita text-4xl font-bold'>Welcome back, admin</p>
-      <p class='mb-8 text-xl font-light text-[#545454]'>
-        Here is some statistics about the users, there subscription plans and
-        color pages they have generated
-      </p>
-      <div class='mb-5 grid grid-cols-2 gap-4 md:grid-cols-5'>
-        <div
-          class='flex flex-col justify-between gap-y-4 rounded-2xl bg-[#fff2df] p-4'
-        >
-          <img
-            src='/users.svg'
-            alt='users'
-            class='h-12 w-12 rounded-full bg-white p-2.5'
-          />
-          <div class='flex flex-col gap-y-1'>
-            <p class='font-sansita text-5xl font-bold'>{stats?.users || 0}</p>
-            <p class='text-[#545454]'>Total users</p>
+      <h1 class='mb-5 font-sansita text-4xl font-bold'>Users</h1>
+
+      <form method='GET' action='/admin/dashboard' class='mb-6 rounded-lg border border-black bg-[#fff2df] p-4 shadow-sm'>
+        <div class='grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4'>
+          <div class='lg:col-span-2'>
+            <label for='search' class='mb-1 block font-sansita text-sm font-semibold text-black'>
+              Search (Name or Email)
+            </label>
+            <input
+              type='text'
+              id='search'
+              name='search'
+              value={search}
+              placeholder='Search by name or email...'
+              class='w-full rounded-full border border-[#999999] px-4 py-2 text-black placeholder-[#999999] outline-none focus:border-[#000000] focus:text-black focus:placeholder-black'
+            />
+          </div>
+
+          <div>
+            <label for='plan' class='mb-1 block font-sansita text-sm font-semibold text-black'>
+              Plan
+            </label>
+            <select
+              id='plan'
+              name='plan'
+              class='w-full rounded-full border border-[#999999] px-4 py-2 text-black outline-none focus:border-[#000000]'
+            >
+              <option value=''>All Plans</option>
+              <option value='Free' selected={plan === 'Free'}>Free</option>
+              <option value='Paid' selected={plan === 'Paid'}>Paid</option>
+            </select>
+          </div>
+
+          <div>
+            <label for='status' class='mb-1 block font-sansita text-sm font-semibold text-black'>
+              Status
+            </label>
+            <select
+              id='status'
+              name='status'
+              class='w-full rounded-full border border-[#999999] px-4 py-2 text-black outline-none focus:border-[#000000]'
+            >
+              <option value=''>All Status</option>
+              <option value='active' selected={status === 'active'}>Active</option>
+              <option value='inactive' selected={status === 'inactive'}>Inactive</option>
+              <option value='unverified' selected={status === 'unverified'}>Unverified</option>
+              <option value='verified' selected={status === 'verified'}>Verified</option>
+              <option value='enabled' selected={status === 'enabled'}>Enabled</option>
+              <option value='disabled' selected={status === 'disabled'}>Disabled</option>
+            </select>
+          </div>
+
+          <div>
+            <label for='dateFrom' class='mb-1 block font-sansita text-sm font-semibold text-black'>
+              From Date
+            </label>
+            <input
+              type='date'
+              id='dateFrom'
+              name='dateFrom'
+              value={dateFrom}
+              class='w-full rounded-full border border-[#999999] px-4 py-2 text-black outline-none focus:border-[#000000]'
+            />
+          </div>
+
+          <div>
+            <label for='dateTo' class='mb-1 block font-sansita text-sm font-semibold text-black'>
+              To Date
+            </label>
+            <input
+              type='date'
+              id='dateTo'
+              name='dateTo'
+              value={dateTo}
+              class='w-full rounded-full border border-[#999999] px-4 py-2 text-black outline-none focus:border-[#000000]'
+            />
           </div>
         </div>
-        <div class='flex flex-col justify-between rounded-2xl bg-[#fff2df] p-4'>
-          <img
-            src='/palette.svg'
-            alt='users'
-            class='h-12 w-12 rounded-full bg-white p-2.5'
-          />
-          <div class='flex flex-col gap-y-1'>
-            <p class='font-sansita text-5xl font-bold'>
-              {stats?.coloringSheets || 0}
+
+        <div class='mt-4 flex gap-2'>
+          <button
+            type='submit'
+            class='button-2 rounded-full border border-black bg-white px-6 py-2.5 font-sansita font-bold text-black'
+          >
+            Apply Filters
+          </button>
+          <a
+            href='/admin/dashboard'
+            class='rounded-full border border-black bg-white px-6 py-2.5 font-sansita font-bold text-black hover:text-[#F36A3B]'
+          >
+            Clear
+          </a>
+        </div>
+      </form>
+
+      <div class='overflow-x-auto'>
+        <table class='w-full border-collapse bg-white shadow-sm'>
+          <thead>
+            <tr class='bg-[#fff2df]'>
+              <th class='border-b px-4 py-3 text-left font-sansita font-bold'>Name</th>
+              <th class='border-b px-4 py-3 text-left font-sansita font-bold'>Email</th>
+              <th class='border-b px-4 py-3 text-left font-sansita font-bold'>Plan</th>
+              <th class='border-b px-4 py-3 text-left font-sansita font-bold'>Status</th>
+              <th class='border-b px-4 py-3 text-left font-sansita font-bold'>Joined</th>
+              <th class='border-b px-4 py-3 text-left font-sansita font-bold'>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            {users?.data.map((user) => (
+              <tr class='hover:bg-gray-50'>
+                <td class='border-b px-4 py-3'>{user.name}</td>
+                <td class='border-b px-4 py-3'>{user.email}</td>
+                <td class='border-b px-4 py-3'>
+                  {user.subscription?.name || 'Free'}
+                </td>
+                <td class='border-b px-4 py-3'>
+                  {getUserStatus(user)}
+                </td>
+                <td class='border-b px-4 py-3'>
+                  {new Date(user.createdAt).toLocaleDateString()}
+                </td>
+                <td class='border-b px-4 py-3'>
+                  <a
+                    href={`/admin/user/${user._id}`}
+                    class='text-[#6a7df6] underline hover:text-[#5a6fe6]'
+                  >
+                    View
+                  </a>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+        {!!users?.totalCount && (
+          <div class='mt-5 flex items-center justify-between'>
+            {page - 1 !== 0 && (
+              <a
+                href={`${buildQueryString({ page: page - 1 })}`}
+                class='min-w-0 rounded-lg border bg-[#fff2df] px-3 py-2 text-center text-sm uppercase shadow-sm md:min-w-[150px] md:px-0 md:py-2.5 md:text-base'
+              >
+                Prev
+              </a>
+            )}
+            {page - 1 === 0 && <span />}
+            <p class='text-sm md:text-base'>
+              {'Page ' + page + ' of ' + lastPage}
             </p>
-            <p class='text-[#545454]'>Total color pages</p>
+            {page !== lastPage && (
+              <a
+                href={`${buildQueryString({ page: page + 1 })}`}
+                class='min-w-0 rounded-lg border bg-[#fff2df] px-3 py-2 text-center text-sm uppercase shadow-sm md:min-w-[150px] md:px-0 md:py-2.5 md:text-base'
+              >
+                Next
+              </a>
+            )}
+            {page === lastPage && <span />}
           </div>
-        </div>
-        <div class='flex flex-col justify-between rounded-2xl bg-[#fff2df] p-4'>
-          <img
-            src='/palette.svg'
-            alt='users'
-            class='h-12 w-12 rounded-full bg-white p-2.5'
-          />
-          <div class='flex flex-col gap-y-1'>
-            <p class='font-sansita text-5xl font-bold'>
-              {stats?.today?.coloringSheets || 0}
-            </p>
-            <p class='w-full truncate text-[#545454]'>
-              Color pages generated today
-            </p>
-          </div>
-        </div>
-      </div>
-      <div class='mb-16 grid grid-cols-2 gap-4 md:grid-cols-5'>
-        <div class='flex flex-col justify-between rounded-2xl bg-[#fff2df] p-4'>
-          <img
-            src='/frown.svg'
-            alt='users'
-            class='h-12 w-12 rounded-full bg-white p-2.5'
-          />
-          <div class='flex flex-col gap-y-1'>
-            <p class='font-sansita text-5xl font-bold'>
-              {stats?.freeUsers || 0}
-            </p>
-            <p class='text-[#545454]'>Free users</p>
-          </div>
-        </div>
-        <div class='flex flex-col justify-between rounded-2xl bg-[#fff2df] p-4'>
-          <img
-            src='/dollar-sign.svg'
-            alt='users'
-            class='h-12 w-12 rounded-full bg-white p-2.5'
-          />
-          <div class='flex flex-col gap-y-1'>
-            <p class='font-sansita text-5xl font-bold'>
-              {stats?.paidUsers || 0}
-            </p>
-            <p class='text-[#545454]'>Paid users</p>
-          </div>
-        </div>
-        <div class='flex flex-col justify-between rounded-2xl bg-[#fff2df] p-4'>
-          <img
-            src='/binary.svg'
-            alt='users'
-            class='h-12 w-12 rounded-full bg-white p-2.5'
-          />
-          <div class='flex flex-col gap-y-1'>
-            <p class='font-sansita text-5xl font-bold'>
-              {stats?.oneTimeUsers || 0}
-            </p>
-            <p class='text-[#545454]'>One time subscription</p>
-          </div>
-        </div>
-        <div class='flex flex-col justify-between rounded-2xl bg-[#fff2df] p-4'>
-          <img
-            src='/repeat-1.svg'
-            alt='users'
-            class='h-12 w-12 rounded-full bg-white p-2.5'
-          />
-          <div class='flex flex-col gap-y-1'>
-            <p class='font-sansita text-5xl font-bold'>
-              {stats?.monthlyUsers || 0}
-            </p>
-            <p class='text-[#545454]'>Monthly subscriptions</p>
-          </div>
-        </div>
-        <div class='flex flex-col justify-between rounded-2xl bg-[#fff2df] p-4'>
-          <img
-            src='/repeat.svg'
-            alt='users'
-            class='h-12 w-12 rounded-full bg-white p-2.5'
-          />
-          <div class='flex flex-col gap-y-1'>
-            <p class='font-sansita text-5xl font-bold'>
-              {stats?.yearlyUsers || 0}
-            </p>
-            <p class='text-[#545454]'>Yearly subscriptions</p>
-          </div>
-        </div>
-      </div>
-      <p class='mb-5 font-sansita text-4xl font-bold'>Color pages generated</p>
-      <p class='mb-8 text-xl font-light text-[#545454]'>
-        Here are the color pages that have been generated so far by each user
-      </p>
-      <div class='max-auto'>
-        <div class='grid grid-cols-2 gap-4 md:grid-cols-4'>
-          {
-            coloringPages?.data.map((coloringPage) => (
-              <ColoringImage client:only='react' coloringPage={coloringPage} />
-            ))
-          }
-        </div>
-        {
-          coloringPages?.totalCount && (
-            <div class='mt-5 flex items-center justify-between'>
-              {page - 1 !== 0 && (
-                <a
-                  href={`?page=${page - 1}`}
-                  class='min-w-0 rounded-lg border bg-[#fff2df] px-3 py-2 text-center text-sm uppercase shadow-sm md:min-w-[150px] md:px-0 md:py-2.5 md:text-base'
-                >
-                  Prev
-                </a>
-              )}
-              {page - 1 === 0 && <span />}
-              <p class='text-sm md:text-base'>
-                {'Page ' + page + ' of ' + lastPage}
-              </p>
-              {page !== lastPage && (
-                <a
-                  href={`?page=${page + 1}`}
-                  class='min-w-0 rounded-lg border bg-[#fff2df] px-3 py-2 text-center text-sm uppercase shadow-sm md:min-w-[150px] md:px-0 md:py-2.5 md:text-base'
-                >
-                  Next
-                </a>
-              )}
-              {page === lastPage && <span />}
-            </div>
-          )
-        }
+        )}
       </div>
     </div>
   </div>
