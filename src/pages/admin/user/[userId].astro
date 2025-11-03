@@ -160,7 +160,7 @@ const { response: userDetail } = await adminApi(Astro as any).getUser(userId);
           }
         </div>
         {
-          coloringPages?.totalCount && (
+          !!coloringPages?.totalCount && (
             <div class='mt-5 flex items-center justify-between'>
               {page - 1 !== 0 && (
                 <a
